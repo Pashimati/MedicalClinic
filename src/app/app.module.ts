@@ -8,13 +8,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
 import { SectionHeaderComponent } from './section-header/section-header.component';
 import { HeaderComponent } from './header/header.component';
+import { HomepageBoxesComponent } from './homepage-boxes/homepage-boxes.component';
+import { CallBtnComponent } from './call-btn/call-btn.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     SectionHeaderComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomepageBoxesComponent,
+    CallBtnComponent
   ],
   imports: [
     BrowserModule,

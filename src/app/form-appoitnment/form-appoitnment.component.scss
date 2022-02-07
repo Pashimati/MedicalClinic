@@ -1,0 +1,12 @@
+.my-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 10px;
+}
+mat-form-field {
+  width: calc(50% - 5px);
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-style: italic;
+
+}

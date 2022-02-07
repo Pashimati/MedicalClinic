@@ -13,6 +13,7 @@ import { SectionHeaderComponent } from './section-header/section-header.componen
 import { HeaderComponent } from './header/header.component';
 import { HomepageBoxesComponent } from './homepage-boxes/homepage-boxes.component';
 import { CallBtnComponent } from './call-btn/call-btn.component';
+import { FormAppoitnmentComponent } from './form-appoitnment/form-appoitnment.component';
 
 
 
@@ -23,7 +24,8 @@ import { CallBtnComponent } from './call-btn/call-btn.component';
     SectionHeaderComponent,
     HeaderComponent,
     HomepageBoxesComponent,
-    CallBtnComponent
+    CallBtnComponent,
+    FormAppoitnmentComponent
   ],
   imports: [
     BrowserModule,

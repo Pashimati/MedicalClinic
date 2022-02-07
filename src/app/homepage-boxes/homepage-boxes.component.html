@@ -15,7 +15,9 @@
 
         <div class="Emergency card-content" >
           <h2 class="card-content__title">Emergency</h2>
-          <app-call-btn></app-call-btn>
+          <app-call-btn>
+            <span>+375 29 54 77 137</span>
+          </app-call-btn>
           <p class="card-content__text">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             Deleniti dignissimos fugit ipsum nesciunt non pariatur quaerat reiciendis temporibus, unde veniam!
@@ -25,7 +27,7 @@
         <div class="appointment-box card-content">
           <h2 class="card-content__title">Make an Appointment</h2>
 
-          <form class="d-flex flex-wrap justify-content-between">
+          <form class="appointment-box__form">
             <select class="select-department">
               <option value="value1">Select Department</option>
               <option value="value2">Select Department 1</option>
@@ -38,9 +40,9 @@
               <option>Select Doctor 2</option>
             </select>
 
-            <input type="text" placeholder="Name">
-
-            <input type="number" placeholder="Phone No">
+            <input type="text" pattern=".+@globex\.com" size="30" required placeholder="Name">
+            <input type="email" id="email" placeholder="Please enter your email"
+                   pattern=".+@globex\.com" size="30" required>
 
             <input class="call-btn" type="submit" value="Boom Appoitnment">
           </form>

@@ -29,7 +29,12 @@
 
 .news {
   flex: 0 0 33.333333%;
-  max-width: 33.333333%;
+  max-width: 30%;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
   &__link {
     color: #262626;
   }
@@ -52,7 +57,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-around;
+  gap: 25px;
 
 
   margin-top: 12px;

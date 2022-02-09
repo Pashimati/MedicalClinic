@@ -18,6 +18,7 @@ import { OurDepartmentsComponent } from './our-departments/our-departments.compo
 import { DepartmentsCardComponent } from './departments-card/departments-card.component';
 import { TheNewsComponent } from './the-news/the-news.component';
 import { FooterComponent } from './footer/footer.component';
+import { AuthorizationComponent } from './authorization/authorization.component';
 
 
 
@@ -33,7 +34,8 @@ import { FooterComponent } from './footer/footer.component';
     OurDepartmentsComponent,
     DepartmentsCardComponent,
     TheNewsComponent,
-    FooterComponent
+    FooterComponent,
+    AuthorizationComponent
   ],
   imports: [
     BrowserModule,

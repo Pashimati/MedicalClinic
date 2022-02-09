@@ -15,6 +15,7 @@ import { HomepageBoxesComponent } from './homepage-boxes/homepage-boxes.componen
 import { BtnComponent } from './btn/btn.component';
 import { FormAppoitnmentComponent } from './form-appoitnment/form-appoitnment.component';
 import { OurDepartmentsComponent } from './our-departments/our-departments.component';
+import { DepartmentsCardComponent } from './departments-card/departments-card.component';
 
 
 
@@ -27,7 +28,8 @@ import { OurDepartmentsComponent } from './our-departments/our-departments.compo
     HomepageBoxesComponent,
     BtnComponent,
     FormAppoitnmentComponent,
-    OurDepartmentsComponent
+    OurDepartmentsComponent,
+    DepartmentsCardComponent
   ],
   imports: [
     BrowserModule,

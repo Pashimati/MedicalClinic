@@ -17,6 +17,7 @@ import { FormAppoitnmentComponent } from './form-appoitnment/form-appoitnment.co
 import { OurDepartmentsComponent } from './our-departments/our-departments.component';
 import { DepartmentsCardComponent } from './departments-card/departments-card.component';
 import { TheNewsComponent } from './the-news/the-news.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -31,7 +32,8 @@ import { TheNewsComponent } from './the-news/the-news.component';
     FormAppoitnmentComponent,
     OurDepartmentsComponent,
     DepartmentsCardComponent,
-    TheNewsComponent
+    TheNewsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

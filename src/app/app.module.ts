@@ -12,8 +12,9 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { SectionHeaderComponent } from './section-header/section-header.component';
 import { HeaderComponent } from './header/header.component';
 import { HomepageBoxesComponent } from './homepage-boxes/homepage-boxes.component';
-import { CallBtnComponent } from './call-btn/call-btn.component';
+import { BtnComponent } from './btn/btn.component';
 import { FormAppoitnmentComponent } from './form-appoitnment/form-appoitnment.component';
+import { OurDepartmentsComponent } from './our-departments/our-departments.component';
 
 
 
@@ -24,8 +25,9 @@ import { FormAppoitnmentComponent } from './form-appoitnment/form-appoitnment.co
     SectionHeaderComponent,
     HeaderComponent,
     HomepageBoxesComponent,
-    CallBtnComponent,
-    FormAppoitnmentComponent
+    BtnComponent,
+    FormAppoitnmentComponent,
+    OurDepartmentsComponent
   ],
   imports: [
     BrowserModule,

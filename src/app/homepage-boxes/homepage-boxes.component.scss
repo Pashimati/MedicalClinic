@@ -65,5 +65,17 @@
   color: #828282;
 }
 
+.btn-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  text-decoration: none;
+  padding: 0 !important;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff !important;
+}
+
 
 

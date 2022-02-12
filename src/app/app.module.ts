@@ -25,6 +25,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { RegistrationComponent } from './registration/registration.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { RegistrationComponent } from './registration/registration.component';
     FooterComponent,
     AuthorizationComponent,
     TeamComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,

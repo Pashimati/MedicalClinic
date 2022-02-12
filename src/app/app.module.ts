@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
-import {MatInputModule} from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,8 +15,16 @@ import { DepartmentsCardComponent } from './departments-card/departments-card.co
 import { TheNewsComponent } from './the-news/the-news.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthorizationComponent } from './authorization/authorization.component';
+import { TeamComponent } from './team/team.component';
 
 
+
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,9 @@ import { AuthorizationComponent } from './authorization/authorization.component'
     DepartmentsCardComponent,
     TheNewsComponent,
     FooterComponent,
-    AuthorizationComponent
+    AuthorizationComponent,
+    TeamComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +50,8 @@ import { AuthorizationComponent } from './authorization/authorization.component'
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
 
   ],
   providers: [],

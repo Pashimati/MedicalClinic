@@ -5,16 +5,13 @@
   margin-left: auto;
 }
 
-.our-team {
-  padding-top: 100px;
-}
-
 .doctor-cards {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
 }
 .team-title {
+  padding-top: 40px;
   text-align: center;
   font-size: 50px;
   font-weight: 500;
@@ -26,4 +23,40 @@
   flex: 0 0 20%;
   max-width: 20%;
   height: auto;
+}
+
+.inform {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 150px;
+  &__cont {
+    flex: 0 0 40%;
+    max-width: 40%;
+  }
+  &__title {
+    margin-bottom: 48px;
+    font-size: 48px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+  &__text {
+    font-size: 14px;
+    color: #ffffff;
+  }
+  &__img {
+    margin-top: 0!important;
+    flex: 0 0 40%;
+    max-width: 40%;
+  }
+}
+
+.responsive {
+  max-width: 100%;
+  vertical-align: baseline;
+  border-radius: 20px;
+}
+.wrap {
+  background: url("../../assets/img/faq-bg.jpg") no-repeat center;
+  padding: 80px 0;
+  background-size: 100%;
 }

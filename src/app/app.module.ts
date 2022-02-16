@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+
+
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
-import { SectionHeaderComponent } from './section-header/section-header.component';
+import { SectionIndexComponent } from './section-index/section-index.component';
 import { HeaderComponent } from './header/header.component';
 import { HomepageBoxesComponent } from './homepage-boxes/homepage-boxes.component';
 import { BtnComponent } from './btn/btn.component';
@@ -16,22 +17,32 @@ import { TheNewsComponent } from './the-news/the-news.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthorizationComponent } from './authorization/authorization.component';
 import { TeamComponent } from './team/team.component';
-
-
-
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
-import {MatInputModule} from '@angular/material/input';
-import {MatCardModule} from '@angular/material/card';
 import { RegistrationComponent } from './registration/registration.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import {SectionAboutComponent} from "./section-about/section-about.component";
+
+
+
+import { IndexComponent } from "./views/index/index.component";
+import { aboutUsComponent } from "./views/aboutUs/aboutUs.component";
+
+
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    SectionHeaderComponent,
+    SectionIndexComponent,
     HeaderComponent,
     HomepageBoxesComponent,
     BtnComponent,
@@ -43,7 +54,11 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
     AuthorizationComponent,
     TeamComponent,
     RegistrationComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    SectionAboutComponent,
+    IndexComponent,
+    aboutUsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -53,8 +68,7 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    MatCardModule
-
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

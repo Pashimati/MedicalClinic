@@ -6,15 +6,8 @@
   list-style: none;
   display: flex;
   justify-content: space-around;
-  gap: 60px;
+  gap: 30px;
 
-  &__item {
-
-    &:hover {
-      border-radius: 20px;
-      background: linear-gradient(270deg, rgba(50,200,250,1) 0%, rgba(88,125,228,1) 100%);
-    }
-  }
 
   &__link {
     text-decoration: none;
@@ -24,6 +17,10 @@
     font-weight: 500;
     line-height: 1;
     color: #404040;
-
+    &:hover {
+      border-radius: 20px;
+      background: linear-gradient(270deg, rgba(50,200,250,1) 0%, rgba(88,125,228,1) 100%);
+      color: #ffffff;
+    }
   }
 }

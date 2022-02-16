@@ -19,13 +19,16 @@ import { AuthorizationComponent } from './authorization/authorization.component'
 import { TeamComponent } from './team/team.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
-import {SectionAboutComponent} from "./section-about/section-about.component";
-
+import { SectionPreviewComponent } from "./section-preview/section-preview.component";
+import { ServiceBoxComponent } from './service-box/service-box.component';
 
 
 import { IndexComponent } from "./views/index/index.component";
 import { aboutUsComponent } from "./views/aboutUs/aboutUs.component";
-
+import { contactComponent } from "./views/contact/contact.component";
+import { profileComponent } from "./views/profile/profile.component";
+import { serviceComponent } from "./views/service/service.component";
+import {newsComponent} from "./views/news/news.component";
 
 
 import { MatButtonModule } from '@angular/material/button';
@@ -33,9 +36,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-
-
-
+import { MapComponent } from './map/map.component';
 
 
 @NgModule({
@@ -55,9 +56,16 @@ import { MatCardModule } from '@angular/material/card';
     TeamComponent,
     RegistrationComponent,
     MyProfileComponent,
-    SectionAboutComponent,
+    MapComponent,
+    SectionPreviewComponent,
+    ServiceBoxComponent,
     IndexComponent,
     aboutUsComponent,
+    contactComponent,
+    profileComponent,
+    serviceComponent,
+    newsComponent,
+
 
   ],
   imports: [

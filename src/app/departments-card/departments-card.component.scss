@@ -1,0 +1,46 @@
+:host {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}
+.departments-card {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  &__cont {
+    margin-bottom: 64px;
+  }
+  &__header {
+    min-height: 48px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  &__title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+  }
+  &__img {
+    margin-right: 16px;
+    vertical-align: baseline;
+  }
+  &__link {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+}
+
+.entry-content {
+  margin-bottom: 25px;
+  margin-top: 16px;
+  font-size: 14px;
+  color: #fff;
+}

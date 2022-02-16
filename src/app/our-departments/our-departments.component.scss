@@ -1,0 +1,28 @@
+.our-departments {
+  padding: 100px 0;
+  background: url("../../assets/img/departments-bg.jpg") no-repeat;
+  background-size: cover;
+  &__wrap {
+    width: 100%;
+    padding: 70px 0px;
+    background: linear-gradient(270deg, rgba(50,200,250,1) 0%, rgba(88,125,228,1) 100%);
+  }
+  &__title {
+    margin-bottom: 80px;
+    font-size: 48px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+  }
+  &__cards {
+    padding: 0 60px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+.container {
+  margin: 0 auto;
+  max-width: 1140px;
+  width: 100%;
+}
+

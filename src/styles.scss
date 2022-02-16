@@ -28,7 +28,17 @@ body {
   font-family: 'Raleway', sans-serif;
   margin: 0;
 }
+.container {
+  max-width: 1140px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
 
+.btn {
+  border-radius: 20px!important;
+  background: linear-gradient(270deg, rgba(50,200,250,1) 0%, rgba(88,125,228,1) 100%);
+}
 /**
  * Render the `main` element consistently in IE.
  */

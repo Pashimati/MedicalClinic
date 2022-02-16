@@ -1,0 +1,46 @@
+<app-header></app-header>
+<section class="my-profile">
+  <div class="container">
+    <h1 class="my-profile__title">Укажите данные</h1>
+    <form class="example-form">
+      <mat-form-field class="input-box" appearance="fill">
+        <mat-label>Имя</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field class="input-box" appearance="fill">
+        <mat-label>Фамилия</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field class="input-box" appearance="fill">
+        <mat-label>Отчество</mat-label>
+        <input matInput>
+      </mat-form-field>
+
+      <mat-form-field class="input-box" appearance="fill">
+        <mat-label>Пол</mat-label>
+          <mat-select>
+            <mat-option value="men">Мужской</mat-option>
+            <mat-option value="women">Женский</mat-option>
+          </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="input-box" appearance="fill">
+        <mat-label>Возраст</mat-label>
+        <input matInput>
+      </mat-form-field>
+
+      <mat-form-field class="input-box" appearance="fill">
+        <mat-label>Адрес</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+      <div>
+        <mat-form-field class="input-box" appearance="fill">
+          <mat-label>Телефон</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </div>
+      <p class="box-btn"><input class="btn-input" value="ОТПРАВИТЬ" type="submit"></p>
+    </form>
+  </div>
+</section>
+<app-footer></app-footer>

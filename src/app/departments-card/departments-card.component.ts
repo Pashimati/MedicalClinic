@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Department} from "../our-departments/our-departments.component";
+
 
 @Component({
   selector: 'app-departments-card',

@@ -23,8 +23,13 @@ export class DataService{
     },
     {
       name: 'fdsss',
-      logoLink: '../../assets/img/cardiogram.png',
+      logoLink: '../../assets/img/glasses.png',
       description: 'Lorem ipsum dolor sit amet, consectetur ewewe2212adipiscing elit. Donec malesuada lorem maximus mauris.'
+    },
+    {
+      name: 'cardi42oology',
+      logoLink: '../../assets/img/cardiogram.png',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris.'
     },
     {
       name: 'cardi42oology',
@@ -42,4 +47,15 @@ export class DataService{
   getDepartments(): Department [] {
     return this.departments;
   }
+
+
+  // public doctors: Doctor[] = [
+  //   {
+  //     name: '',
+  //     surname: '',
+  //     photo: '',
+  //     aboutMe: '',
+  //     speciality: '',
+  //   }
+  // ]
 }

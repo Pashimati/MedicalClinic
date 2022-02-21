@@ -7,7 +7,7 @@ import { aboutUsComponent } from "./views/aboutUs/aboutUs.component";
 import { contactComponent } from "./views/contact/contact.component";
 import { profileComponent } from "./views/profile/profile.component";
 import { serviceComponent } from "./views/service/service.component";
-import { newsComponent } from "./views/news/news.component";
+
 
 const routes: Routes = [
   { path: '', component: IndexComponent},
@@ -16,7 +16,6 @@ const routes: Routes = [
   { path: 'contact', component: contactComponent},
   { path: 'profile', component: profileComponent},
   { path: 'service', component: serviceComponent},
-  { path: 'news', component: newsComponent},
 ]
 
 @NgModule({

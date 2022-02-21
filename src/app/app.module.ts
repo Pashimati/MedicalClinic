@@ -30,7 +30,7 @@ import { aboutUsComponent } from "./views/aboutUs/aboutUs.component";
 import { contactComponent } from "./views/contact/contact.component";
 import { profileComponent } from "./views/profile/profile.component";
 import { serviceComponent } from "./views/service/service.component";
-import {newsComponent} from "./views/news/news.component";
+
 
 
 import { MatButtonModule } from '@angular/material/button';
@@ -39,6 +39,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MapComponent } from './map/map.component';
+import { DoctorCardComponent } from './doctor-card/doctor-card.component';
 
 
 
@@ -67,9 +68,7 @@ import { MapComponent } from './map/map.component';
     contactComponent,
     profileComponent,
     serviceComponent,
-    newsComponent,
-
-
+    DoctorCardComponent,
   ],
   imports: [
     BrowserModule,

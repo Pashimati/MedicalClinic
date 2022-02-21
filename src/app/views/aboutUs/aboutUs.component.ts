@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from "../../db/data.service";
 
 @Component({
+  providers:[DataService],
   selector: 'app-aboutUs',
   templateUrl: './aboutUs.component.html'
 })
 export class aboutUsComponent implements OnInit {
 
-  constructor() { }
+  key: string = 'aboutUs'
 
-  ngOnInit(): void {
+  constructor(private dataService: DataService) {
   }
 
+  ngOnInit(): void {
+
+  }
 }

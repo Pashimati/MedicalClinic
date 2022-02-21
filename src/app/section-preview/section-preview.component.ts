@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit,} from '@angular/core';
+import {DataService} from "../db/data.service";
+
 
 @Component({
+  providers: [DataService],
   selector: 'app-section-preview',
   templateUrl: './section-preview.component.html',
   styleUrls: ['./section-preview.component.scss']
 })
-export class SectionPreviewComponent implements OnInit {
+export class SectionPreviewComponent implements OnInit  {
 
-  constructor() { }
+  @Input() key: string = "";
 
-  ngOnInit(): void {
+  imageLink: string = "../../assets/img/service-bg.png"
+
+  constructor(private dataService: DataService) {
   }
 
+ ngOnInit() {
+   const link = this.dataService.getData(this.key)?.link;
+   if (link) {
+     this.imageLink = link
+   }
+ }
 }

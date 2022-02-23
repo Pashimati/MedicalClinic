@@ -1,5 +1,5 @@
-import {Component, OnInit, Output} from '@angular/core';
-import {DataService} from "../../db/data.service";
+import { Component, OnInit } from '@angular/core';
+import { DataService } from "../../db/data.service";
 
 
 @Component({

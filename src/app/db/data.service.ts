@@ -1,4 +1,4 @@
-import {Department} from "../our-departments/our-departments.component";
+import {Department} from "../components/our-departments/our-departments.component";
 
 export class DataService{
 

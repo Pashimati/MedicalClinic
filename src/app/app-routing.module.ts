@@ -7,7 +7,7 @@ import { aboutUsComponent } from "./views/aboutUs/aboutUs.component";
 import { contactComponent } from "./views/contact/contact.component";
 import { profileComponent } from "./views/profile/profile.component";
 import { serviceComponent } from "./views/service/service.component";
-
+import {ModalDialogComponent} from "./components/modal-dialog/modal-dialog.component";
 
 const routes: Routes = [
   { path: '', component: IndexComponent},

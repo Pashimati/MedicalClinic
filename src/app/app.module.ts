@@ -5,22 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavigationComponent } from './navigation/navigation.component';
-import { SectionIndexComponent } from './section-index/section-index.component';
-import { HeaderComponent } from './header/header.component';
-import { HomepageBoxesComponent } from './homepage-boxes/homepage-boxes.component';
-import { BtnComponent } from './btn/btn.component';
-import { FormAppoitnmentComponent } from './form-appoitnment/form-appoitnment.component';
-import { OurDepartmentsComponent } from './our-departments/our-departments.component';
-import { DepartmentsCardComponent } from './departments-card/departments-card.component';
-import { TheNewsComponent } from './the-news/the-news.component';
-import { FooterComponent } from './footer/footer.component';
-import { AuthorizationComponent } from './authorization/authorization.component';
-import { TeamComponent } from './team/team.component';
-import { RegistrationComponent } from './registration/registration.component';
-import { MyProfileComponent } from './my-profile/my-profile.component';
-import { SectionPreviewComponent } from "./section-preview/section-preview.component";
-import { ServiceBoxComponent } from './service-box/service-box.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { SectionIndexComponent } from './components/section-index/section-index.component';
+import { HeaderComponent } from './components/header/header.component';
+import { HomepageBoxesComponent } from './components/homepage-boxes/homepage-boxes.component';
+import { BtnComponent } from './components/btn/btn.component';
+import { FormAppoitnmentComponent } from './components/form-appoitnment/form-appoitnment.component';
+import { OurDepartmentsComponent } from './components/our-departments/our-departments.component';
+import { DepartmentsCardComponent } from './components/departments-card/departments-card.component';
+import { TheNewsComponent } from './components/the-news/the-news.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AuthorizationComponent } from './components/authorization/authorization.component';
+import { TeamComponent } from './components/team/team.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { SectionPreviewComponent } from "./components/section-preview/section-preview.component";
+import { ServiceBoxComponent } from './components/service-box/service-box.component';
 
 import {DataService} from "./db/data.service";
 
@@ -30,6 +30,7 @@ import { aboutUsComponent } from "./views/aboutUs/aboutUs.component";
 import { contactComponent } from "./views/contact/contact.component";
 import { profileComponent } from "./views/profile/profile.component";
 import { serviceComponent } from "./views/service/service.component";
+import {ModalDialogComponent} from "./components/modal-dialog/modal-dialog.component";
 
 
 
@@ -38,8 +39,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import { MapComponent } from './map/map.component';
-import { DoctorCardComponent } from './doctor-card/doctor-card.component';
+import { MapComponent } from './components/map/map.component';
+import { DoctorCardComponent } from './components/doctor-card/doctor-card.component';
+
 
 
 
@@ -69,6 +71,7 @@ import { DoctorCardComponent } from './doctor-card/doctor-card.component';
     profileComponent,
     serviceComponent,
     DoctorCardComponent,
+    ModalDialogComponent,
   ],
   imports: [
     BrowserModule,

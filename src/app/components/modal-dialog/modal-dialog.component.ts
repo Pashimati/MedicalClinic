@@ -1,4 +1,4 @@
-import {Component, Input, Output} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-modal-dialog',
@@ -6,9 +6,9 @@ import {Component, Input, Output} from '@angular/core';
   styleUrls: ['./modal-dialog.component.scss']
 })
 export class ModalDialogComponent {
-  @Input() isOpen: boolean = false;
+  isOpen: boolean = false
 
   closeModal() {
-    this.isOpen= true;
+    this.isOpen = true;
   }
 }

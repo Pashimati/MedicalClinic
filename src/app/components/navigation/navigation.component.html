@@ -19,4 +19,6 @@
       <a class="nav__link" (click)="openModal()">login In</a>
     </li>
   </ul>
+  <app-modal-dialog [ngClass]="{invisible: isOpen}"></app-modal-dialog>
 </nav>
+

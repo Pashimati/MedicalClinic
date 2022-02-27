@@ -1,0 +1,28 @@
+.navigation {
+
+}
+
+.nav {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+
+
+  &__link {
+    text-decoration: none;
+    display: block;
+    padding: 16px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    color: #404040;
+    &:hover {
+      border-radius: 20px;
+      background: linear-gradient(270deg, rgba(50,200,250,1) 0%, rgba(88,125,228,1) 100%);
+      color: #ffffff;
+    }
+  }
+}
+
+.invisible {display:none;}

@@ -1,12 +1,10 @@
-<div class="modal">
-  <span class="close" (click)="closeModal()"></span>
-  <h3 class="modal__header">Login In</h3>
-  <div class="btn-box">
-    <app-btn>
-      <a routerLink="/registration">Sing In</a>
-    </app-btn>
-    <app-btn>
-      <a routerLink="/authorization">Sing Up</a>
-    </app-btn>
-  </div>
+<h1 mat-dialog-title class="modal-header">Login In</h1>
+<div mat-dialog-content>
+    <div class="btn-box">
+      <a mat-raised-button  routerLink="/registration">Sing In</a>
+      <a mat-raised-button  routerLink="/authorization">Sing Up</a>
+    </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
 </div>

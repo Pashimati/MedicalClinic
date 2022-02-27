@@ -16,9 +16,8 @@
       <a class="nav__link" routerLink="/profile">My Profile</a>
     </li>
     <li class="nav__item">
-      <a class="nav__link" (click)="openModal()">login In</a>
+      <button class="nav__link" mat-button (click)="openDialog()">Launch dialog</button>
     </li>
   </ul>
-  <app-modal-dialog [ngClass]="{invisible: isOpen}"></app-modal-dialog>
 </nav>
 

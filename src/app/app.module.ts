@@ -21,8 +21,10 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { SectionPreviewComponent } from "./components/section-preview/section-preview.component";
 import { ServiceBoxComponent } from './components/service-box/service-box.component';
+import { DoctorCardComponent } from './components/doctor-card/doctor-card.component';
+import { ModalDialogComponent } from "./components/modal-dialog/modal-dialog.component";
 
-import {DataService} from "./db/data.service";
+import { DataService } from "./db/data.service";
 
 
 import { IndexComponent } from "./views/index/index.component";
@@ -30,7 +32,8 @@ import { aboutUsComponent } from "./views/aboutUs/aboutUs.component";
 import { contactComponent } from "./views/contact/contact.component";
 import { profileComponent } from "./views/profile/profile.component";
 import { serviceComponent } from "./views/service/service.component";
-import {ModalDialogComponent} from "./components/modal-dialog/modal-dialog.component";
+
+
 
 
 
@@ -40,7 +43,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MapComponent } from './components/map/map.component';
-import { DoctorCardComponent } from './components/doctor-card/doctor-card.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 
 
@@ -82,6 +86,7 @@ import { DoctorCardComponent } from './components/doctor-card/doctor-card.compon
     MatSelectModule,
     MatInputModule,
     MatCardModule,
+    MatDialogModule,
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

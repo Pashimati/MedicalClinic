@@ -6,9 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./modal-dialog.component.scss']
 })
 export class ModalDialogComponent {
-  isOpen: boolean = false
-
-  closeModal() {
-    this.isOpen = true;
-  }
 }

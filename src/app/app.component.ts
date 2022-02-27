@@ -19,6 +19,7 @@ export class AppComponent {
     this.isHideHeaderAndFooter()
   }
 
+
   private isHideHeaderAndFooter(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {

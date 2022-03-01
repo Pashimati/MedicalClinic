@@ -1,6 +1,7 @@
 import { Department } from "../components/our-departments/our-departments.component";
 import { Doctor } from "../components/team/team.component";
 
+
 export class DataService {
 
   public data: any = {

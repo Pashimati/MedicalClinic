@@ -8,7 +8,6 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class DepartmentsCardComponent implements OnInit {
 
-  @Input() title: string = ''
   @Input() department: any;
 
   constructor() { }

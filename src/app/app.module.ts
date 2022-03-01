@@ -23,6 +23,8 @@ import { SectionPreviewComponent } from "./components/section-preview/section-pr
 import { ServiceBoxComponent } from './components/service-box/service-box.component';
 import { DoctorCardComponent } from './components/doctor-card/doctor-card.component';
 import { ModalDialogComponent } from "./components/modal-dialog/modal-dialog.component";
+import { backBtnComponent } from "./components/backBtn/backBtn.component"
+
 
 import { DataService } from "./db/data.service";
 
@@ -76,6 +78,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     serviceComponent,
     DoctorCardComponent,
     ModalDialogComponent,
+    backBtnComponent,
   ],
   imports: [
     BrowserModule,

@@ -30,14 +30,10 @@
       Our Team
     </h2>
     <div class="doctor-cards">
-      <app-doctor-card></app-doctor-card>
-      <app-doctor-card></app-doctor-card>
-      <app-doctor-card></app-doctor-card>
-      <app-doctor-card></app-doctor-card>
-      <app-doctor-card></app-doctor-card>
-      <app-doctor-card></app-doctor-card>
-      <app-doctor-card></app-doctor-card>
-      <app-doctor-card></app-doctor-card>
+      <app-doctor-card
+        *ngFor="let doctor of doctors"
+        [doctor]="doctor"
+      ></app-doctor-card>
     </div>
   </div>
 </section>

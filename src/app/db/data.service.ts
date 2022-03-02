@@ -60,6 +60,7 @@ export class DataService {
       aboutMe: 'Lorem ipsum dolor sit amet, consectetur adipis8888888cing elit. Donec malesuada lorem maximus maurisLorem ipsum dolor sit amet,' +
         ' consectetur adipis8888888cing elit. Donec malesuada lorem maximus mauris',
       speciality: 'Хирург',
+      otdel: 'cardiology',
     },
     {
       name: 'Василий',
@@ -68,6 +69,25 @@ export class DataService {
       aboutMe: 'Lorem ipsum dolor sit amet, consectetur adipis8888888cing elit. Donec malesuada lorem maximus maurisLorem ipsum dolor sit amet,' +
         ' consectetur adipis8888888cing elit. Donec malesuada lorem maximus mauris',
       speciality: 'Хирург',
+      otdel: 'cardiology',
+    },
+    {
+      name: 'Василий',
+      surname: 'Петров',
+      photo: '../../assets/img/surgeon.jpg',
+      aboutMe: 'Lorem ipsum dolor sit amet, consectetur adipis8888888cing elit. Donec malesuada lorem maximus maurisLorem ipsum dolor sit amet,' +
+        ' consectetur adipis8888888cing elit. Donec malesuada lorem maximus mauris',
+      speciality: 'cardiolog',
+      otdel: 'cardiology01',
+    },
+    {
+      name: 'Василий',
+      surname: 'Петров',
+      photo: '../../assets/img/surgeon.jpg',
+      aboutMe: 'Lorem ipsum dolor sit amet, consectetur adipis8888888cing elit. Donec malesuada lorem maximus maurisLorem ipsum dolor sit amet,' +
+        ' consectetur adipis8888888cing elit. Donec malesuada lorem maximus mauris',
+      speciality: 'cardiolog',
+      otdel: 'cardiology01',
     },
     {
       name: 'Василий',
@@ -76,22 +96,7 @@ export class DataService {
       aboutMe: 'Lorem ipsum dolor sit amet, consectetur adipis8888888cing elit. Donec malesuada lorem maximus maurisLorem ipsum dolor sit amet,' +
         ' consectetur adipis8888888cing elit. Donec malesuada lorem maximus mauris',
       speciality: 'Хирург',
-    },
-    {
-      name: 'Василий',
-      surname: 'Петров',
-      photo: '../../assets/img/surgeon.jpg',
-      aboutMe: 'Lorem ipsum dolor sit amet, consectetur adipis8888888cing elit. Donec malesuada lorem maximus maurisLorem ipsum dolor sit amet,' +
-        ' consectetur adipis8888888cing elit. Donec malesuada lorem maximus mauris',
-      speciality: 'Хирург',
-    },
-    {
-      name: 'Василий',
-      surname: 'Петров',
-      photo: '../../assets/img/surgeon.jpg',
-      aboutMe: 'Lorem ipsum dolor sit amet, consectetur adipis8888888cing elit. Donec malesuada lorem maximus maurisLorem ipsum dolor sit amet,' +
-        ' consectetur adipis8888888cing elit. Donec malesuada lorem maximus mauris',
-      speciality: 'Хирург',
+      otdel: 'cardiology',
     },
   ]
 

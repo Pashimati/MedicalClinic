@@ -9,7 +9,7 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Departments</mat-label>
-    <mat-select>
+    <mat-select (onChange)="onChange()">
       <mat-option>None</mat-option>
       <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
     </mat-select>
@@ -18,7 +18,7 @@
     <mat-label>Doctor</mat-label>
     <mat-select>
       <mat-option>None</mat-option>
-      <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+      <mat-option  *ngFor="let state of states" [value]="state">{{state}}</mat-option>
     </mat-select>
   </mat-form-field>
   <button mat-raised-button class="btn" type="submit" color="primary">Boom Appoitnment</button>

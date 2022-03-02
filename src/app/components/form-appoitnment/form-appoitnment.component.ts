@@ -8,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormAppoitnmentComponent implements OnInit {
 
+  doctors: string [] = [];
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  nameDepartmets: {} = {
+    cardiology:  "Кардиология",
+    cardiology01: "dfsfsfsdfsdfs",
+  }
+
 
   states: string[] = [
     'Doctor1',
@@ -19,6 +27,12 @@ export class FormAppoitnmentComponent implements OnInit {
     'Doctor3',
     'Doctor4',
   ];
+
+
+  onChange(nameDepartment: string): void {
+    console.log(nameDepartment)
+  }
+
 }
 
 // в первом селекте спрашивать категорию врача и отталкиваясь от категории врача показывать данных врачей

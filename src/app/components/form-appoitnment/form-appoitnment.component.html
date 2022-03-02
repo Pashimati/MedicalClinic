@@ -8,10 +8,10 @@
     <input matInput placeholder="pat@example.com"  required>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Gender</mat-label>
+    <mat-label>Departments</mat-label>
     <mat-select>
-      <mat-option value="gender">Men <b>М</b></mat-option>
-      <mat-option value="gender">Women <b>W</b></mat-option>
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill">

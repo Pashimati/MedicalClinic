@@ -7,7 +7,7 @@ export interface Doctor {
   photo: string
   aboutMe: string
   speciality: string
-  otdel: string
+  department: string
 }
 
 @Component({

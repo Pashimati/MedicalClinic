@@ -54,22 +54,22 @@ export class DataService {
 
   public doctors: Doctor[] = [
     {
-      name: 'Василий',
+      name: 'Андрей',
       surname: 'Петров',
       photo: '../../assets/img/surgeon.jpg',
       aboutMe: 'Lorem ipsum dolor sit amet, consectetur adipis8888888cing elit. Donec malesuada lorem maximus maurisLorem ipsum dolor sit amet,' +
         ' consectetur adipis8888888cing elit. Donec malesuada lorem maximus mauris',
       speciality: 'Хирург',
-      otdel: 'cardiology',
+      department: 'ortopedia',
     },
     {
-      name: 'Василий',
+      name: 'Виталик',
       surname: 'Петров',
       photo: '../../assets/img/surgeon.jpg',
       aboutMe: 'Lorem ipsum dolor sit amet, consectetur adipis8888888cing elit. Donec malesuada lorem maximus maurisLorem ipsum dolor sit amet,' +
         ' consectetur adipis8888888cing elit. Donec malesuada lorem maximus mauris',
       speciality: 'Хирург',
-      otdel: 'cardiology',
+      department: 'ortopedia',
     },
     {
       name: 'Василий',
@@ -77,26 +77,17 @@ export class DataService {
       photo: '../../assets/img/surgeon.jpg',
       aboutMe: 'Lorem ipsum dolor sit amet, consectetur adipis8888888cing elit. Donec malesuada lorem maximus maurisLorem ipsum dolor sit amet,' +
         ' consectetur adipis8888888cing elit. Donec malesuada lorem maximus mauris',
-      speciality: 'cardiolog',
-      otdel: 'cardiology01',
+      speciality: 'Кардиолог',
+      department: 'cardiology',
     },
     {
-      name: 'Василий',
+      name: 'Петя',
       surname: 'Петров',
       photo: '../../assets/img/surgeon.jpg',
       aboutMe: 'Lorem ipsum dolor sit amet, consectetur adipis8888888cing elit. Donec malesuada lorem maximus maurisLorem ipsum dolor sit amet,' +
         ' consectetur adipis8888888cing elit. Donec malesuada lorem maximus mauris',
-      speciality: 'cardiolog',
-      otdel: 'cardiology01',
-    },
-    {
-      name: 'Василий',
-      surname: 'Петров',
-      photo: '../../assets/img/surgeon.jpg',
-      aboutMe: 'Lorem ipsum dolor sit amet, consectetur adipis8888888cing elit. Donec malesuada lorem maximus maurisLorem ipsum dolor sit amet,' +
-        ' consectetur adipis8888888cing elit. Donec malesuada lorem maximus mauris',
-      speciality: 'Хирург',
-      otdel: 'cardiology',
+      speciality: 'Кардиолог',
+      department: 'cardiology',
     },
   ]
 

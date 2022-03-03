@@ -1,0 +1,26 @@
+:host {
+  position: absolute;
+  left: 24%;
+  top: 20%;
+}
+.backBtn {
+  &__link {
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #fff;
+    text-transform: uppercase;
+    width: 100%;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+    transition: all 0.4s;
+    &:hover {
+      border-radius: 25px;
+      background: #333333;
+    }
+  }
+}

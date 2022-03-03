@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from "../../db/data.service";
+import { DataService } from "../../db/data.service";
 
 export interface Department {
   name: string

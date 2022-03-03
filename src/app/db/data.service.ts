@@ -1,6 +1,8 @@
-import {Department} from "../components/our-departments/our-departments.component";
+import { Department } from "../components/our-departments/our-departments.component";
+import { Doctor } from "../components/team/team.component";
 
-export class DataService{
+
+export class DataService {
 
   public data: any = {
     service: { link: '../../assets/img/service-bg.png' },
@@ -11,7 +13,6 @@ export class DataService{
   getData(key: string): any {
     return this.data[key];
   }
-
 
 
 
@@ -49,13 +50,50 @@ export class DataService{
   }
 
 
-  // public doctors: Doctor[] = [
-  //   {
-  //     name: '',
-  //     surname: '',
-  //     photo: '',
-  //     aboutMe: '',
-  //     speciality: '',
-  //   }
-  // ]
+
+
+  public doctors: Doctor[] = [
+    {
+      name: 'Андрей',
+      surname: 'Петров',
+      photo: '../../assets/img/surgeon.jpg',
+      aboutMe: 'Lorem ipsum dolor sit amet, consectetur adipis8888888cing elit. Donec malesuada lorem maximus maurisLorem ipsum dolor sit amet,' +
+        ' consectetur adipis8888888cing elit. Donec malesuada lorem maximus mauris',
+      speciality: 'Хирург',
+      department: 'ortopedia',
+    },
+    {
+      name: 'Виталик',
+      surname: 'Петров',
+      photo: '../../assets/img/surgeon.jpg',
+      aboutMe: 'Lorem ipsum dolor sit amet, consectetur adipis8888888cing elit. Donec malesuada lorem maximus maurisLorem ipsum dolor sit amet,' +
+        ' consectetur adipis8888888cing elit. Donec malesuada lorem maximus mauris',
+      speciality: 'Хирург',
+      department: 'ortopedia',
+    },
+    {
+      name: 'Василий',
+      surname: 'Петров',
+      photo: '../../assets/img/surgeon.jpg',
+      aboutMe: 'Lorem ipsum dolor sit amet, consectetur adipis8888888cing elit. Donec malesuada lorem maximus maurisLorem ipsum dolor sit amet,' +
+        ' consectetur adipis8888888cing elit. Donec malesuada lorem maximus mauris',
+      speciality: 'Кардиолог',
+      department: 'cardiology',
+    },
+    {
+      name: 'Петя',
+      surname: 'Петров',
+      photo: '../../assets/img/surgeon.jpg',
+      aboutMe: 'Lorem ipsum dolor sit amet, consectetur adipis8888888cing elit. Donec malesuada lorem maximus maurisLorem ipsum dolor sit amet,' +
+        ' consectetur adipis8888888cing elit. Donec malesuada lorem maximus mauris',
+      speciality: 'Кардиолог',
+      department: 'cardiology',
+    },
+  ]
+
+
+  getDoctors(): Doctor [] {
+    return this.doctors;
+  }
+
 }

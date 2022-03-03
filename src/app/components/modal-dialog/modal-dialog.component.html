@@ -1,8 +1,8 @@
 <h1 mat-dialog-title class="modal-header">Login In</h1>
 <div mat-dialog-content>
     <div class="btn-box">
-      <a mat-raised-button  routerLink="/registration">Sing In</a>
-      <a mat-raised-button  routerLink="/authorization">Sing Up</a>
+      <a mat-raised-button  routerLink="/authorization" (click)="closeDialog()">Sing In</a>
+      <a mat-raised-button  routerLink="/registration" (click)="closeDialog()">Sing Up</a>
     </div>
 </div>
 <div mat-dialog-actions>

@@ -7,18 +7,30 @@
     <mat-label>Enter your email</mat-label>
     <input matInput placeholder="pat@example.com"  required>
   </mat-form-field>
+
+
+
   <mat-form-field appearance="fill">
-    <mat-label>Select</mat-label>
-    <mat-select>
-      <mat-option value="one">First option</mat-option>
-      <mat-option value="two">Second option</mat-option>
+    <mat-label>Departments</mat-label>
+    <mat-select
+      (selectionChange)="onChange($event)"
+      name="nameDepartment">
+      <mat-option>None</mat-option>
+      <mat-option
+        *ngFor="let nameDepartment of nameDepartments" [value]="nameDepartment.value"
+      >
+        {{nameDepartment.viewValue}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Select</mat-label>
+    <mat-label>Doctors</mat-label>
     <mat-select>
-      <mat-option value="212">First option</mat-option>
-      <mat-option value="tw12312o">Second option</mat-option>
+      <mat-option>None</mat-option>
+      <mat-option
+        *ngFor="let doctor of doctors" [value]="doctor">
+        {{ doctor.name + ' ' + doctor.surname }}
+      </mat-option>
     </mat-select>
   </mat-form-field>
   <button mat-raised-button class="btn" type="submit" color="primary">Boom Appoitnment</button>

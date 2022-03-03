@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import {ModalDialogComponent} from "../modal-dialog/modal-dialog.component";
 
 @Component({

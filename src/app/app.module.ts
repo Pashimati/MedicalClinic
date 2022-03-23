@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,7 +24,7 @@ import { ServiceBoxComponent } from './components/service-box/service-box.compon
 import { DoctorCardComponent } from './components/doctor-card/doctor-card.component';
 import { ModalDialogComponent } from "./components/modal-dialog/modal-dialog.component";
 import { backBtnComponent } from "./components/backBtn/backBtn.component"
-
+import { ToDoListComponent } from "./components/to-do-list/to-do-list.component"
 
 import { DataService } from "./db/data.service";
 
@@ -77,6 +77,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     DoctorCardComponent,
     ModalDialogComponent,
     backBtnComponent,
+    ToDoListComponent,
   ],
   imports: [
     BrowserModule,

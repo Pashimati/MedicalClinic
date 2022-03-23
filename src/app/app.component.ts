@@ -29,7 +29,7 @@ export class AppComponent {
 
     // this.http.getDoctors()
     // this.http.deleteDoctors()
-    this.http.get('https://api-medical-clinic.herokuapp.com/doctor/get-all')
+    // this.http.get('https://api-medical-clinic.herokuapp.com/doctor/get-all')
 
 
     this.isHideHeaderAndFooter()

@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 @Injectable()
 export class HttpService {
 
-   get(url:string) {
+   getAll(url:string) {
     const obs$ = ajax({
       method: 'GET',
       url: url,

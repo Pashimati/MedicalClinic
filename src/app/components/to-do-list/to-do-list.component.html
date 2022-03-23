@@ -1,0 +1,9 @@
+<h1>To Do List</h1>
+<label for="">What do you need to to?</label>
+<input type="text" [(ngModel)]="listItem">
+<br>
+<button (click)="addToList()">Add</button>
+<hr>
+<ul>
+  <li *ngFor="let toDo of toDoList" (click)="removeFromList($event)">{{ toDo }}</li>
+</ul>

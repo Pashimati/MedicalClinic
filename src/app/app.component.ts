@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from "@angular/router";
+import {HttpService} from "./service/http.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [HttpService]
 })
 export class AppComponent {
   blackList: string [] = [
@@ -12,10 +14,24 @@ export class AppComponent {
     '/registration',
   ];
 
+  OnInit(){
+
+  }
+
   isHideHeader: boolean = false;
   isHideFooter: boolean = false;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private http: HttpService
+  ) {
+
+
+    // this.http.getDoctors()
+    // this.http.deleteDoctors()
+    this.http.get('https://api-medical-clinic.herokuapp.com/doctor/get-all')
+
+
     this.isHideHeaderAndFooter()
   }
 
@@ -36,3 +52,5 @@ export class AppComponent {
     })
   }
 }
+
+

@@ -6,21 +6,37 @@ import { of } from 'rxjs';
 @Injectable()
 export class HttpService {
 
-   getAll(url:string) {
-    const obs$ = ajax({
+  data: any = null;
+
+  getAll(url:string) {
+     let data: any = null;
+      const obs$ = ajax({
       method: 'GET',
       url: url,
       responseType: 'json'
     })
-
       catchError(error => {
         console.log('error: ', error);
         return of(error);
       })
-    obs$.subscribe({
-              next: value => console.log(value),
-              error: err => console.log(err)
-            });
+
+      obs$.pipe((value: any) => {
+       data = value;
+       return value
+     })
+
+     return data;
+
+
+    //   obs$.subscribe({
+    //     next: (value) => {
+    //       console.log('set data', value.response)
+    //       this.data = value.response;
+    //     },
+    //     error: err => console.log(err)
+    //   });
+    //  console.log(this.data)
+    // return this.data;
   }
 
 

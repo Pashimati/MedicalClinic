@@ -12,11 +12,11 @@ export interface DoctorTableElement {
 
 @Component({
   selector: 'app-to-do-list',
-  templateUrl: './to-do-list.component.html',
-  styleUrls: ['./to-do-list.component.scss'],
+  templateUrl: './indexDoctors.component.html',
+  styleUrls: ['./indexDoctors.component.scss'],
   providers: [HttpService]
 })
-export class ToDoListComponent implements OnInit {
+export class IndexDoctorsComponent implements OnInit {
   constructor(
     private http: HttpService,
     private _snackBar: MatSnackBar
@@ -71,9 +71,5 @@ export class ToDoListComponent implements OnInit {
       }
     });
   }
-
-  // updateDoctor(id: string) {
-  //   console.log('id',id)
-  // }
 
 }

@@ -24,8 +24,8 @@ import { ServiceBoxComponent } from './components/service-box/service-box.compon
 import { DoctorCardComponent } from './components/doctor-card/doctor-card.component';
 import { ModalDialogComponent } from "./components/modal-dialog/modal-dialog.component";
 import { backBtnComponent } from "./components/backBtn/backBtn.component"
-import { ToDoListComponent } from "./components/to-do-list/to-do-list.component"
-import { DoctorComponent } from "./components/doctor/doctor.component";
+import { IndexDoctorsComponent } from "./components/indexDoctors/indexDoctors.component"
+import { DoctorComponent } from "./components/updateDoctor/doctor.component";
 
 import { DataService } from "./db/data.service";
 
@@ -78,7 +78,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     DoctorCardComponent,
     ModalDialogComponent,
     backBtnComponent,
-    ToDoListComponent,
+    IndexDoctorsComponent,
     DoctorComponent,
   ],
   imports: [

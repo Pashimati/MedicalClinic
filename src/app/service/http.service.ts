@@ -44,6 +44,21 @@ export class HttpService {
     })
     return data;
   }
+
+  getFileById(url: string, id: string) {
+    let data: any = null;
+    const  obs$ = ajax({
+      method: "GET",
+      url: url + '/'+ id,
+      headers: {},
+    });
+    obs$.pipe((value: any) => {
+      data = value;
+      return value
+    })
+    return data;
+  }
+
 }
 
 

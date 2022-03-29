@@ -8,7 +8,9 @@ import { contactComponent } from "./views/contact/contact.component";
 import { profileComponent } from "./views/profile/profile.component";
 import { serviceComponent } from "./views/service/service.component";
 import { RegistrationComponent } from "./components/registration/registration.component";
-import {AuthorizationComponent} from "./components/authorization/authorization.component";
+import { AuthorizationComponent } from "./components/authorization/authorization.component";
+import { DoctorComponent } from "./components/doctor/doctor.component";
+import {ToDoListComponent} from "./components/to-do-list/to-do-list.component";
 
 
 const routes: Routes = [
@@ -20,6 +22,9 @@ const routes: Routes = [
   { path: 'service', component: serviceComponent},
   { path: 'registration', component: RegistrationComponent},
   { path: 'authorization', component: AuthorizationComponent},
+  { path: 'admin', component: ToDoListComponent},
+  { path: 'doctor/:id', component: DoctorComponent},
+
 ]
 
 @NgModule({

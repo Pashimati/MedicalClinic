@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from "../../service/http.service";
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface DoctorTableElement {
   id: string
@@ -71,5 +71,9 @@ export class ToDoListComponent implements OnInit {
       }
     });
   }
+
+  // updateDoctor(id: string) {
+  //   console.log('id',id)
+  // }
 
 }

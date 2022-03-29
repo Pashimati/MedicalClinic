@@ -25,7 +25,7 @@ import { DoctorCardComponent } from './components/doctor-card/doctor-card.compon
 import { ModalDialogComponent } from "./components/modal-dialog/modal-dialog.component";
 import { backBtnComponent } from "./components/backBtn/backBtn.component"
 import { ToDoListComponent } from "./components/to-do-list/to-do-list.component"
-
+import { DoctorComponent } from "./components/doctor/doctor.component";
 
 import { DataService } from "./db/data.service";
 
@@ -35,7 +35,6 @@ import { aboutUsComponent } from "./views/aboutUs/aboutUs.component";
 import { contactComponent } from "./views/contact/contact.component";
 import { profileComponent } from "./views/profile/profile.component";
 import { serviceComponent } from "./views/service/service.component";
-
 
 
 import { MatButtonModule } from '@angular/material/button';
@@ -49,6 +48,7 @@ import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -79,6 +79,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ModalDialogComponent,
     backBtnComponent,
     ToDoListComponent,
+    DoctorComponent,
   ],
   imports: [
     BrowserModule,

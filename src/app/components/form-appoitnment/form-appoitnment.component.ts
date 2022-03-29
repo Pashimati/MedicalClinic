@@ -1,6 +1,7 @@
 import {Component, OnInit, Output} from '@angular/core';
 import { DataService } from '../../db/data.service'
-import {Doctor} from "../team/team.component";
+import { Doctor } from "../team/team.component";
+
 
 interface nameDepartment {
   value: string;
@@ -30,9 +31,7 @@ export class FormAppoitnmentComponent implements OnInit {
 
   onChange(event: any) {
     const department: string = event.value
-    const doctors: Doctor[] = this.getDoctors(department);
-    this.doctors = doctors;
-
+    this.doctors = this.getDoctors(department);
   }
 
 

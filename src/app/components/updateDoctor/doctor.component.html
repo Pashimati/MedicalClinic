@@ -1,0 +1,23 @@
+<section class="my-profile">
+  <div class="container">
+    <h1 class="my-profile__title">Укажите данные</h1>
+    <form class="example-form">
+      <mat-form-field class="input-box" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput class="form-control" name="name" [value]="doctor.name" required>
+      </mat-form-field>
+      <mat-form-field class="input-box" appearance="fill">
+        <mat-label>Surname</mat-label>
+        <input matInput [value]="doctor.surname"  required>
+      </mat-form-field>
+      <mat-form-field class="input-box" appearance="fill">
+        <mat-label>Speciality</mat-label>
+        <input matInput [value]="doctor.speciality" required>
+      </mat-form-field>
+        <input type="hidden" [value]="doctor.id" required>
+      <button class="btn btn-form">Submit</button>
+    </form>
+  </div>
+</section>
+
+

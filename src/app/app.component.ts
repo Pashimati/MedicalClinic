@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from "@angular/router";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   blackList: string [] = [
@@ -12,10 +12,17 @@ export class AppComponent {
     '/registration',
   ];
 
+  OnInit(){
+
+  }
+
   isHideHeader: boolean = false;
   isHideFooter: boolean = false;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router) {
+
+
     this.isHideHeaderAndFooter()
   }
 
@@ -36,3 +43,5 @@ export class AppComponent {
     })
   }
 }
+
+

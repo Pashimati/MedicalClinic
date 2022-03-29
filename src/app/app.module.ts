@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,7 +24,8 @@ import { ServiceBoxComponent } from './components/service-box/service-box.compon
 import { DoctorCardComponent } from './components/doctor-card/doctor-card.component';
 import { ModalDialogComponent } from "./components/modal-dialog/modal-dialog.component";
 import { backBtnComponent } from "./components/backBtn/backBtn.component"
-
+import { IndexDoctorsComponent } from "./components/indexDoctors/indexDoctors.component"
+import { DoctorComponent } from "./components/updateDoctor/doctor.component";
 
 import { DataService } from "./db/data.service";
 
@@ -36,9 +37,6 @@ import { profileComponent } from "./views/profile/profile.component";
 import { serviceComponent } from "./views/service/service.component";
 
 
-
-
-
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -46,9 +44,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MapComponent } from './components/map/map.component';
 import { MatDialogModule } from '@angular/material/dialog';
-
-
-
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatTableModule } from '@angular/material/table';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -79,19 +78,30 @@ import { MatDialogModule } from '@angular/material/dialog';
     DoctorCardComponent,
     ModalDialogComponent,
     backBtnComponent,
+    IndexDoctorsComponent,
+    DoctorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
     MatCardModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTableModule,
+    MatSnackBarModule
   ],
-  providers: [DataService],
+  providers: [
+    DataService,
+    MatDatepickerModule,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

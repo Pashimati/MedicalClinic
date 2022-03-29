@@ -1,39 +1,26 @@
-<div class="limiter">
-  <div class="container-login100">
-    <app-backBtn>Back to Home</app-backBtn>
-    <div class="wrap-login100">
-      <div class="login100-pic js-tilt" data-tilt>
-        <img src="../../../assets/img/login.png" alt="IMG">
-      </div>
-
-      <form class="login100-form validate-form">
-					<span class="login100-form-title">
-             Please Register
-					</span>
-
-        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-          <input class="input100" type="text" name="email" placeholder="Email">
-          <span class="focus-input100"></span>
-          <span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-        </div>
-
-        <div class="wrap-input100 validate-input" data-validate = "Password is required">
-          <input class="input100" type="password" name="pass" placeholder="Password">
-          <span class="focus-input100"></span>
-          <span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-        </div>
-
-        <div class="container-login100-form-btn">
-          <button class="login100-form-btn">
-            Registration
-          </button>
-        </div>
-      </form>
+<div class="container">
+  <app-backBtn>Back to Home</app-backBtn>
+  <div class="wrap">
+    <div class="login100-pic js-tilt" data-tilt>
+      <img src="../../../assets/img/login.png" alt="IMG">
     </div>
+    <form class="form" #myForm novalidate>
+      <h3 class="form-title">Please Register</h3>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="pat@example.com" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill">
+        <input matInput  placeholder="Confirm password" [type]="hide ?
+              'password' : 'text'" [formControl]="confirmFormControl" required>
+        <mat-error *ngIf="confirmFormControl.hasError('required')">
+          Confirm your password
+        </mat-error>
+      </mat-form-field>
+      <app-btn type="submit">Registration</app-btn>
+    </form>
   </div>
 </div>
-

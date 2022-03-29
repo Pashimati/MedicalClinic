@@ -26,6 +26,7 @@ import { ModalDialogComponent } from "./components/modal-dialog/modal-dialog.com
 import { backBtnComponent } from "./components/backBtn/backBtn.component"
 import { ToDoListComponent } from "./components/to-do-list/to-do-list.component"
 
+
 import { DataService } from "./db/data.service";
 
 
@@ -47,7 +48,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { MatTableModule } from '@angular/material/table';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatTableModule
+    MatTableModule,
+    MatSnackBarModule
   ],
   providers: [
     DataService,

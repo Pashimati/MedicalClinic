@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpService} from "../../service/http.service";
-
+import { Component, OnInit } from '@angular/core';
+import { HttpService } from "../../service/http.service";
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 export interface DoctorTableElement {
   id: string
@@ -10,19 +10,6 @@ export interface DoctorTableElement {
   position: number;
 }
 
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {position: 1, name: 'Hydrogen', surname: 'Hydrogen',speciality: 'Хирург'},
-//   {position: 2, name: 'Helium', surname: 'Hydrogen',speciality: 'Хирург'},
-//   {position: 3, name: 'Lithium', surname: 'Hydrogen',speciality: 'Хирург'},
-//   {position: 4, name: 'Beryllium', surname: 'Hydrogen',speciality: 'Хирург'},
-//   {position: 5, name: 'Boron', surname: 'Hydrogen',speciality: 'Хирург'},
-//   {position: 6, name: 'Carbon', surname: 'Hydrogen',speciality: 'Хирург'},
-//   {position: 7, name: 'Nitrogen', surname: 'Hydrogen',speciality: 'Хирург'},
-//   {position: 8, name: 'Oxygen', surname: 'Hydrogen',speciality: 'Хирург'},
-//   {position: 9, name: 'Fluorine', surname: 'Hydrogen',speciality: 'Хирург'},
-//   {position: 10, name: 'Neon', surname: 'Hydrogen',speciality: 'Хирург'},
-// ];
-
 @Component({
   selector: 'app-to-do-list',
   templateUrl: './to-do-list.component.html',
@@ -30,8 +17,10 @@ export interface DoctorTableElement {
   providers: [HttpService]
 })
 export class ToDoListComponent implements OnInit {
-
-  constructor(private http: HttpService) {
+  constructor(
+    private http: HttpService,
+    private _snackBar: MatSnackBar
+  ) {
   }
 
   doctors: DoctorTableElement [] = []
@@ -64,4 +53,23 @@ export class ToDoListComponent implements OnInit {
         }
       })
   }
+
+  removeDoctor(id: string) {
+    this.http.deleteFileById('http://localhost:8080/doctor/delete', id)
+      .subscribe({
+      next: ({response}:any) => {
+        if (response.success) {
+          this.updateTableList()
+          this._snackBar.open('Doctor has been deleted', 'Undo', {
+            duration: 3000
+          });
+        } else {
+          this._snackBar.open('Doctor not been deleted', 'Undo', {
+            duration: 3000
+          });
+        }
+      }
+    });
+  }
+
 }

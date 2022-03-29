@@ -26,82 +26,25 @@ export class HttpService {
      })
 
      return data;
-
-
-    //   obs$.subscribe({
-    //     next: (value) => {
-    //       console.log('set data', value.response)
-    //       this.data = value.response;
-    //     },
-    //     error: err => console.log(err)
-    //   });
-    //  console.log(this.data)
-    // return this.data;
   }
 
 
-  // getJsonDoctor() {
-  //   const obs$ = ajax.getJSON(`https://api-medical-clinic.herokuapp.com/get-all`)
-  //     .pipe(
-  //         map(userResponse => console.log('users: ', userResponse)),
-  //         catchError(error => {
-  //             console.log('error: ', error);
-  //             return of(error);
-  //     })
-  //   );
-  //   obs$.subscribe({
-  //         next: value => console.log(value),
-  //         error: err => console.log(err)
-  //       });
-  // }
-
-
-
-  // deleteDoctors() {
-  //   const  obs$ = ajax({
-  //     method: "DELETE",
-  //     url: "https://api-medical-clinic.herokuapp.com/delete-doctor",
-  //     body: {},
-  //     headers: {},
-  //   });
-  //
-  //   obs$.subscribe({
-  //     next: value => console.log(value),
-  //     error: err => console.log(err)
-  //   });
-  // }
-
-
-
-
-
-
-  // getDoctors() {
-  //   const obs$ = ajax({
-  //     url: 'https://api-medical-clinic.herokuapp.com/add-doctor',
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: {
-  //       name: 'pasha',
-  //       surname: 'koshub',
-  //       age: 21
-  //     }
-  //   }).pipe(
-  //     map(response => console.log('response: ', response)),
-  //     catchError(error => {
-  //       console.log('error: ', error);
-  //       return of(error);
-  //     })
-  //   );
-  //
-  //
-  //   obs$.subscribe({
-  //     next: value => console.log(value),
-  //     error: err => console.log(err)
-  //   });
-  // }
+  deleteFileById(url: string, id: string) {
+    let data: any = null;
+    const  obs$ = ajax({
+      method: "POST",
+      url: url,
+      body: {
+        id: id,
+      },
+      headers: {},
+    });
+    obs$.pipe((value: any) => {
+      data = value;
+      return value
+    })
+    return data;
+  }
 
   }
 

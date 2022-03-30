@@ -49,7 +49,24 @@ export class HttpService {
     let data: any = null;
     const  obs$ = ajax({
       method: "GET",
-      url: url + '/'+ id,
+      url: url + id,
+      headers: {},
+    });
+    obs$.pipe((value: any) => {
+      data = value;
+      return value
+    })
+    return data;
+  }
+
+
+  updateFile(url: string, data: any) {
+    const  obs$ = ajax({
+      method: "POST",
+      url: url,
+      body: {
+        data: data
+      },
       headers: {},
     });
     obs$.pipe((value: any) => {

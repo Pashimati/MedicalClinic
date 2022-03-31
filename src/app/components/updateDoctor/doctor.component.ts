@@ -13,6 +13,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class DoctorComponent implements OnInit {
 
+  mode: string = 'indeterminate';
+
   doctor = {
     id: '',
     name: '',
@@ -32,7 +34,7 @@ export class DoctorComponent implements OnInit {
       switchMap(params => params.getAll('id'))
     )
       .subscribe((id) => {
-        this.http.getFileById('http://localhost:8080/doctor/get/', id)
+        this.http.getFileById(' https://api-medical-clinic.herokuapp.com/doctor/get/', id)
           .subscribe({
             next: ({response}: any) => {
               const doctor = response.doctor
@@ -46,7 +48,7 @@ export class DoctorComponent implements OnInit {
   }
 
   updateDoctor() {
-   this.http.updateFile("http://localhost:8080/doctor/update", this.doctor)
+   this.http.updateFile(" https://api-medical-clinic.herokuapp.com/doctor/update", this.doctor)
      .subscribe({
        next: ({response}:any) => {
          if (response.success) {

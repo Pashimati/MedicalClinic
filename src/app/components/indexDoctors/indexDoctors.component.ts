@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from "../../service/http.service";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoaderService } from '../../service/loader.service';
 
 export interface DoctorTableElement {
   id: string
@@ -14,14 +15,17 @@ export interface DoctorTableElement {
   selector: 'app-to-do-list',
   templateUrl: './indexDoctors.component.html',
   styleUrls: ['./indexDoctors.component.scss'],
-  providers: [HttpService]
+  providers: [HttpService, LoaderService]
 })
 export class IndexDoctorsComponent implements OnInit {
   constructor(
     private http: HttpService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private loaderService: LoaderService
   ) {
   }
+
+
 
   doctors: DoctorTableElement [] = []
 
@@ -33,10 +37,12 @@ export class IndexDoctorsComponent implements OnInit {
 
 
   updateTableList () {
+
     this.http.getAll('https://api-medical-clinic.herokuapp.com/doctor/get-all')
       .subscribe({
         next: ({response}: any) => {
           const doctors = response.doctors
+          this.loaderService.hide()
 
           this.doctors = doctors.map((doctor: any, key: number) => {
             const data = doctor.data
@@ -49,13 +55,15 @@ export class IndexDoctorsComponent implements OnInit {
               surname: data.surname,
               speciality: data.speciality,
             }
+
           })
         }
       })
+
   }
 
   removeDoctor(id: string) {
-    this.http.deleteFileById('http://localhost:8080/doctor/delete', id)
+    this.http.deleteFileById('https://api-medical-clinic.herokuapp.com/doctor/delete', id)
       .subscribe({
       next: ({response}:any) => {
         if (response.success) {

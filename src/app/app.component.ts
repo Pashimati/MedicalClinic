@@ -5,12 +5,15 @@ import { Router, NavigationEnd } from "@angular/router";
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  providers: [],
 })
 export class AppComponent {
+
   blackList: string [] = [
     '/authorization',
     '/registration',
   ];
+
 
   OnInit(){
 

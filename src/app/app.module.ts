@@ -26,6 +26,7 @@ import { ModalDialogComponent } from "./components/modal-dialog/modal-dialog.com
 import { backBtnComponent } from "./components/backBtn/backBtn.component"
 import { IndexDoctorsComponent } from "./components/indexDoctors/indexDoctors.component"
 import { DoctorComponent } from "./components/updateDoctor/doctor.component";
+import { LoaderComponent } from './components/loader/loader.component'
 
 import { DataService } from "./db/data.service";
 
@@ -48,6 +49,7 @@ import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -80,6 +82,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     backBtnComponent,
     IndexDoctorsComponent,
     DoctorComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -96,11 +99,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDatepickerModule,
     MatNativeDateModule,
     MatTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     DataService,
     MatDatepickerModule,
+
   ],
   bootstrap: [AppComponent]
 })

@@ -42,7 +42,7 @@ export class IndexDoctorsComponent implements OnInit {
       .subscribe({
         next: ({response}: any) => {
           const doctors = response.doctors
-          this.loaderService.hide()
+          this.loaderService.isLoading =
 
           this.doctors = doctors.map((doctor: any, key: number) => {
             const data = doctor.data

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from "@angular/router";
+import {LoaderService} from "./service/loader.service";
 
 @Component({
   selector: 'app-root',
@@ -22,10 +23,10 @@ export class AppComponent {
   isHideHeader: boolean = false;
   isHideFooter: boolean = false;
 
-  constructor(
-    private router: Router) {
-
-
+  constructor
+  (
+    private router: Router
+  ) {
     this.isHideHeaderAndFooter()
   }
 

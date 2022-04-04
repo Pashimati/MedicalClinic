@@ -29,7 +29,7 @@ import { DoctorComponent } from "./components/updateDoctor/doctor.component";
 import { LoaderComponent } from './components/loader/loader.component'
 
 import { DataService } from "./db/data.service";
-
+import {LoaderService} from "./service/loader.service";
 
 import { IndexComponent } from "./views/index/index.component";
 import { aboutUsComponent } from "./views/aboutUs/aboutUs.component";
@@ -50,6 +50,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 
 @NgModule({
@@ -105,6 +106,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   providers: [
     DataService,
     MatDatepickerModule,
+    LoaderService
 
   ],
   bootstrap: [AppComponent]

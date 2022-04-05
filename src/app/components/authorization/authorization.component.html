@@ -4,23 +4,41 @@
       <div class="login100-pic js-tilt" data-tilt>
         <img src="../../../assets/img/login.png" alt="IMG">
       </div>
-      <form class="form" #myForm novalidate>
-        <a class="form-link" routerLink="/registration">Registration</a>
-        <mat-form-field appearance="fill">
-          <mat-label>Enter your email</mat-label>
-          <input matInput placeholder="pat@example.com" [formControl]="email" required>
-          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
+        <form
+          class="form"
+          [formGroup]="login"
+          (submit)="submit()"
+          novalidate
+        >
+          <a class="form-link" routerLink="/registration">Registration</a>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Enter your email</mat-label>
+            <input
+              matInput
+              class="form-control"
+              placeholder="pat@example.com"
+              formControlName="email"
+              type="email"
+              placeholder="Email"
+              required
+            >
+
+          </mat-form-field>
 
 
-        <mat-form-field appearance="fill">
-          <input matInput  placeholder="Confirm password" [type]="hide ?
-              'password' : 'text'" [formControl]="confirmFormControl" required>
-          <mat-error *ngIf="confirmFormControl.hasError('required')">
-            Confirm your password
-          </mat-error>
-        </mat-form-field>
-        <app-btn type="submit">Login</app-btn>
-      </form>
+          <mat-form-field appearance="fill">
+            <input
+              matInput
+              class="form-control"
+              placeholder="Confirm password"
+              formControlName="password"
+              type="password"
+              required
+            >
+
+          </mat-form-field>
+          <app-btn type="submit">Login</app-btn>
+        </form>
     </div>
   </div>

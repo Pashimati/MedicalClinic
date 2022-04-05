@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { HttpService } from "../../service/http.service";
-
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-doctor',
@@ -22,7 +22,8 @@ export class DoctorComponent implements OnInit {
   constructor
   (
     private route: ActivatedRoute,
-    private http: HttpService
+    private http: HttpService,
+    private _snackBar: MatSnackBar
   ) {
   }
   ngOnInit() {
@@ -30,7 +31,7 @@ export class DoctorComponent implements OnInit {
       switchMap(params => params.getAll('id'))
     )
       .subscribe((id) => {
-        this.http.getFileById('http://localhost:8080/doctor/get', id)
+        this.http.getFileById(' https://api-medical-clinic.herokuapp.com/doctor/get/', id)
           .subscribe({
             next: ({response}: any) => {
               const doctor = response.doctor
@@ -41,5 +42,22 @@ export class DoctorComponent implements OnInit {
             }
           })
       });
+  }
+
+  updateDoctor() {
+   this.http.updateFile("https://api-medical-clinic.herokuapp.com/doctor/update", this.doctor)
+     .subscribe({
+       next: ({response}:any) => {
+         if (response.success) {
+           this._snackBar.open('Doctor has been updated', 'Undo', {
+             duration: 3000
+           });
+         } else {
+           this._snackBar.open('Doctor not been updated', 'Undo', {
+             duration: 3000
+           });
+         }
+       }
+     });
   }
 }

@@ -4,18 +4,38 @@
     <form class="example-form">
       <mat-form-field class="input-box" appearance="fill">
         <mat-label>Name</mat-label>
-        <input matInput class="form-control" name="name" [value]="doctor.name" required>
+        <input
+            matInput
+            name="name"
+            [(ngModel)]="doctor.name"
+            required
+        >
       </mat-form-field>
       <mat-form-field class="input-box" appearance="fill">
         <mat-label>Surname</mat-label>
-        <input matInput [value]="doctor.surname"  required>
+        <input
+            matInput
+            name="surname"
+            [(ngModel)]="doctor.surname"
+            required
+        >
       </mat-form-field>
       <mat-form-field class="input-box" appearance="fill">
         <mat-label>Speciality</mat-label>
-        <input matInput [value]="doctor.speciality" required>
+        <input
+             matInput
+             name="speciality"
+             [(ngModel)]="doctor.speciality"
+             required
+        >
       </mat-form-field>
-        <input type="hidden" [value]="doctor.id" required>
-      <button class="btn btn-form">Submit</button>
+        <input
+          type="hidden"
+          name="id"
+          [(ngModel)]="doctor.id"
+          required
+        >
+      <button class="btn btn-form" (click)="updateDoctor()">Submit</button>
     </form>
   </div>
 </section>

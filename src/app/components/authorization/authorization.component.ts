@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { AuthAndRegisterService } from "../../service/authAndRegister.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from '@angular/router';
+import { Emitters } from '../../emitters/emitters';
 
 @Component({
   selector: 'app-authorization',
@@ -33,16 +34,16 @@ export class AuthorizationComponent implements OnInit {
 
   submit(): void {
     const data = this.login.getRawValue()
-    console.log(data)
     this.authAndRegisterService
-      .authAndRegister('http://localhost:8080/auth/signin', data)
+      .authAndRegister('https://api-medical-clinic.herokuapp.com/auth/signin', data)
       .subscribe({
         next: () => {
+          Emitters.authEmitter.emit(true);
           this.router.navigate(['/profile']);
           this._snackBar.open('You are logged in!', 'Undo', {
             duration: 5000
           });
-        }
+        },
       });
   }
 

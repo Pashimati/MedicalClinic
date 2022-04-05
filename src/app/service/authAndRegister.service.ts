@@ -21,6 +21,22 @@ export class AuthAndRegisterService {
     })
     return data;
   }
+
+
+  logout(url: string) {
+    let data: any = null;
+    const  obs$ = ajax({
+      method: "GET",
+      url: url,
+      body: {},
+      headers: {},
+    });
+    obs$.pipe((value: any) => {
+      data = value;
+      return value
+    })
+    return data;
+  }
 }
 
 

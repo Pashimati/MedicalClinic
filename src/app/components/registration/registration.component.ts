@@ -37,7 +37,7 @@ export class RegistrationComponent implements OnInit {
    const data = this.register.getRawValue()
     console.log(data)
     this.authAndRegisterService
-      .authAndRegister('http://localhost:8080/auth/signup', data)
+      .authAndRegister('https://api-medical-clinic.herokuapp.com/auth/signup', data)
       .subscribe({
         next: () => {
           this.router.navigate(['/authorization']);

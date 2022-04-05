@@ -10,7 +10,7 @@ import { serviceComponent } from "./views/service/service.component";
 import { RegistrationComponent } from "./components/registration/registration.component";
 import { AuthorizationComponent } from "./components/authorization/authorization.component";
 import { DoctorComponent } from "./components/updateDoctor/doctor.component";
-import {IndexDoctorsComponent} from "./components/indexDoctors/indexDoctors.component";
+import { IndexDoctorsComponent } from "./components/indexDoctors/indexDoctors.component";
 
 
 const routes: Routes = [
@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'authorization', component: AuthorizationComponent},
   { path: 'admin', component: IndexDoctorsComponent},
   { path: 'updateDoctor/:id', component: DoctorComponent},
-
+  { path: 'updateDoctor/:id', component: DoctorComponent},
 ]
 
 @NgModule({

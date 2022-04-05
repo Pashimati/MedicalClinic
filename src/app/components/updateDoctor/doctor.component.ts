@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { HttpService } from "../../service/http.service";
-import { NgModule } from '@angular/core';
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
@@ -12,8 +11,6 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   providers: [HttpService]
 })
 export class DoctorComponent implements OnInit {
-
-  mode: string = 'indeterminate';
 
   doctor = {
     id: '',
@@ -48,7 +45,7 @@ export class DoctorComponent implements OnInit {
   }
 
   updateDoctor() {
-   this.http.updateFile(" https://api-medical-clinic.herokuapp.com/doctor/update", this.doctor)
+   this.http.updateFile("https://api-medical-clinic.herokuapp.com/doctor/update", this.doctor)
      .subscribe({
        next: ({response}:any) => {
          if (response.success) {

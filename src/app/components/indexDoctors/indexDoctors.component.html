@@ -1,8 +1,7 @@
 <div class="container">
+  <app-loader></app-loader>
   <div class="wrap">
     <h1>List of Doctors</h1>
-
-    <app-loader></app-loader>
     <table mat-table [dataSource]="doctors" class="mat-elevation-z8">
       <!-- Position Column -->
       <ng-container matColumnDef="position">

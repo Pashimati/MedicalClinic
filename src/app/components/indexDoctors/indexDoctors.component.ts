@@ -25,12 +25,6 @@ export class IndexDoctorsComponent implements OnInit {
   ) {
   }
 
-  // show() {
-  //   this.loaderService.show();
-  // }
-  // stop() {
-  //   this.loaderService.hide();
-  // }
 
   doctors: DoctorTableElement [] = []
 
@@ -42,16 +36,18 @@ export class IndexDoctorsComponent implements OnInit {
 
 
   updateTableList () {
+
     this.http.getAll('https://api-medical-clinic.herokuapp.com/doctor/get-all')
       .subscribe({
         next: ({response}: any) => {
-          const dn = this.loaderService.show()
-          console.log(dn)
+
+
           const doctors = response.doctors
 
           this.doctors = doctors.map((doctor: any, key: number) => {
             const data = doctor.data
             const id = doctor.id
+
 
             return {
               id: id,
@@ -60,13 +56,11 @@ export class IndexDoctorsComponent implements OnInit {
               surname: data.surname,
               speciality: data.speciality,
             }
-
           })
         }
 
       })
   }
-
   removeDoctor(id: string) {
     this.http.deleteFileById('https://api-medical-clinic.herokuapp.com/doctor/delete', id)
       .subscribe({

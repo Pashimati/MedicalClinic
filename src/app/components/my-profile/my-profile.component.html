@@ -12,6 +12,7 @@
         <input
           matInput
           formControlName="name"
+
           required
         >
       </mat-form-field>
@@ -20,12 +21,14 @@
         <input
           matInput
           formControlName="surname"
+          required
         >
       </mat-form-field>
       <mat-form-field class="input-box" appearance="fill">
         <mat-label>Sex</mat-label>
           <mat-select
             formControlName="sex"
+            required
           >
             <mat-option value="men">Men</mat-option>
             <mat-option value="women">Women</mat-option>
@@ -37,6 +40,7 @@
         <input
           matInput
           formControlName="age"
+          required
         >
       </mat-form-field>
 
@@ -45,6 +49,7 @@
         <textarea
           matInput
           formControlName="address"
+          required
         ></textarea>
       </mat-form-field>
       <div>
@@ -56,7 +61,14 @@
           >
         </mat-form-field>
       </div>
-      <button type="submit" class="btn btn-form">Submit</button>
+      <button
+              type="submit"
+              class="btn btn-form"
+              [disabled]="profile.invalid"
+
+      >
+        Submit
+      </button>
     </form>
   </div>
 </section>

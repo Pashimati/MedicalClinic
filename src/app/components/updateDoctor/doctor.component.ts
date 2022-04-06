@@ -45,7 +45,7 @@ export class DoctorComponent implements OnInit {
   }
 
   updateDoctor() {
-   this.http.updateFile("https://api-medical-clinic.herokuapp.com/doctor/update", this.doctor)
+   this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/doctor/update", this.doctor)
      .subscribe({
        next: ({response}:any) => {
          if (response.success) {

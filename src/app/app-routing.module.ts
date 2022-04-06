@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'authorization', component: AuthorizationComponent},
   { path: 'admin', component: IndexDoctorsComponent},
   { path: 'updateDoctor/:id', component: DoctorComponent},
-  { path: 'updateDoctor/:id', component: DoctorComponent},
+  { path: 'profile/:id', component: profileComponent},
 ]
 
 @NgModule({

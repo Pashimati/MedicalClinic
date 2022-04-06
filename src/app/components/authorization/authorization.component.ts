@@ -13,6 +13,7 @@ import { Emitters } from '../../emitters/emitters';
 })
 export class AuthorizationComponent implements OnInit {
   login : FormGroup;
+  id: string = ''
 
   constructor(
     private authAndRegisterService: AuthAndRegisterService,
@@ -37,9 +38,11 @@ export class AuthorizationComponent implements OnInit {
     this.authAndRegisterService
       .authAndRegister('https://api-medical-clinic.herokuapp.com/auth/signin', data)
       .subscribe({
-        next: () => {
+        next: ({response}: any) => {
+          this.id = response.uid
+          console.log(this.id)
           Emitters.authEmitter.emit(true);
-          this.router.navigate(['/profile']);
+          this.router.navigate(['/profile', this.id]);
           this._snackBar.open('You are logged in!', 'Undo', {
             duration: 5000
           });
@@ -48,8 +51,7 @@ export class AuthorizationComponent implements OnInit {
   }
 
 }
-// получить дату из формы
-// записать ее в объект дата
-// передать объект дата в функцию аутРегистер
-// отправить на бэк
-// на бэке доствать из боди/дата/емаил и пароль
+
+// получить уникальный айдишник
+// передать его вместе с переходом по ссылке
+// при заполнении формы отправлять его в базу юзерс с названием файла колекции "уникальный айдишник"

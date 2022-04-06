@@ -36,18 +36,14 @@ export class IndexDoctorsComponent implements OnInit {
 
 
   updateTableList () {
-
     this.http.getAll('https://api-medical-clinic.herokuapp.com/doctor/get-all')
       .subscribe({
         next: ({response}: any) => {
-
-
           const doctors = response.doctors
 
           this.doctors = doctors.map((doctor: any, key: number) => {
             const data = doctor.data
             const id = doctor.id
-
 
             return {
               id: id,

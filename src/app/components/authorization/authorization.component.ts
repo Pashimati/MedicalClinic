@@ -12,7 +12,7 @@ import { Emitters } from '../../emitters/emitters';
   providers: [AuthAndRegisterService]
 })
 export class AuthorizationComponent implements OnInit {
-  login : FormGroup;
+  login: FormGroup;
   id: string = ''
 
   constructor(
@@ -49,7 +49,4 @@ export class AuthorizationComponent implements OnInit {
         },
       });
   }
-
 }
-
-// при заполнении формы отправлять его в базу юзерс с названием файла колекции "уникальный айдишник"

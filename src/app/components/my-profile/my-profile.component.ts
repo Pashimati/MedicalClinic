@@ -62,6 +62,9 @@ export class MyProfileComponent implements OnInit {
   }
 
 
+// при заполнении формы отправлять его в базу юзерс с названием файла колекции "уникальный айдишник"
+
+
   submit() {
     const data = this.profile.getRawValue()
     console.log(data)

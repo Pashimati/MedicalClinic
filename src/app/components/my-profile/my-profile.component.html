@@ -52,15 +52,22 @@
           required
         ></textarea>
       </mat-form-field>
-      <div>
+
         <mat-form-field class="input-box" appearance="fill">
           <mat-label>Phone</mat-label>
           <input
             matInput
             formControlName="phone"
+            required
           >
         </mat-form-field>
-      </div>
+        <input
+          type="hidden"
+          name="id"
+          formControlName="id"
+          [(ngModel)]="user.id"
+          required
+        >
       <button
               type="submit"
               class="btn btn-form"

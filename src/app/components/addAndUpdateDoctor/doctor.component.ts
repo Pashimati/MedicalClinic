@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { HttpService } from "../../service/http.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-doctor',
@@ -17,7 +17,9 @@ export class DoctorComponent implements OnInit {
     name: '',
     surname: '',
     speciality: '',
+    department: ''
   }
+  flag: boolean = false
 
   constructor
   (
@@ -25,6 +27,7 @@ export class DoctorComponent implements OnInit {
     private http: HttpService,
     private _snackBar: MatSnackBar
   ) {
+
   }
   ngOnInit() {
     this.route.paramMap.pipe(
@@ -35,10 +38,15 @@ export class DoctorComponent implements OnInit {
           .subscribe({
             next: ({response}: any) => {
               const doctor = response.doctor
-              this.doctor.name = doctor.name,
-              this.doctor.surname = doctor.surname,
+              this.doctor.name = doctor.name
+              this.doctor.surname = doctor.surname
               this.doctor.speciality = doctor.speciality
+              this.doctor.department = doctor.department
               this.doctor.id = id
+              console.log(id)
+              if (id) {
+                this.flag = true
+              }
             }
           })
       });
@@ -59,5 +67,22 @@ export class DoctorComponent implements OnInit {
          }
        }
      });
+  }
+
+  addDoctor() {
+    this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/doctor/add", this.doctor)
+      .subscribe({
+        next: ({response}:any) => {
+          if (response.success) {
+            this._snackBar.open('Doctor has been created', 'Undo', {
+              duration: 3000
+            });
+          } else {
+            this._snackBar.open('Doctor not been created', 'Undo', {
+              duration: 3000
+            });
+          }
+        }
+      });
   }
 }

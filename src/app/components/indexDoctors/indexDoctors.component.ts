@@ -9,6 +9,7 @@ export interface DoctorTableElement {
   surname: string;
   speciality: string;
   position: number;
+  department: string;
 }
 
 @Component({
@@ -32,7 +33,7 @@ export class IndexDoctorsComponent implements OnInit {
     this.updateTableList()
   }
 
-  displayedColumns: string[] = ['position', 'name', 'surname','speciality', 'actions'];
+  displayedColumns: string[] = ['position', 'name', 'surname','speciality','department', 'actions'];
 
 
   updateTableList () {
@@ -51,6 +52,7 @@ export class IndexDoctorsComponent implements OnInit {
               name: data.name,
               surname: data.surname,
               speciality: data.speciality,
+              department: data.department,
             }
           })
         }

@@ -9,7 +9,7 @@ import { profileComponent } from "./views/profile/profile.component";
 import { serviceComponent } from "./views/service/service.component";
 import { RegistrationComponent } from "./components/registration/registration.component";
 import { AuthorizationComponent } from "./components/authorization/authorization.component";
-import { DoctorComponent } from "./components/updateDoctor/doctor.component";
+import { DoctorComponent } from "./components/addAndUpdateDoctor/doctor.component";
 import { IndexDoctorsComponent } from "./components/indexDoctors/indexDoctors.component";
 
 
@@ -23,8 +23,9 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent},
   { path: 'authorization', component: AuthorizationComponent},
   { path: 'admin', component: IndexDoctorsComponent},
-  { path: 'updateDoctor/:id', component: DoctorComponent},
+  { path: 'addAndUpdateDoctor/:id', component: DoctorComponent},
   { path: 'profile/:id', component: profileComponent},
+  { path: 'addAndUpdateDoctor', component: DoctorComponent},
 ]
 
 @NgModule({

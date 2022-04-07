@@ -25,7 +25,7 @@ import { DoctorCardComponent } from './components/doctor-card/doctor-card.compon
 import { ModalDialogComponent } from "./components/modal-dialog/modal-dialog.component";
 import { backBtnComponent } from "./components/backBtn/backBtn.component"
 import { IndexDoctorsComponent } from "./components/indexDoctors/indexDoctors.component"
-import { DoctorComponent } from "./components/updateDoctor/doctor.component";
+import { DoctorComponent } from "./components/addAndUpdateDoctor/doctor.component";
 import { LoaderComponent } from './components/loader/loader.component'
 
 import { DataService } from "./db/data.service";

@@ -43,7 +43,6 @@ export class DoctorComponent implements OnInit {
               this.doctor.speciality = doctor.speciality
               this.doctor.department = doctor.department
               this.doctor.id = id
-              console.log(id)
               if (id) {
                 this.flag = true
               }

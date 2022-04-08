@@ -10,7 +10,7 @@ import { SectionIndexComponent } from './components/section-index/section-index.
 import { HeaderComponent } from './components/header/header.component';
 import { HomepageBoxesComponent } from './components/homepage-boxes/homepage-boxes.component';
 import { BtnComponent } from './components/btn/btn.component';
-import { FormAppoitnmentComponent } from './components/form-appoitnment/form-appoitnment.component';
+import { FormAppointmentComponent } from './components/form-appoitnment/form-appointment.component';
 import { OurDepartmentsComponent } from './components/our-departments/our-departments.component';
 import { DepartmentsCardComponent } from './components/departments-card/departments-card.component';
 import { TheNewsComponent } from './components/the-news/the-news.component';
@@ -61,7 +61,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HeaderComponent,
     HomepageBoxesComponent,
     BtnComponent,
-    FormAppoitnmentComponent,
+    FormAppointmentComponent,
     OurDepartmentsComponent,
     DepartmentsCardComponent,
     TheNewsComponent,

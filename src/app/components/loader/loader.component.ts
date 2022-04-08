@@ -1,20 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { LoaderService } from '../../service/loader.service';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-loader',
   templateUrl: './loader.component.html',
-  styleUrls: ['./loader.component.scss']
+  styleUrls: ['loader.component.scss']
 })
 export class LoaderComponent implements OnInit {
 
-  isLoading: Subject<boolean> = this.loaderService.isLoading;
+  loading$ = this.loader.loading$
 
-  constructor(private loaderService: LoaderService) {
+  constructor(private loader: LoaderService) { }
+  ngOnInit() {
   }
-
-  ngOnInit(): void {
-  }
-
 }

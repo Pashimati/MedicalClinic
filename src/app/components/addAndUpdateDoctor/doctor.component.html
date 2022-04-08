@@ -29,13 +29,39 @@
              required
         >
       </mat-form-field>
+      <mat-form-field class="input-box" appearance="fill">
+        <mat-label>Department</mat-label>
+        <input
+          matInput
+          name="department"
+          [(ngModel)]="doctor.department"
+          required
+        >
+      </mat-form-field>
         <input
           type="hidden"
           name="id"
           [(ngModel)]="doctor.id"
           required
         >
-      <button class="btn btn-form" (click)="updateDoctor()">Submit</button>
+      <button
+        *ngIf="flag"
+        mat-button
+        color="primary"
+        class="btn-form"
+        (click)="updateDoctor()"
+      >
+        Update doctor
+      </button>
+      <button
+        *ngIf="!flag"
+        mat-button
+        color="primary"
+        class="btn-form"
+        (click)="addDoctor()"
+      >
+        Add doctor
+      </button>
     </form>
   </div>
 </section>

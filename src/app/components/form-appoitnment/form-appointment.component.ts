@@ -1,6 +1,7 @@
 import {Component, OnInit, Output} from '@angular/core';
 import { DataService } from '../../db/data.service'
 import { Doctor } from "../team/team.component";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 
 interface nameDepartment {
@@ -9,16 +10,31 @@ interface nameDepartment {
 }
 
 @Component({
-  selector: 'app-form-appoitnment',
-  templateUrl: './form-appoitnment.component.html',
-  styleUrls: ['./form-appoitnment.component.scss'],
+  selector: 'app-form-appointment',
+  templateUrl: './form-appointment.component.html',
+  styleUrls: ['./form-appointment.component.scss'],
   providers: [DataService]
 })
-export class FormAppoitnmentComponent implements OnInit {
+export class FormAppointmentComponent implements OnInit {
+
+  appointment: FormGroup
 
   doctors: Doctor [] = [];
 
-  constructor(private dataService : DataService) { }
+  constructor(private dataService : DataService) {
+    this.appointment = new FormGroup({
+
+      date: new FormControl(),
+      time: new FormControl(),
+      email: new FormControl("", [
+        Validators.required,
+        Validators.email
+      ]),
+      name: new FormControl(),
+      nameDepartment: new FormControl(),
+      nameDoctor: new FormControl(),
+    });
+  }
 
   ngOnInit(): void {
   }
@@ -47,6 +63,15 @@ export class FormAppoitnmentComponent implements OnInit {
     })
    return response
   }
+
+
+
+  submit() {
+    const data = this.appointment.getRawValue()
+    console.log(data)
+  }
+
+
 }
 
 // в первом селекте спрашивать категорию врача и отталкиваясь от категории врача показывать данных врачей

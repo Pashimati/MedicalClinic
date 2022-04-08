@@ -1,32 +1,56 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { AuthAndRegisterService } from "../../service/authAndRegister.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { Router } from '@angular/router';
+import { Emitters } from '../../emitters/emitters';
+import {LoaderService} from "../../service/loader.service";
 
 @Component({
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
-  styleUrls: ['./authorization.component.scss']
+  styleUrls: ['./authorization.component.scss'],
+  providers: [AuthAndRegisterService,LoaderService]
 })
 export class AuthorizationComponent implements OnInit {
+  login: FormGroup;
+  id: string = ''
 
-  hide = true;
-  email = new FormControl('', [Validators.required, Validators.email]);
+  constructor(
+    private loader: LoaderService,
+    private authAndRegisterService: AuthAndRegisterService,
+    private _snackBar: MatSnackBar,
+    private router: Router,
+  ) {
+    this.login = new FormGroup({
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+      "email": new FormControl("", [
+        Validators.required,
+        Validators.email
+      ]),
+      "password": new FormControl("", Validators.pattern("[0-9]{10}"))
+    });
   }
-
-  confirmFormControl = new FormControl('', [
-    Validators.required,
-  ]);
-
-
-
-  constructor() { }
 
   ngOnInit(): void {
   }
 
+  submit(): void {
+    this.loader.show()
+    const data = this.login.getRawValue()
+    this.authAndRegisterService
+      .authAndRegister('https://api-medical-clinic.herokuapp.com/auth/signin', data)
+      .subscribe({
+        next: ({response}: any) => {
+          this.id = response.uid
+          console.log(this.id)
+          Emitters.authEmitter.emit(true);
+          this.router.navigate(['/profile', this.id]);
+          this._snackBar.open('You are logged in!', 'Undo', {
+            duration: 5000
+          });
+          this.loader.hide()
+        },
+      });
+  }
 }

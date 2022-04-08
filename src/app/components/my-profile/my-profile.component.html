@@ -1,44 +1,81 @@
 <section class="my-profile">
   <div class="container">
     <h1 class="my-profile__title">Укажите данные</h1>
-    <form class="example-form">
+    <form
+      [formGroup]="profile"
+      (submit)="submit()"
+      novalidate
+      class="example-form"
+    >
       <mat-form-field class="input-box" appearance="fill">
-        <mat-label>Имя</mat-label>
-        <input matInput>
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          formControlName="name"
+          required
+        >
       </mat-form-field>
       <mat-form-field class="input-box" appearance="fill">
-        <mat-label>Фамилия</mat-label>
-        <input matInput>
+        <mat-label>Surname</mat-label>
+        <input
+          matInput
+          formControlName="surname"
+          required
+        >
       </mat-form-field>
       <mat-form-field class="input-box" appearance="fill">
-        <mat-label>Отчество</mat-label>
-        <input matInput>
-      </mat-form-field>
-
-      <mat-form-field class="input-box" appearance="fill">
-        <mat-label>Пол</mat-label>
-          <mat-select>
-            <mat-option value="men">Мужской</mat-option>
-            <mat-option value="women">Женский</mat-option>
+        <mat-label>Sex</mat-label>
+          <mat-select
+            formControlName="sex"
+            required
+          >
+            <mat-option value="men">Men</mat-option>
+            <mat-option value="women">Women</mat-option>
           </mat-select>
       </mat-form-field>
 
       <mat-form-field class="input-box" appearance="fill">
-        <mat-label>Возраст</mat-label>
-        <input matInput>
+        <mat-label>Age</mat-label>
+        <input
+          matInput
+          formControlName="age"
+          required
+        >
       </mat-form-field>
 
       <mat-form-field class="input-box" appearance="fill">
-        <mat-label>Адрес</mat-label>
-        <textarea matInput></textarea>
+        <mat-label>Address</mat-label>
+        <textarea
+          matInput
+          formControlName="address"
+          required
+        ></textarea>
       </mat-form-field>
-      <div>
+
         <mat-form-field class="input-box" appearance="fill">
-          <mat-label>Телефон</mat-label>
-          <input matInput>
+          <mat-label>Phone</mat-label>
+          <input
+            matInput
+            formControlName="phone"
+            required
+          >
         </mat-form-field>
-      </div>
-      <button class="btn btn-form">Submit</button>
+        <input
+          type="hidden"
+          name="id"
+          formControlName="fileName"
+          [(ngModel)]="fileName"
+          required
+        >
+      <button
+        mat-button
+        color="primary"
+        type="submit"
+        class="btn-form"
+        [disabled]="profile.invalid"
+      >
+        Submit
+      </button>
     </form>
   </div>
 </section>

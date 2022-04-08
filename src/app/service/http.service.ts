@@ -60,7 +60,7 @@ export class HttpService {
   }
 
 
-  updateFile(url: string, data: any) {
+  addAndUpdateFile(url: string, data: any) {
     const  obs$ = ajax({
       method: "POST",
       url: url,

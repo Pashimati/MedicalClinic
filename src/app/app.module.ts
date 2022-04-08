@@ -10,7 +10,7 @@ import { SectionIndexComponent } from './components/section-index/section-index.
 import { HeaderComponent } from './components/header/header.component';
 import { HomepageBoxesComponent } from './components/homepage-boxes/homepage-boxes.component';
 import { BtnComponent } from './components/btn/btn.component';
-import { FormAppoitnmentComponent } from './components/form-appoitnment/form-appoitnment.component';
+import { FormAppointmentComponent } from './components/form-appoitnment/form-appointment.component';
 import { OurDepartmentsComponent } from './components/our-departments/our-departments.component';
 import { DepartmentsCardComponent } from './components/departments-card/departments-card.component';
 import { TheNewsComponent } from './components/the-news/the-news.component';
@@ -25,7 +25,7 @@ import { DoctorCardComponent } from './components/doctor-card/doctor-card.compon
 import { ModalDialogComponent } from "./components/modal-dialog/modal-dialog.component";
 import { backBtnComponent } from "./components/backBtn/backBtn.component"
 import { IndexDoctorsComponent } from "./components/indexDoctors/indexDoctors.component"
-import { DoctorComponent } from "./components/updateDoctor/doctor.component";
+import { DoctorComponent } from "./components/addAndUpdateDoctor/doctor.component";
 import { LoaderComponent } from './components/loader/loader.component'
 
 import { DataService } from "./db/data.service";
@@ -51,8 +51,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +59,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HeaderComponent,
     HomepageBoxesComponent,
     BtnComponent,
-    FormAppoitnmentComponent,
+    FormAppointmentComponent,
     OurDepartmentsComponent,
     DepartmentsCardComponent,
     TheNewsComponent,
@@ -101,13 +99,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatNativeDateModule,
     MatTableModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   providers: [
     DataService,
     MatDatepickerModule,
-    LoaderService
-
+    LoaderService,
   ],
   bootstrap: [AppComponent]
 })

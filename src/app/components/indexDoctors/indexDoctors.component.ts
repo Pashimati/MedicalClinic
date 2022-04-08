@@ -9,6 +9,7 @@ export interface DoctorTableElement {
   surname: string;
   speciality: string;
   position: number;
+  department: string;
 }
 
 @Component({
@@ -29,25 +30,22 @@ export class IndexDoctorsComponent implements OnInit {
   doctors: DoctorTableElement [] = []
 
   ngOnInit() {
+    // this.loaderService.show()
     this.updateTableList()
   }
 
-  displayedColumns: string[] = ['position', 'name', 'surname','speciality', 'actions'];
+  displayedColumns: string[] = ['position', 'name', 'surname','speciality','department', 'actions'];
 
 
   updateTableList () {
-
     this.http.getAll('https://api-medical-clinic.herokuapp.com/doctor/get-all')
       .subscribe({
         next: ({response}: any) => {
-
-
           const doctors = response.doctors
 
           this.doctors = doctors.map((doctor: any, key: number) => {
             const data = doctor.data
             const id = doctor.id
-
 
             return {
               id: id,
@@ -55,10 +53,11 @@ export class IndexDoctorsComponent implements OnInit {
               name: data.name,
               surname: data.surname,
               speciality: data.speciality,
+              department: data.department,
             }
           })
+          // this.loaderService.hide()
         }
-
       })
   }
   removeDoctor(id: string) {

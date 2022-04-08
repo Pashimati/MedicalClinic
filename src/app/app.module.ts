@@ -51,8 +51,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -101,13 +99,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatNativeDateModule,
     MatTableModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   providers: [
     DataService,
     MatDatepickerModule,
-    LoaderService
-
+    LoaderService,
   ],
   bootstrap: [AppComponent]
 })

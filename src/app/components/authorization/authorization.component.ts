@@ -4,18 +4,20 @@ import { AuthAndRegisterService } from "../../service/authAndRegister.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from '@angular/router';
 import { Emitters } from '../../emitters/emitters';
+import {LoaderService} from "../../service/loader.service";
 
 @Component({
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
   styleUrls: ['./authorization.component.scss'],
-  providers: [AuthAndRegisterService]
+  providers: [AuthAndRegisterService,LoaderService]
 })
 export class AuthorizationComponent implements OnInit {
   login: FormGroup;
   id: string = ''
 
   constructor(
+    private loader: LoaderService,
     private authAndRegisterService: AuthAndRegisterService,
     private _snackBar: MatSnackBar,
     private router: Router,
@@ -34,6 +36,7 @@ export class AuthorizationComponent implements OnInit {
   }
 
   submit(): void {
+    this.loader.show()
     const data = this.login.getRawValue()
     this.authAndRegisterService
       .authAndRegister('https://api-medical-clinic.herokuapp.com/auth/signin', data)
@@ -46,6 +49,7 @@ export class AuthorizationComponent implements OnInit {
           this._snackBar.open('You are logged in!', 'Undo', {
             duration: 5000
           });
+          this.loader.hide()
         },
       });
   }

@@ -30,6 +30,7 @@ export class IndexDoctorsComponent implements OnInit {
   doctors: DoctorTableElement [] = []
 
   ngOnInit() {
+    // this.loaderService.show()
     this.updateTableList()
   }
 
@@ -55,8 +56,8 @@ export class IndexDoctorsComponent implements OnInit {
               department: data.department,
             }
           })
+          // this.loaderService.hide()
         }
-
       })
   }
   removeDoctor(id: string) {

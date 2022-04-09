@@ -44,6 +44,14 @@
           [(ngModel)]="doctor.id"
           required
         >
+
+      <input type="file" (change)="addFile($event)">
+
+      <div class="" *ngIf="url">
+        <img [src]="url">
+      </div>
+
+
       <button
         *ngIf="flag"
         mat-button

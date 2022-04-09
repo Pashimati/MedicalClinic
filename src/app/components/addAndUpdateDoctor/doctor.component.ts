@@ -7,17 +7,33 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 @Component({
   selector: 'app-doctor',
   templateUrl: './doctor.component.html',
-  styleUrls: ['../my-profile/my-profile.component.scss'],
+  styleUrls: ['../my-profile/my-profile.component.scss', 'doctor.component.scss'],
   providers: [HttpService]
 })
 export class DoctorComponent implements OnInit {
+
+  url: string = ''
+
+
+
+  public addFile(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.url = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+
 
   doctor = {
     id: '',
     name: '',
     surname: '',
     speciality: '',
-    department: ''
+    department: '',
+    photo: ''
   }
   flag: boolean = false
 

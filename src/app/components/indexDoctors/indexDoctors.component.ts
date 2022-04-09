@@ -30,7 +30,6 @@ export class IndexDoctorsComponent implements OnInit {
   doctors: DoctorTableElement [] = []
 
   ngOnInit() {
-    // this.loaderService.show()
     this.updateTableList()
   }
 
@@ -38,6 +37,7 @@ export class IndexDoctorsComponent implements OnInit {
 
 
   updateTableList () {
+    this.loaderService.show()
     this.http.getAll('https://api-medical-clinic.herokuapp.com/doctor/get-all')
       .subscribe({
         next: ({response}: any) => {
@@ -56,7 +56,7 @@ export class IndexDoctorsComponent implements OnInit {
               department: data.department,
             }
           })
-          // this.loaderService.hide()
+          this.loaderService.hide()
         }
       })
   }

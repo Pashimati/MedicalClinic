@@ -5,7 +5,6 @@ import { ActivatedRoute } from "@angular/router";
 import { HttpService } from "../../service/http.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
-
 @Component({
   selector: 'app-my-profile',
   templateUrl: './my-profile.component.html',
@@ -15,7 +14,19 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 export class MyProfileComponent implements OnInit {
 
   profile: FormGroup
-  fileName: string =''
+  id: string =''
+
+  user = {
+    fileName: '',
+    name: '',
+    surname: '',
+    sex: '',
+    age: '',
+    address: '',
+    phone: '',
+  }
+
+  flag: boolean = false;
 
   constructor
   (
@@ -32,20 +43,54 @@ export class MyProfileComponent implements OnInit {
       address: new FormControl("", Validators.min(20)),
       phone: new FormControl("", Validators.pattern("[- +()0-9]+")),
       fileName: new FormControl(),
-    });
 
+    });
   }
 
   ngOnInit(): void {
     this.route.paramMap.pipe(
       switchMap(params => params.getAll('id')))
-      .subscribe((id) => {
-        this.fileName = id
-      })
+      .subscribe((fileName) => {
+        this.http.getFileById('http://localhost:8080/user/get/', fileName)
+          .subscribe({
+            next: ({response}: any) => {
+              const user = response.user
+
+              this.user.name = user.name
+              this.user.surname = user.surname
+              this.user.sex = user.sex
+              this.user.age = user.age
+              this.user.phone = user.phone
+              this.user.address = user.address
+              this.user.fileName = fileName
+
+              this.profile.setValue(this.user)
+              if (fileName && fileName != 'RIusPC2CQFc5hMR493vOHjvcHMN2') {
+                this.flag = true
+              }
+            }
+          })
+      });
   }
 
+  updateUser() {
+    this.http.addAndUpdateFile("http://localhost:8080/user/update", this.profile.getRawValue())
+      .subscribe({
+        next: ({response}:any) => {
+          if (response.success) {
+            this._snackBar.open('User has been updated', 'Undo', {
+              duration: 3000
+            });
+          } else {
+            this._snackBar.open('User not been updated', 'Undo', {
+              duration: 3000
+            });
+          }
+        }
+      });
+  }
 
-  submit() {
+  addUser() {
     const data = this.profile.getRawValue()
     this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/user/add", data)
       .subscribe({

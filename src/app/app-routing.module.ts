@@ -26,8 +26,8 @@ const routes: Routes = [
   { path: 'authorization', component: AuthorizationComponent},
   { path: 'admin', component: IndexDoctorsComponent},
   { path: 'users', component: IndexUsersComponent},
-  { path: 'addAndUpdateUser/:id', component: DoctorComponent},
-  { path: 'addAndUpdateUser/:id', component: AddAndUpdateUser},
+  { path: 'addAndUpdateDoctor/:id', component: DoctorComponent},
+  { path: 'profile/addAndUpdateDoctor/:id', component: profileComponent},
   { path: 'profile/:id', component: profileComponent},
   { path: 'addAndUpdateUser', component: DoctorComponent},
 ]

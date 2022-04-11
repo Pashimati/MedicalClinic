@@ -29,6 +29,8 @@ import { DoctorComponent } from "./components/doctors/addAndUpdateDoctor/doctor.
 import { LoaderComponent } from './components/loader/loader.component'
 import { AddAndUpdateUser } from './components/users/addAndUpdateUser/addAndUpdateUser.component'
 import { IndexUsersComponent } from './components/users/indexUsers/indexUsers.component'
+import { AddAndUpdateDepartment } from "./components/departments/addAndUpdateDepartment/addAndUpdateDepartment.component";
+import { IndexDepartmentComponent } from "./components/departments/indexDepartment/indexDepartment.component";
 
 
 import { DataService } from "./db/data.service";
@@ -54,7 +56,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
-import {AddAndUpdateDepartment} from "./components/departments/addAndUpdateDepartment/addAndUpdateDepartment.component";
+
 
 @NgModule({
   declarations: [
@@ -89,7 +91,8 @@ import {AddAndUpdateDepartment} from "./components/departments/addAndUpdateDepar
     LoaderComponent,
     AddAndUpdateUser,
     IndexUsersComponent,
-    AddAndUpdateDepartment
+    AddAndUpdateDepartment,
+    IndexDepartmentComponent
 
   ],
   imports: [

@@ -12,6 +12,7 @@ import { AuthorizationComponent } from "./components/authorization/authorization
 import { DoctorComponent } from "./components/doctors/addAndUpdateDoctor/doctor.component";
 import { IndexDoctorsComponent } from "./components/doctors/indexDoctors/indexDoctors.component";
 import { IndexUsersComponent } from "./components/users/indexUsers/indexUsers.component";
+import { IndexDepartmentComponent } from "./components/departments/indexDepartment/indexDepartment.component";
 
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'profile/addAndUpdateDoctor/:id', component: profileComponent},
   { path: 'profile/:id', component: profileComponent},
   { path: 'addAndUpdateDepartment', component: DoctorComponent},
+  { path: 'departments', component: IndexDepartmentComponent},
 ]
 
 @NgModule({

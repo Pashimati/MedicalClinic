@@ -3,15 +3,6 @@ import { HttpService } from "../../../service/http.service";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoaderService } from '../../../service/loader.service';
 
-export interface UserTableElement {
-  id: string;
-  name: string;
-  surname:string;
-  sex: string;
-  age: number;
-  address: string;
-  phone: number;
-}
 
 @Component({
   selector: 'app-index-users',
@@ -28,58 +19,53 @@ export class IndexDepartmentComponent implements OnInit {
   }
 
 
-  users: UserTableElement [] = []
+  departments: [] = []
 
   ngOnInit() {
     this.updateTableList()
   }
 
-  displayedColumns: string[] = ['position', 'name', 'surname','sex','age', 'address', 'phone', 'actions'];
+  displayedColumns: string[] = ['position', 'name', 'actions'];
 
 
   updateTableList () {
     this.loaderService.show()
-    this.http.getAll('https://api-medical-clinic.herokuapp.com/user/get-all')
+    this.http.getAll('https://api-medical-clinic.herokuapp.com/department/get-all')
       .subscribe({
         next: ({response}: any) => {
-          const users = response.users
+          const departments = response.departments
 
-          this.users = users.map((user: any, key: number) => {
-            const data = user.data
-            const id = user.id
-
+          this.departments = departments.map((department: any, key: number) => {
+            const data = department.data
+            const id = department.id
             return {
               id: id,
               position: key + 1,
-              name: data.name,
-              surname: data.surname,
-              sex: data.sex,
-              age: data.age,
-              address: data.address,
-              phone: data.phone,
+              name: data.title,
             }
           })
+
           this.loaderService.hide()
         }
       })
   }
 
-  remove(id: string) {
-    this.http.deleteFileById('https://api-medical-clinic.herokuapp.com/user/delete', id)
-      .subscribe({
-      next: ({response}:any) => {
-        if (response.success) {
-          this.updateTableList()
-          this._snackBar.open('User has been deleted', 'Undo', {
-            duration: 3000
-          });
-        } else {
-          this._snackBar.open('User not been deleted', 'Undo', {
-            duration: 3000
-          });
-        }
-      }
-    });
-  }
+  // remove(id: string) {
+  //   this.http.deleteFileById('https://api-medical-clinic.herokuapp.com/user/delete', id)
+  //     .subscribe({
+  //     next: ({response}:any) => {
+  //       if (response.success) {
+  //         this.updateTableList()
+  //         this._snackBar.open('User has been deleted', 'Undo', {
+  //           duration: 3000
+  //         });
+  //       } else {
+  //         this._snackBar.open('User not been deleted', 'Undo', {
+  //           duration: 3000
+  //         });
+  //       }
+  //     }
+  //   });
+  // }
 
 }

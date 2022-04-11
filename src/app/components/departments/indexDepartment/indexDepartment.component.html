@@ -1,18 +1,18 @@
 <div class="container">
   <div class="wrap">
     <app-loader></app-loader>
-    <h1 class="table-title">List of Users</h1>
+    <h1 class="table-title">List of Departments</h1>
 
-<!--    <a-->
-<!--      class="form-link"-->
-<!--      mat-button-->
-<!--      color="primary"-->
-<!--      routerLink="/addAndUpdateDepartment"-->
-<!--    >-->
-<!--      Add user-->
-<!--    </a>-->
+    <a
+      class="form-link"
+      mat-button
+      color="primary"
+      routerLink="/addAndUpdateDepartment"
+    >
+      Add department
+    </a>
 
-    <table mat-table [dataSource]="users" class="mat-elevation-z8">
+    <table mat-table [dataSource]="departments" class="mat-elevation-z8">
 
       <ng-container matColumnDef="position">
         <th mat-header-cell *matHeaderCellDef> No. </th>
@@ -24,42 +24,17 @@
         <td mat-cell *matCellDef="let element"> {{element.name}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="surname">
-        <th mat-header-cell *matHeaderCellDef> Surname </th>
-        <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="sex">
-        <th mat-header-cell *matHeaderCellDef> Sex </th>
-        <td mat-cell *matCellDef="let element"> {{element.sex}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="age">
-        <th mat-header-cell *matHeaderCellDef> Age </th>
-        <td mat-cell *matCellDef="let element"> {{element.age}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="address">
-        <th mat-header-cell *matHeaderCellDef> Address </th>
-        <td mat-cell *matCellDef="let element"> {{element.address}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="phone">
-        <th mat-header-cell *matHeaderCellDef> Phone </th>
-        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
-      </ng-container>
-
       <ng-container matColumnDef="actions">
         <mat-header-cell  *matHeaderCellDef></mat-header-cell>
         <mat-cell class="table-cell" *matCellDef="let element" >
           <a mat-button color="primary"
-             [routerLink]="['/profile/addAndUpdateDoctor', element.id]"
+             [routerLink]="['/addAndUpdateDepartment', element.id]"
           >
             Update
           </a>
           <button mat-button color="warn"
                   data-id="{{ element.id }}"
-                  (click)="remove(element.id)"
+
                   aria-label="Show an example snack-bar"
           >
             Remove

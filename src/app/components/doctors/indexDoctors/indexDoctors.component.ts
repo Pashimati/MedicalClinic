@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from "../../service/http.service";
+import { HttpService } from "../../../service/http.service";
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { LoaderService } from '../../service/loader.service';
+import { LoaderService } from '../../../service/loader.service';
 
 export interface DoctorTableElement {
   id: string
@@ -13,7 +13,7 @@ export interface DoctorTableElement {
 }
 
 @Component({
-  selector: 'app-to-do-list',
+  selector: 'app-index-doctors',
   templateUrl: './indexDoctors.component.html',
   styleUrls: ['./indexDoctors.component.scss'],
   providers: [HttpService, LoaderService]

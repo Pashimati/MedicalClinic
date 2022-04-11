@@ -21,12 +21,16 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { SectionPreviewComponent } from "./components/section-preview/section-preview.component";
 import { ServiceBoxComponent } from './components/service-box/service-box.component';
-import { DoctorCardComponent } from './components/doctor-card/doctor-card.component';
+import { DoctorCardComponent } from './components/doctors/doctor-card/doctor-card.component';
 import { ModalDialogComponent } from "./components/modal-dialog/modal-dialog.component";
 import { backBtnComponent } from "./components/backBtn/backBtn.component"
-import { IndexDoctorsComponent } from "./components/indexDoctors/indexDoctors.component"
-import { DoctorComponent } from "./components/addAndUpdateDoctor/doctor.component";
+import { IndexDoctorsComponent } from "./components/doctors/indexDoctors/indexDoctors.component"
+import { DoctorComponent } from "./components/doctors/addAndUpdateDoctor/doctor.component";
 import { LoaderComponent } from './components/loader/loader.component'
+import { AddAndUpdateUser } from './components/users/addAndUpdateUser/addAndUpdateUser.component'
+import { IndexUsersComponent } from './components/users/indexUsers/indexUsers.component'
+
+
 
 import { DataService } from "./db/data.service";
 import {LoaderService} from "./service/loader.service";
@@ -35,7 +39,7 @@ import { IndexComponent } from "./views/index/index.component";
 import { aboutUsComponent } from "./views/aboutUs/aboutUs.component";
 import { contactComponent } from "./views/contact/contact.component";
 import { profileComponent } from "./views/profile/profile.component";
-import { serviceComponent } from "./views/service/service.component";
+import { serviceViewsComponent } from "./views/service/serviceViews.component";
 
 
 import { MatButtonModule } from '@angular/material/button';
@@ -75,13 +79,15 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     aboutUsComponent,
     contactComponent,
     profileComponent,
-    serviceComponent,
+    serviceViewsComponent,
     DoctorCardComponent,
     ModalDialogComponent,
     backBtnComponent,
     IndexDoctorsComponent,
     DoctorComponent,
-    LoaderComponent
+    LoaderComponent,
+    AddAndUpdateUser,
+    IndexUsersComponent
   ],
   imports: [
     BrowserModule,

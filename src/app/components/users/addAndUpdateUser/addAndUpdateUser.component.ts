@@ -1,30 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { HttpService } from "../../service/http.service";
+import { HttpService } from "../../../service/http.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
-  selector: 'app-doctor',
-  templateUrl: './doctor.component.html',
-  styleUrls: ['../my-profile/my-profile.component.scss', 'doctor.component.scss'],
+  selector: 'app-addAndUpdateUser',
+  templateUrl: './addAndUpdateUser.component.html',
+  styleUrls: ['../../my-profile/my-profile.component.scss'],
   providers: [HttpService]
 })
-export class DoctorComponent implements OnInit {
+export class AddAndUpdateUser implements OnInit {
 
   url: string = ''
-
-
-
-  public addFile(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.url = event.target.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-  }
 
 
   doctor = {
@@ -32,9 +20,9 @@ export class DoctorComponent implements OnInit {
     name: '',
     surname: '',
     speciality: '',
-    department: '',
-    photo: ''
+    department: ''
   }
+
   flag: boolean = false
 
   constructor
@@ -45,12 +33,13 @@ export class DoctorComponent implements OnInit {
   ) {
 
   }
+
   ngOnInit() {
     this.route.paramMap.pipe(
       switchMap(params => params.getAll('id'))
     )
       .subscribe((id) => {
-        this.http.getFileById(' https://api-medical-clinic.herokuapp.com/doctor/get/', id)
+        this.http.getFileById(' https://api-medical-clinic.herokuapp.com/user/get/', id)
           .subscribe({
             next: ({response}: any) => {
               const doctor = response.doctor

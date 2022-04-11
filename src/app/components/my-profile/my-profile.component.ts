@@ -51,10 +51,11 @@ export class MyProfileComponent implements OnInit {
     this.route.paramMap.pipe(
       switchMap(params => params.getAll('id')))
       .subscribe((fileName) => {
-        this.http.getFileById('http://localhost:8080/user/get/', fileName)
+        this.http.getFileById('https://api-medical-clinic.herokuapp.com/user/get/', fileName)
           .subscribe({
             next: ({response}: any) => {
               const user = response.user
+              this.user.fileName = fileName
 
               this.user.name = user.name
               this.user.surname = user.surname
@@ -62,7 +63,6 @@ export class MyProfileComponent implements OnInit {
               this.user.age = user.age
               this.user.phone = user.phone
               this.user.address = user.address
-              this.user.fileName = fileName
 
               this.profile.setValue(this.user)
               if (fileName && fileName != 'RIusPC2CQFc5hMR493vOHjvcHMN2') {
@@ -74,7 +74,7 @@ export class MyProfileComponent implements OnInit {
   }
 
   updateUser() {
-    this.http.addAndUpdateFile("http://localhost:8080/user/update", this.profile.getRawValue())
+    this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/user/update", this.profile.getRawValue())
       .subscribe({
         next: ({response}:any) => {
           if (response.success) {

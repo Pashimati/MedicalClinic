@@ -43,9 +43,13 @@ export class AuthorizationComponent implements OnInit {
       .subscribe({
         next: ({response}: any) => {
           this.id = response.uid
-          console.log(this.id)
-          Emitters.authEmitter.emit(true);
-          this.router.navigate(['/profile', this.id]);
+          if (this.id == 'RIusPC2CQFc5hMR493vOHjvcHMN2') {
+            Emitters.adminEmitter.emit(true);
+            this.router.navigate(['/home']);
+          } else {
+            Emitters.authEmitter.emit(true);
+            this.router.navigate(['/profile', this.id]);
+          }
           this._snackBar.open('You are logged in!', 'Undo', {
             duration: 5000
           });

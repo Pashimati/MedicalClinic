@@ -17,7 +17,7 @@ import {Router} from "@angular/router";
 export class NavigationComponent implements OnInit {
 
   authenticated = false;
-
+  admin = false;
   constructor
   (
     private router: Router,
@@ -36,6 +36,11 @@ export class NavigationComponent implements OnInit {
         this.authenticated = auth;
       }
     );
+    Emitters.adminEmitter.subscribe(
+      (admin: boolean) => {
+        this.admin = admin;
+      }
+    );
   }
 
   logout(): void {
@@ -43,6 +48,7 @@ export class NavigationComponent implements OnInit {
       .subscribe({
         next: () => {
           this.authenticated = false
+          this.admin = false
           this.router.navigate(['/home']);
           this._snackBar.open('You are Logout!', 'Undo', {
             duration: 5000

@@ -12,7 +12,6 @@ import { AuthorizationComponent } from "./components/authorization/authorization
 import { DoctorComponent } from "./components/doctors/addAndUpdateDoctor/doctor.component";
 import { IndexDoctorsComponent } from "./components/doctors/indexDoctors/indexDoctors.component";
 import { IndexUsersComponent } from "./components/users/indexUsers/indexUsers.component";
-import {AddAndUpdateUser} from "./components/users/addAndUpdateUser/addAndUpdateUser.component";
 
 
 const routes: Routes = [
@@ -24,9 +23,10 @@ const routes: Routes = [
   { path: 'service', component: serviceViewsComponent},
   { path: 'registration', component: RegistrationComponent},
   { path: 'authorization', component: AuthorizationComponent},
-  { path: 'admin', component: IndexDoctorsComponent},
+  { path: 'doctors', component: IndexDoctorsComponent},
   { path: 'users', component: IndexUsersComponent},
   { path: 'addAndUpdateDoctor/:id', component: DoctorComponent},
+  { path: 'addAndUpdateDoctor', component: DoctorComponent},
   { path: 'profile/addAndUpdateDoctor/:id', component: profileComponent},
   { path: 'profile/:id', component: profileComponent},
   { path: 'addAndUpdateUser', component: DoctorComponent},

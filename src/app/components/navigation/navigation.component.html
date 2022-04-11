@@ -1,5 +1,5 @@
 <nav class="navigation">
-  <ul class="nav" *ngIf="!authenticated">
+  <ul class="nav" *ngIf="!authenticated && !admin">
     <li class="nav__item">
       <a class="nav__link" routerLink="/aboutUs">About us</a>
     </li>
@@ -15,7 +15,21 @@
   </ul>
 
 
-  <ul class="nav" *ngIf="authenticated">
+  <ul class="nav" *ngIf="admin">
+    <button class="nav__link" mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/doctors">Doctors</button>
+      <button mat-menu-item routerLink="/users">Users</button>
+      <button mat-menu-item routerLink="/">Speciality</button>
+      <button mat-menu-item routerLink="/">Department</button>
+    </mat-menu>
+    <li class="nav__item">
+      <button class="nav__link" mat-button (click)="logout()">Logout</button>
+    </li>
+  </ul>
+
+
+  <ul class="nav" *ngIf="authenticated && !admin">
     <li class="nav__item">
       <a class="nav__link" routerLink="/aboutUs">About us</a>
     </li>
@@ -29,14 +43,7 @@
       <a class="nav__link" routerLink="/profile">My Profile</a>
     </li>
     <li class="nav__item">
-      <a class="nav__link" routerLink="/admin">Admin</a>
-    </li>
-    <li class="nav__item">
-      <a class="nav__link" routerLink="/users">Users</a>
-    </li>
-    <li class="nav__item">
       <button class="nav__link" mat-button (click)="logout()">Logout</button>
     </li>
   </ul>
 </nav>
-

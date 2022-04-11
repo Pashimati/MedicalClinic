@@ -56,23 +56,6 @@ export class AddAndUpdateUser implements OnInit {
       });
   }
 
-  updateDoctor() {
-   this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/doctor/update", this.doctor)
-     .subscribe({
-       next: ({response}:any) => {
-         if (response.success) {
-           this._snackBar.open('Doctor has been updated', 'Undo', {
-             duration: 3000
-           });
-         } else {
-           this._snackBar.open('Doctor not been updated', 'Undo', {
-             duration: 3000
-           });
-         }
-       }
-     });
-  }
-
   addDoctor() {
     this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/doctor/add", this.doctor)
       .subscribe({

@@ -12,7 +12,7 @@ import { HomepageBoxesComponent } from './components/homepage-boxes/homepage-box
 import { BtnComponent } from './components/btn/btn.component';
 import { FormAppointmentComponent } from './components/form-appoitnment/form-appointment.component';
 import { OurDepartmentsComponent } from './components/our-departments/our-departments.component';
-import { DepartmentsCardComponent } from './components/departments-card/departments-card.component';
+import { DepartmentsCardComponent } from './components/departments/departments-card/departments-card.component';
 import { TheNewsComponent } from './components/the-news/the-news.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AuthorizationComponent } from './components/authorization/authorization.component';
@@ -29,7 +29,6 @@ import { DoctorComponent } from "./components/doctors/addAndUpdateDoctor/doctor.
 import { LoaderComponent } from './components/loader/loader.component'
 import { AddAndUpdateUser } from './components/users/addAndUpdateUser/addAndUpdateUser.component'
 import { IndexUsersComponent } from './components/users/indexUsers/indexUsers.component'
-
 
 
 import { DataService } from "./db/data.service";
@@ -55,6 +54,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
+import {AddAndUpdateDepartment} from "./components/departments/addAndUpdateDepartment/addAndUpdateDepartment.component";
 
 @NgModule({
   declarations: [
@@ -88,7 +88,9 @@ import { MatMenuModule } from '@angular/material/menu';
     DoctorComponent,
     LoaderComponent,
     AddAndUpdateUser,
-    IndexUsersComponent
+    IndexUsersComponent,
+    AddAndUpdateDepartment
+
   ],
   imports: [
     BrowserModule,

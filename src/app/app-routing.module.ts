@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'addAndUpdateDoctor', component: DoctorComponent},
   { path: 'profile/addAndUpdateDoctor/:id', component: profileComponent},
   { path: 'profile/:id', component: profileComponent},
-  { path: 'addAndUpdateUser', component: DoctorComponent},
+  { path: 'addAndUpdateDepartment', component: DoctorComponent},
 ]
 
 @NgModule({

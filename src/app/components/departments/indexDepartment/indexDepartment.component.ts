@@ -41,7 +41,7 @@ export class IndexDepartmentComponent implements OnInit {
             return {
               id: id,
               position: key + 1,
-              name: data.title,
+              title: data.title,
             }
           })
 
@@ -50,22 +50,22 @@ export class IndexDepartmentComponent implements OnInit {
       })
   }
 
-  // remove(id: string) {
-  //   this.http.deleteFileById('https://api-medical-clinic.herokuapp.com/user/delete', id)
-  //     .subscribe({
-  //     next: ({response}:any) => {
-  //       if (response.success) {
-  //         this.updateTableList()
-  //         this._snackBar.open('User has been deleted', 'Undo', {
-  //           duration: 3000
-  //         });
-  //       } else {
-  //         this._snackBar.open('User not been deleted', 'Undo', {
-  //           duration: 3000
-  //         });
-  //       }
-  //     }
-  //   });
-  // }
+  remove(id: string) {
+    this.http.deleteFileById('https://api-medical-clinic.herokuapp.com/department/delete', id)
+      .subscribe({
+      next: ({response}:any) => {
+        if (response.success) {
+          this.updateTableList()
+          this._snackBar.open('Department has been deleted', 'Undo', {
+            duration: 3000
+          });
+        } else {
+          this._snackBar.open('Department not been deleted', 'Undo', {
+            duration: 3000
+          });
+        }
+      }
+    });
+  }
 
 }

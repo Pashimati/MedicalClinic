@@ -13,6 +13,7 @@ import { DoctorComponent } from "./components/doctors/addAndUpdateDoctor/doctor.
 import { IndexDoctorsComponent } from "./components/doctors/indexDoctors/indexDoctors.component";
 import { IndexUsersComponent } from "./components/users/indexUsers/indexUsers.component";
 import { IndexDepartmentComponent } from "./components/departments/indexDepartment/indexDepartment.component";
+import { AddAndUpdateDepartment } from "./components/departments/addAndUpdateDepartment/addAndUpdateDepartment.component";
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
   { path: 'addAndUpdateDoctor', component: DoctorComponent},
   { path: 'profile/addAndUpdateDoctor/:id', component: profileComponent},
   { path: 'profile/:id', component: profileComponent},
-  { path: 'addAndUpdateDepartment', component: DoctorComponent},
+  { path: 'addAndUpdateDepartment', component: AddAndUpdateDepartment},
+  { path: 'addAndUpdateDepartment/:id', component: AddAndUpdateDepartment},
   { path: 'departments', component: IndexDepartmentComponent},
 ]
 

@@ -12,15 +12,9 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 })
 export class AddAndUpdateDepartment implements OnInit {
 
-  url: string = ''
-
-
-  doctor = {
+  department = {
     id: '',
-    name: '',
-    surname: '',
-    speciality: '',
-    department: ''
+    title: '',
   }
 
   flag: boolean = false
@@ -39,15 +33,12 @@ export class AddAndUpdateDepartment implements OnInit {
       switchMap(params => params.getAll('id'))
     )
       .subscribe((id) => {
-        this.http.getFileById(' https://api-medical-clinic.herokuapp.com/user/get/', id)
+        this.http.getFileById(' https://api-medical-clinic.herokuapp.com/department/get/', id)
           .subscribe({
             next: ({response}: any) => {
-              const doctor = response.doctor
-              this.doctor.name = doctor.name
-              this.doctor.surname = doctor.surname
-              this.doctor.speciality = doctor.speciality
-              this.doctor.department = doctor.department
-              this.doctor.id = id
+              const department = response.department
+              this.department.id = id
+              this.department.title = department.title
               if (id) {
                 this.flag = true
               }
@@ -56,16 +47,34 @@ export class AddAndUpdateDepartment implements OnInit {
       });
   }
 
-  addDoctor() {
-    this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/doctor/add", this.doctor)
+  updateDepartment() {
+    this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/department/update", this.department)
       .subscribe({
         next: ({response}:any) => {
           if (response.success) {
-            this._snackBar.open('Doctor has been created', 'Undo', {
+            this._snackBar.open('Department has been updated', 'Undo', {
               duration: 3000
             });
           } else {
-            this._snackBar.open('Doctor not been created', 'Undo', {
+            this._snackBar.open('Department not been updated', 'Undo', {
+              duration: 3000
+            });
+          }
+        }
+      });
+  }
+
+
+  addDepartment() {
+    this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/department/add", this.department )
+      .subscribe({
+        next: ({response}:any) => {
+          if (response.success) {
+            this._snackBar.open('Department has been created', 'Undo', {
+              duration: 3000
+            });
+          } else {
+            this._snackBar.open('Department not been created', 'Undo', {
               duration: 3000
             });
           }

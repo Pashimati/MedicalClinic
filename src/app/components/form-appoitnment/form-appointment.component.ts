@@ -2,6 +2,7 @@ import {Component, OnInit, Output} from '@angular/core';
 import { DataService } from '../../db/data.service'
 import { Doctor } from "../team/team.component";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {HttpService} from "../../service/http.service";
 
 
 interface nameDepartment {
@@ -13,15 +14,20 @@ interface nameDepartment {
   selector: 'app-form-appointment',
   templateUrl: './form-appointment.component.html',
   styleUrls: ['./form-appointment.component.scss'],
-  providers: [DataService]
+  providers: [
+    DataService,
+    HttpService
+  ]
 })
 export class FormAppointmentComponent implements OnInit {
 
   appointment: FormGroup
 
-  doctors: Doctor [] = [];
-
-  constructor(private dataService : DataService) {
+  constructor
+  (
+    private dataService : DataService,
+    private http : HttpService
+  ) {
     this.appointment = new FormGroup({
 
       date: new FormControl(),
@@ -37,32 +43,71 @@ export class FormAppointmentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.setNameDepartments()
+    this.setDoctors()
   }
 
-  nameDepartments: nameDepartment[] = [
-    {value: 'cardiology', viewValue: 'Кардиология'},
-    {value: 'ortopedia', viewValue: 'Хирургия'},
-  ];
+  doctors: Doctor [] = [];
+
+  nameDepartments: nameDepartment[] = [];
 
 
-  onChange(event: any) {
-    const department: string = event.value
-    this.doctors = this.getDoctors(department);
+  setNameDepartments () {
+    this.http.getAll('https://api-medical-clinic.herokuapp.com/department/get-all')
+      .subscribe({
+        next: ({response}: any) => {
+          const departments = response.departments
+
+          this.nameDepartments = departments.map((department: any) => {
+            const data = department.data
+            return {
+              viewValue: data.title,
+              value: data.title,
+            }
+          })
+        }
+      })
+  }
+
+  // onChange(event: any) {
+  //   const department: string = event.value
+  //   this.doctors = this.getDoctors(department);
+  // }
+
+
+  setDoctors () {
+    this.http.getAll('https://api-medical-clinic.herokuapp.com/doctor/get-all')
+      .subscribe({
+        next: ({response}: any) => {
+          const doctors = response.doctors
+
+          this.doctors = doctors.map((doctor: any) => {
+            const data = doctor.data
+            return {
+              name: data.name,
+              surname: data.surname,
+              department: data.department,
+            }
+          })
+        }
+      })
   }
 
 
-  getDoctors(department: string) {
 
-    let response: Doctor [] = []
 
-    const allDoctors: Doctor[] = this.dataService.getDoctors()
-    allDoctors.forEach((doctor) => {
-      if (doctor.department === department) {
-        response.push(doctor)
-      }
-    })
-   return response
-  }
+  // getDoctors(department: string) {
+  //
+  //   let response: Doctor [] = []
+  //
+  //   const allDoctors: Doctor[] = this.dataService.getDoctors()
+  //   allDoctors.forEach((doctor) => {
+  //     if (doctor.department === department) {
+  //       response.push(doctor)
+  //     }
+  //   })
+  //  return response
+  // }
 
 
 

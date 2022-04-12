@@ -4,8 +4,8 @@ import { DataService } from "../../db/data.service";
 export interface Doctor {
   name: string
   surname: string
-  photo: string
-  aboutMe: string
+  photo?: string
+  aboutMe?: string
   speciality: string
   department: string
 }

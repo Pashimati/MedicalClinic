@@ -14,6 +14,8 @@ import { IndexDoctorsComponent } from "./components/doctors/indexDoctors/indexDo
 import { IndexUsersComponent } from "./components/users/indexUsers/indexUsers.component";
 import { IndexDepartmentComponent } from "./components/departments/indexDepartment/indexDepartment.component";
 import { AddAndUpdateDepartment } from "./components/departments/addAndUpdateDepartment/addAndUpdateDepartment.component";
+import { AddAndUpdateSpeciality } from "./components/speciality/addAndUpdateSpeciality/addAndUpdateSpeciality.component";
+import { IndexSpecialityComponent } from "./components/speciality/indexSpeciality/indexSpeciality.component";
 
 
 const routes: Routes = [
@@ -27,13 +29,17 @@ const routes: Routes = [
   { path: 'authorization', component: AuthorizationComponent},
   { path: 'doctors', component: IndexDoctorsComponent},
   { path: 'users', component: IndexUsersComponent},
+  { path: 'departments', component: IndexDepartmentComponent},
+  { path: 'speciality', component: IndexSpecialityComponent},
   { path: 'addAndUpdateDoctor/:id', component: DoctorComponent},
   { path: 'addAndUpdateDoctor', component: DoctorComponent},
   { path: 'profile/addAndUpdateDoctor/:id', component: profileComponent},
   { path: 'profile/:id', component: profileComponent},
   { path: 'addAndUpdateDepartment', component: AddAndUpdateDepartment},
   { path: 'addAndUpdateDepartment/:id', component: AddAndUpdateDepartment},
-  { path: 'departments', component: IndexDepartmentComponent},
+  { path: 'addAndUpdateSpeciality', component: AddAndUpdateSpeciality},
+  { path: 'addAndUpdateSpeciality/:id', component: AddAndUpdateSpeciality},
+
 ]
 
 @NgModule({

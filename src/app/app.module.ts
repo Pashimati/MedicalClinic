@@ -31,16 +31,18 @@ import { AddAndUpdateUser } from './components/users/addAndUpdateUser/addAndUpda
 import { IndexUsersComponent } from './components/users/indexUsers/indexUsers.component'
 import { AddAndUpdateDepartment } from "./components/departments/addAndUpdateDepartment/addAndUpdateDepartment.component";
 import { IndexDepartmentComponent } from "./components/departments/indexDepartment/indexDepartment.component";
+import { IndexSpecialityComponent } from "./components/speciality/indexSpeciality/indexSpeciality.component";
 
 
 import { DataService } from "./db/data.service";
-import {LoaderService} from "./service/loader.service";
+import { LoaderService } from "./service/loader.service";
 
 import { IndexComponent } from "./views/index/index.component";
 import { aboutUsComponent } from "./views/aboutUs/aboutUs.component";
 import { contactComponent } from "./views/contact/contact.component";
 import { profileComponent } from "./views/profile/profile.component";
 import { serviceViewsComponent } from "./views/service/serviceViews.component";
+import { AddAndUpdateSpeciality } from "./components/speciality/addAndUpdateSpeciality/addAndUpdateSpeciality.component";
 
 
 import { MatButtonModule } from '@angular/material/button';
@@ -92,7 +94,9 @@ import { MatMenuModule } from '@angular/material/menu';
     AddAndUpdateUser,
     IndexUsersComponent,
     AddAndUpdateDepartment,
-    IndexDepartmentComponent
+    IndexDepartmentComponent,
+    IndexSpecialityComponent,
+    AddAndUpdateSpeciality
 
   ],
   imports: [

@@ -1,18 +1,18 @@
 <div class="container">
   <div class="wrap">
     <app-loader></app-loader>
-    <h1 class="table-title">List of Departments</h1>
+    <h1 class="table-title">List of Speciality</h1>
 
     <a
       class="form-link"
       mat-button
       color="primary"
-      routerLink="/addAndUpdateDepartment"
+      routerLink="/addAndUpdateSpeciality"
     >
-      Add department
+      Add speciality
     </a>
 
-    <table mat-table [dataSource]="departments" class="mat-elevation-z8">
+    <table mat-table [dataSource]="specialitys" class="mat-elevation-z8">
 
       <ng-container matColumnDef="position">
         <th mat-header-cell *matHeaderCellDef> No. </th>

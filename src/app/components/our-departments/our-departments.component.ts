@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from "../../db/data.service";
+import { HttpService } from "../../service/http.service";
 
 export interface Department {
   name: string
-  logoLink: string
   description: string
 }
 
@@ -11,16 +10,39 @@ export interface Department {
   selector: 'app-our-departments',
   templateUrl: './our-departments.component.html',
   styleUrls: ['./our-departments.component.scss'],
-  providers: [DataService],
+  providers: [
+    HttpService,
+  ],
 })
 export class OurDepartmentsComponent implements OnInit {
 
   departments: Department[] = [];
 
-  constructor(private dataService: DataService) { }
-
-  ngOnInit(): void {
-    this.departments = this.dataService.getDepartments()
+  constructor
+  (
+    private http: HttpService
+  ) {
   }
 
+  ngOnInit(): void {
+    this.getDepartment()
+  }
+
+
+  getDepartment() {
+    this.departments = this.http.getAll('https://api-medical-clinic.herokuapp.com/department/get-all')
+      .subscribe({
+        next: ({response}: any) => {
+          const departments = response.departments
+
+          this.departments = departments.map((department: any) => {
+            const data = department.data
+            return {
+              title: data.title,
+              description: data.description
+            }
+          })
+        }
+      })
+  }
 }

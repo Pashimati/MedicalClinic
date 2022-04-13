@@ -16,38 +16,33 @@ export class DataService {
 
 
 
-  public departments: Department[] = [
-    {
-      name: 'cardioology',
-      logoLink: '../../assets/img/cardiogram.png',
-      description: 'Lorem ipsum dolor sit amet, consectetu123123123r adipiscing elit. Donec malesuada lorem maximus mauris.'
-    },
-    {
-      name: 'fdsss',
-      logoLink: '../../assets/img/glasses.png',
-      description: 'Lorem ipsum dolor sit amet, consectetur ewewe2212adipiscing elit. Donec malesuada lorem maximus mauris.'
-    },
-    {
-      name: 'cardi42oology',
-      logoLink: '../../assets/img/cardiogram.png',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris.'
-    },
-    {
-      name: 'cardi42oology',
-      logoLink: '../../assets/img/cardiogram.png',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris.'
-    },
-   {
-      name: 'cardiokkkkkkkology',
-      logoLink: '../../assets/img/cardiogram.png',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipis8888888cing elit. Donec malesuada lorem maximus mauris.'
-    },
-  ]
-
-
-  getDepartments(): Department [] {
-    return this.departments;
-  }
+  // public departments: Department[] = [
+  //   {
+  //     name: 'cardioology',
+  //     description: 'Lorem ipsum dolor sit amet, consectetu123123123r adipiscing elit. Donec malesuada lorem maximus mauris.'
+  //   },
+  //   {
+  //     name: 'fdsss',
+  //     description: 'Lorem ipsum dolor sit amet, consectetur ewewe2212adipiscing elit. Donec malesuada lorem maximus mauris.'
+  //   },
+  //   {
+  //     name: 'cardi42oology',
+  //     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris.'
+  //   },
+  //   {
+  //     name: 'cardi42oology',
+  //     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris.'
+  //   },
+  //  {
+  //     name: 'cardiokkkkkkkology',
+  //     description: 'Lorem ipsum dolor sit amet, consectetur adipis8888888cing elit. Donec malesuada lorem maximus mauris.'
+  //   },
+  // ]
+  //
+  //
+  // getDepartments(): Department [] {
+  //   return this.departments;
+  // }
 
 
 

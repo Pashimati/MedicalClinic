@@ -15,6 +15,7 @@ export class AddAndUpdateDepartment implements OnInit {
   department = {
     id: '',
     title: '',
+    description: '',
   }
 
   flag: boolean = false
@@ -39,6 +40,7 @@ export class AddAndUpdateDepartment implements OnInit {
               const department = response.department
               this.department.id = id
               this.department.title = department.title
+              this.department.description = department.description
               if (id) {
                 this.flag = true
               }

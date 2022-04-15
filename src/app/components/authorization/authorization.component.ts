@@ -38,12 +38,17 @@ export class AuthorizationComponent implements OnInit {
   submit(): void {
     this.loader.show()
     const data = this.login.getRawValue()
+    console.log(data)
     this.authAndRegisterService
       .authAndRegister('https://api-medical-clinic.herokuapp.com/auth/signin', data)
       .subscribe({
         next: ({response}: any) => {
-          this.id = response.uid
-          if (this.id == 'RIusPC2CQFc5hMR493vOHjvcHMN2') {
+
+          const uid = response.uid
+          this.id = uid
+          console.log(uid)
+          localStorage.setItem('currentUserUid', uid)
+          if (uid == 'RIusPC2CQFc5hMR493vOHjvcHMN2') {
             Emitters.adminEmitter.emit(true);
             this.router.navigate(['/home']);
           } else {

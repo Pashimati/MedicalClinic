@@ -51,20 +51,23 @@ export class MyProfileComponent implements OnInit {
     this.route.paramMap.pipe(
       switchMap(params => params.getAll('id')))
       .subscribe((fileName) => {
+        console.log(fileName)
         this.http.getFileById('https://api-medical-clinic.herokuapp.com/user/get/', fileName)
           .subscribe({
             next: ({response}: any) => {
               const user = response.user
               this.user.fileName = fileName
-
-              this.user.name = user.name
-              this.user.surname = user.surname
-              this.user.sex = user.sex
-              this.user.age = user.age
-              this.user.phone = user.phone
-              this.user.address = user.address
+              if (user) {
+                this.user.name = user.name
+                this.user.surname = user.surname
+                this.user.sex = user.sex
+                this.user.age = user.age
+                this.user.phone = user.phone
+                this.user.address = user.address
+              }
 
               this.profile.setValue(this.user)
+
               if (fileName && fileName != 'RIusPC2CQFc5hMR493vOHjvcHMN2') {
                 this.flag = true
               }

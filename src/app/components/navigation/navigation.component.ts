@@ -18,6 +18,7 @@ export class NavigationComponent implements OnInit {
 
   authenticated = false;
   admin = false;
+
   constructor
   (
     private router: Router,
@@ -47,6 +48,8 @@ export class NavigationComponent implements OnInit {
     this.authAndRegisterService.logout('https://api-medical-clinic.herokuapp.com/auth/signOut')
       .subscribe({
         next: () => {
+          localStorage.removeItem('currentUserUid')
+
           this.authenticated = false
           this.admin = false
           this.router.navigate(['/home']);

@@ -20,7 +20,7 @@ export class DoctorComponent implements OnInit {
     surname: '',
     speciality: '',
     department: '',
-    about: ''
+    photo: ''
   }
   flag: boolean = false
 
@@ -45,7 +45,6 @@ export class DoctorComponent implements OnInit {
               this.doctor.surname = doctor.surname
               this.doctor.speciality = doctor.speciality
               this.doctor.department = doctor.department
-              this.doctor.about = doctor.about
               this.doctor.id = id
               if (id) {
                 this.flag = true

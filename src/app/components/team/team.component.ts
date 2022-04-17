@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from "../../service/http.service";
+import { DataService } from "../../db/data.service";
 
 export interface Doctor {
   name: string
   surname: string
-  about: string
+  photo?: string
+  aboutMe?: string
   speciality: string
   department: string
 }
@@ -13,37 +14,16 @@ export interface Doctor {
   selector: 'app-team',
   templateUrl: './team.component.html',
   styleUrls: ['./team.component.scss'],
-  providers: [HttpService],
+  providers: [DataService],
 })
 export class TeamComponent implements OnInit {
 
   doctors: Doctor[] = [];
 
-  constructor(private http: HttpService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.getDoctors()
+    this.doctors = this.dataService.getDoctors()
   }
-
-  getDoctors() {
-    this.doctors = this.http.getAll('https://api-medical-clinic.herokuapp.com/doctor/get-all')
-      .subscribe({
-        next: ({response}: any) => {
-          const doctors = response.doctors
-
-          this.doctors = doctors.map((doctor: any) => {
-            const data = doctor.data
-            return {
-              name: data.name,
-              surname: data.surname,
-              speciality: data.speciality,
-              department: data.department,
-              about: data.about,
-            }
-          })
-        }
-      })
-  }
-
 
 }

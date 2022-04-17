@@ -49,12 +49,13 @@ export class MyProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.pipe(
-      switchMap(params => params.getAll('id')))
+      switchMap(params => params.getAll('uid'))
+    )
       .subscribe((fileName) => {
-        console.log(fileName)
         this.http.getFileById('https://api-medical-clinic.herokuapp.com/user/get/', fileName)
           .subscribe({
             next: ({response}: any) => {
+              console.log(response)
               const user = response.user
               this.user.fileName = fileName
               if (user) {
@@ -65,7 +66,6 @@ export class MyProfileComponent implements OnInit {
                 this.user.phone = user.phone
                 this.user.address = user.address
               }
-
               this.profile.setValue(this.user)
 
               if (fileName && fileName != 'RIusPC2CQFc5hMR493vOHjvcHMN2') {

@@ -12,10 +12,8 @@ export class LoaderService {
   constructor() { }
   show() {
     this._loading.next( true );
-    console.log('show')
   }
   hide() {
     this._loading.next(false );
-    console.log('hide')
   }
 }

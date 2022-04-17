@@ -1,12 +1,21 @@
-import { Injectable } from '@angular/core';
-import { ajax } from 'rxjs/ajax';
+import {Injectable} from '@angular/core';
+import {ajax} from 'rxjs/ajax';
+import {signInWithEmailAndPassword} from 'firebase/auth';
+import {auth} from "./firebase.service";
 
 @Injectable()
 export class AuthAndRegisterService {
 
+
   data: any = null;
 
-  authAndRegister(url: string, data: any) {
+  auth = (data: any) => {
+    const {email, password} = data
+    return signInWithEmailAndPassword(auth, email, password)
+  }
+
+
+  register(url: string, data: any) {
     const  obs$ = ajax({
       method: "POST",
       url: url,

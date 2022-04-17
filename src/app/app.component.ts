@@ -17,7 +17,8 @@ export class AppComponent {
 
 
   OnInit(){
-
+    // если есть ключ с юидом пользователя
+    // тогда флаг аутх тру
   }
 
   isHideHeader: boolean = false;

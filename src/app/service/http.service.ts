@@ -1,19 +1,38 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import { ajax } from 'rxjs/ajax';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { Emitters } from "../emitters/emitters";
 
 @Injectable()
-export class HttpService {
+export class HttpService implements OnInit {
 
+  token: string = ''
+  headers: object = {}
   data: any = null;
+
+  ngOnInit() {
+    Emitters.token.subscribe((token) => {
+      this.token = token
+    })
+  }
+
+  getHeaders() {
+    if (this.token) {
+      return {
+        authorization: `Bearer ${this.token}`
+      }
+    }
+    return {}
+  }
 
   getAll(url:string) {
      let data: any = null;
       const obs$ = ajax({
       method: 'GET',
       url: url,
-      responseType: 'json'
+      responseType: 'json',
+      headers: this.getHeaders(),
     })
       catchError(error => {
         console.log('error: ', error);
@@ -36,7 +55,8 @@ export class HttpService {
       body: {
         id: id,
       },
-      headers: {},
+      headers: this.getHeaders(),
+
     });
     obs$.pipe((value: any) => {
       data = value;
@@ -50,7 +70,8 @@ export class HttpService {
     const  obs$ = ajax({
       method: "GET",
       url: url + id,
-      headers: {},
+      headers: this.getHeaders(),
+
     });
     obs$.pipe((value: any) => {
       data = value;
@@ -67,7 +88,8 @@ export class HttpService {
       body: {
         data: data
       },
-      headers: {},
+      headers: this.getHeaders(),
+
     });
     obs$.pipe((value: any) => {
       data = value;

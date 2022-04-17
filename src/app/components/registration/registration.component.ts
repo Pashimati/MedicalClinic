@@ -42,7 +42,7 @@ export class RegistrationComponent implements OnInit {
    this.loader.show()
    const data = this.register.getRawValue()
    this.authAndRegisterService
-      .authAndRegister('https://api-medical-clinic.herokuapp.com/auth/signup', data)
+      .register('https://api-medical-clinic.herokuapp.com/auth/signup', data)
       .subscribe({
         next: () => {
           this.router.navigate(['/authorization']);
@@ -50,7 +50,6 @@ export class RegistrationComponent implements OnInit {
             duration: 5000
           });
           this.loader.hide()
-
         }
       });
   }

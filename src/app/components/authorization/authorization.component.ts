@@ -14,7 +14,6 @@ import {LoaderService} from "../../service/loader.service";
 })
 export class AuthorizationComponent implements OnInit {
   login: FormGroup;
-  id: string = ''
 
   constructor(
     private loader: LoaderService,
@@ -38,28 +37,30 @@ export class AuthorizationComponent implements OnInit {
   submit(): void {
     this.loader.show()
     const data = this.login.getRawValue()
-    console.log(data)
     this.authAndRegisterService
-      .authAndRegister('https://api-medical-clinic.herokuapp.com/auth/signin', data)
-      .subscribe({
-        next: ({response}: any) => {
+      .auth(data)
+      .then(response => {
+        const user = response.user
+          user.getIdToken()
+          .then( token => {
+            Emitters.token.emit(`${token}`);
+            const uid = user.uid
+            localStorage.setItem('currentUserUid', uid)
 
-          const uid = response.uid
-          this.id = uid
-          console.log(uid)
-          localStorage.setItem('currentUserUid', uid)
-          if (uid == 'RIusPC2CQFc5hMR493vOHjvcHMN2') {
-            Emitters.adminEmitter.emit(true);
-            this.router.navigate(['/home']);
-          } else {
-            Emitters.authEmitter.emit(true);
-            this.router.navigate(['/profile', this.id]);
-          }
-          this._snackBar.open('You are logged in!', 'Undo', {
-            duration: 5000
-          });
-          this.loader.hide()
-        },
-      });
+            if (uid == 'RIusPC2CQFc5hMR493vOHjvcHMN2') {
+              Emitters.adminEmitter.emit(true);
+              this.router.navigate(['/home']);
+            } else {
+              Emitters.authEmitter.emit(true);
+              this.router.navigate(['/profile', uid]);
+            }
+
+            this._snackBar.open('You are logged in!', 'Undo', {
+              duration: 5000
+            });
+            this.loader.hide()
+          })
+    })
   }
 }
+

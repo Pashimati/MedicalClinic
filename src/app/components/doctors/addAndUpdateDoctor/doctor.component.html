@@ -37,7 +37,19 @@
           [(ngModel)]="doctor.department"
           required
         >
+
       </mat-form-field>
+
+      <mat-form-field class="input-box" appearance="fill">
+        <mat-label>About</mat-label>
+        <textarea
+          matInput
+          name="about"
+          [(ngModel)]="doctor.about"
+          required
+        ></textarea>
+      </mat-form-field>
+
         <input
           type="hidden"
           name="id"

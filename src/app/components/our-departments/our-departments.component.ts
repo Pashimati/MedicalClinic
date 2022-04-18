@@ -25,7 +25,7 @@ export class OurDepartmentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getDepartment()
+    // this.getDepartment()
   }
 
 

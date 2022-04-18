@@ -20,6 +20,30 @@
             required
         >
       </mat-form-field>
+
+
+
+      <mat-form-field class="input-box" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          name="email"
+          [(ngModel)]="doctor.email"
+          required
+        >
+      </mat-form-field>
+
+
+      <mat-form-field class="input-box" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          name="password"
+          [(ngModel)]="doctor.password"
+          required
+        >
+      </mat-form-field>
+
       <mat-form-field class="input-box" appearance="fill">
         <mat-label>Speciality</mat-label>
         <input

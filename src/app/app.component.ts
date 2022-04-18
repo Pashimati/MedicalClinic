@@ -17,6 +17,7 @@ export class AppComponent {
 
 
   OnInit(){
+    console.log(localStorage.getItem('role'))
     // если есть ключ с юидом пользователя
     // тогда флаг аутх тру
   }

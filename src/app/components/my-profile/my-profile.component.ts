@@ -35,7 +35,8 @@ export class MyProfileComponent implements OnInit {
     private route: ActivatedRoute,
   ) {
     this.profile = new FormGroup({
-
+      email: new FormControl("", Validators.min(3)),
+      password: new FormControl("", Validators.min(3)),
       name: new FormControl("", Validators.min(3)),
       surname: new FormControl("", Validators.min(3)),
       sex: new FormControl(),
@@ -47,15 +48,14 @@ export class MyProfileComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.route.paramMap.pipe(
-      switchMap(params => params.getAll('uid'))
+      switchMap(params => params.getAll('id'))
     )
       .subscribe((fileName) => {
         this.http.getFileById('https://api-medical-clinic.herokuapp.com/user/get/', fileName)
           .subscribe({
             next: ({response}: any) => {
-              console.log(response)
               const user = response.user
               this.user.fileName = fileName
               if (user) {
@@ -95,6 +95,7 @@ export class MyProfileComponent implements OnInit {
 
   addUser() {
     const data = this.profile.getRawValue()
+    console.log(data)
     this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/user/add", data)
       .subscribe({
         next: ({response}:any) => {

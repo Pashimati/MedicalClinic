@@ -43,6 +43,10 @@ export class AuthorizationComponent implements OnInit {
         const user = response.user
           user.getIdToken()
           .then( token => {
+
+            // делаю гет запрос на контролер гет-роле
+
+            console.log(token)
             Emitters.token.emit(`${token}`);
             const uid = user.uid
             localStorage.setItem('currentUserUid', uid)

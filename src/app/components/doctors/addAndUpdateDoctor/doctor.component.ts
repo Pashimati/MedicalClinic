@@ -20,7 +20,9 @@ export class DoctorComponent implements OnInit {
     surname: '',
     speciality: '',
     department: '',
-    about: ''
+    about: '',
+    email: '',
+    password: '',
   }
   flag: boolean = false
 
@@ -37,7 +39,7 @@ export class DoctorComponent implements OnInit {
       switchMap(params => params.getAll('id'))
     )
       .subscribe((id) => {
-        this.http.getFileById(' https://api-medical-clinic.herokuapp.com/doctor/get/', id)
+        this.http.getFileById('https://api-medical-clinic.herokuapp.com/doctor/get/', id)
           .subscribe({
             next: ({response}: any) => {
               const doctor = response.doctor
@@ -73,7 +75,7 @@ export class DoctorComponent implements OnInit {
   }
 
   addDoctor() {
-    this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/doctor/add", this.doctor)
+    this.http.addAndUpdateFile("http://localhost:8080/doctor/add", this.doctor)
       .subscribe({
         next: ({response}:any) => {
           if (response.success) {

@@ -33,6 +33,7 @@ export class OurDepartmentsComponent implements OnInit {
     this.departments = this.http.getAll('https://api-medical-clinic.herokuapp.com/department/get-all')
       .subscribe({
         next: ({response}: any) => {
+          console.log(response)
           const departments = response.departments
 
           this.departments = departments.map((department: any) => {

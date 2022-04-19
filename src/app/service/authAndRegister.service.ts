@@ -15,6 +15,21 @@ export class AuthAndRegisterService {
   }
 
 
+  getRole(token: string) {
+    let data: any;
+    const  obs$ = ajax({
+      method: "GET",
+      url: "http://localhost:8080/auth/get-role",
+      body: {},
+      headers: {authorization: `Bearer ${token}`},
+    });
+    obs$.pipe((value: any) => {
+      data = value;
+      return value
+    })
+    return data;
+  }
+
   register(url: string, data: any) {
     const  obs$ = ajax({
       method: "POST",

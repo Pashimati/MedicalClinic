@@ -1,5 +1,5 @@
 <nav class="navigation">
-  <ul class="nav" *ngIf="!authenticated && !admin">
+  <ul class="nav" *ngIf="!authenticated">
     <li class="nav__item">
       <a class="nav__link" routerLink="/aboutUs">About us</a>
     </li>
@@ -15,7 +15,7 @@
   </ul>
 
 
-  <ul class="nav" *ngIf="admin">
+  <ul class="nav" *ngIf="authenticated && role == 'ADMIN'">
     <button class="nav__link" mat-button [matMenuTriggerFor]="menu">Menu</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="/doctors">Doctors</button>
@@ -28,8 +28,18 @@
     </li>
   </ul>
 
+  <ul class="nav" *ngIf="authenticated && role == 'DOCTOR'">
+    <button class="nav__link" mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/doctors">Doctors</button>
+    </mat-menu>
+    <li class="nav__item">
+      <button class="nav__link" mat-button (click)="logout()">Logout</button>
+    </li>
+  </ul>
 
-  <ul class="nav" *ngIf="authenticated && !admin">
+
+  <ul class="nav" *ngIf="authenticated && role == 'USER'">
     <li class="nav__item">
       <a class="nav__link" routerLink="/aboutUs">About us</a>
     </li>

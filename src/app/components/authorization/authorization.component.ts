@@ -15,6 +15,8 @@ import {LoaderService} from "../../service/loader.service";
 export class AuthorizationComponent implements OnInit {
   login: FormGroup;
 
+  role: string = ''
+
   constructor(
     private loader: LoaderService,
     private authAndRegisterService: AuthAndRegisterService,
@@ -39,30 +41,37 @@ export class AuthorizationComponent implements OnInit {
     const data = this.login.getRawValue()
     this.authAndRegisterService
       .auth(data)
-      .then(response => {
-        const user = response.user
-          user.getIdToken()
-          .then( token => {
+        .then(response => {
+          const user = response.user
+            user.getIdToken()
+            .then( token => {
+              this.authAndRegisterService.getRole(token)
+                .subscribe({
+                  next: ({response}:any) => {
+                    this.role = response.role
+                    localStorage.setItem('role', this.role)
 
-            // делаю гет запрос на контролер гет-роле
+                    if (this.role == 'ADMIN') {
+                      Emitters.roleEmitter.emit('ADMIN')
+                      this.router.navigate(['/home']);
 
-            console.log(token)
-            Emitters.token.emit(`${token}`);
-            const uid = user.uid
-            localStorage.setItem('currentUserUid', uid)
+                    } else if (this.role == 'DOCTOR') {
+                      Emitters.roleEmitter.emit('DOCTOR')
+                      this.router.navigate(['/profile']);
 
-            if (uid == 'RIusPC2CQFc5hMR493vOHjvcHMN2') {
-              Emitters.adminEmitter.emit(true);
-              this.router.navigate(['/home']);
-            } else {
-              Emitters.authEmitter.emit(true);
-              this.router.navigate(['/profile', uid]);
-            }
-
-            this._snackBar.open('You are logged in!', 'Undo', {
-              duration: 5000
-            });
-            this.loader.hide()
+                    } else {
+                      Emitters.roleEmitter.emit('USER')
+                      this.router.navigate(['/profile', uid]);
+                    }
+                  }
+                });
+              const uid = user.uid
+              localStorage.setItem('currentUserUid', uid)
+              Emitters.authEmitter.emit(true)
+              this._snackBar.open('You are logged in!', 'Undo', {
+                duration: 5000
+              });
+              this.loader.hide()
           })
     })
   }

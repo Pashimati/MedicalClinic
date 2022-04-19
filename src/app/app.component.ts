@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from "@angular/router";
-import {LoaderService} from "./service/loader.service";
+import { Emitters } from "./emitters/emitters";
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,7 @@ import {LoaderService} from "./service/loader.service";
   styleUrls: ['./app.component.scss'],
   providers: [],
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   blackList: string [] = [
     '/authorization',
@@ -16,11 +16,9 @@ export class AppComponent {
   ];
 
 
-  OnInit(){
-    console.log(localStorage.getItem('role'))
-    // если есть ключ с юидом пользователя
-    // тогда флаг аутх тру
+  ngOnInit() {
   }
+
 
   isHideHeader: boolean = false;
   isHideFooter: boolean = false;

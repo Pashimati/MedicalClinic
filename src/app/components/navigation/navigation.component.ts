@@ -17,7 +17,7 @@ import {Router} from "@angular/router";
 export class NavigationComponent implements OnInit {
 
   authenticated = false;
-  admin = false;
+  role = '';
 
   constructor
   (
@@ -34,14 +34,30 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
     Emitters.authEmitter.subscribe(
       (auth: boolean) => {
+        console.log(auth)
         this.authenticated = auth;
       }
     );
-    Emitters.adminEmitter.subscribe(
-      (admin: boolean) => {
-        this.admin = admin;
+    Emitters.roleEmitter.subscribe(
+      (role: string) => {
+        this.role = role;
+        console.log(role)
       }
     );
+
+    const role = localStorage.getItem('role')
+    if (role) {
+      Emitters.authEmitter.emit(true)
+      if (role === 'ADMIN') {
+        Emitters.roleEmitter.emit('ADMIN')
+      } else if (role === 'DOCTOR') {
+        Emitters.roleEmitter.emit('DOCTOR')
+      } else if (role === 'USER') {
+        Emitters.roleEmitter.emit('USER')
+      }
+    }
+
+
   }
 
   logout(): void {
@@ -49,9 +65,9 @@ export class NavigationComponent implements OnInit {
       .subscribe({
         next: () => {
           localStorage.removeItem('currentUserUid')
+          localStorage.removeItem('role')
 
           this.authenticated = false
-          this.admin = false
           this.router.navigate(['/home']);
           this._snackBar.open('You are Logout!', 'Undo', {
             duration: 5000

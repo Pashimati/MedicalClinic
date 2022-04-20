@@ -61,7 +61,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { entryCardComponent } from "./components/entryCard/entryCard.component";
 
 @NgModule({
   declarations: [
@@ -102,6 +102,7 @@ import { MatMenuModule } from '@angular/material/menu';
     AddAndUpdateSpeciality,
     page404Component,
     listOfEntriesComponent,
+    entryCardComponent
   ],
   imports: [
     BrowserModule,

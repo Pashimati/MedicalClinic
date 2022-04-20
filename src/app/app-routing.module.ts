@@ -17,6 +17,7 @@ import { AddAndUpdateDepartment } from "./components/departments/addAndUpdateDep
 import { AddAndUpdateSpeciality } from "./components/speciality/addAndUpdateSpeciality/addAndUpdateSpeciality.component";
 import { IndexSpecialityComponent } from "./components/speciality/indexSpeciality/indexSpeciality.component";
 import { page404Component } from "./views/page404/page404.component";
+import { listOfEntriesComponent } from "./views/listOfEntries/listOfEntries.component";
 
 
 const routes: Routes = [
@@ -40,6 +41,8 @@ const routes: Routes = [
   { path: 'addAndUpdateDepartment/:id', component: AddAndUpdateDepartment},
   { path: 'addAndUpdateSpeciality', component: AddAndUpdateSpeciality},
   { path: 'addAndUpdateSpeciality/:id', component: AddAndUpdateSpeciality},
+  { path: 'listOfEntries', component: listOfEntriesComponent},
+
 
   { path: '**', component: page404Component},
 ]

@@ -3,15 +3,19 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalDialogComponent } from "../modal-dialog/modal-dialog.component";
 import { Emitters } from "../../emitters/emitters";
 import { AuthAndRegisterService } from "../../service/authAndRegister.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {Router} from "@angular/router";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { Router } from "@angular/router";
+import { getRoleOrAuthService } from "../../service/getRoleOrAuth.service";
 
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
-  providers: [AuthAndRegisterService]
+  providers: [
+    AuthAndRegisterService,
+    getRoleOrAuthService
+  ]
 })
 
 export class NavigationComponent implements OnInit {
@@ -24,7 +28,8 @@ export class NavigationComponent implements OnInit {
     private router: Router,
     private _snackBar: MatSnackBar,
     private authAndRegisterService: AuthAndRegisterService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public getRole: getRoleOrAuthService
   ) {}
 
   openDialog() {
@@ -34,30 +39,15 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
     Emitters.authEmitter.subscribe(
       (auth: boolean) => {
-        console.log(auth)
         this.authenticated = auth;
       }
     );
     Emitters.roleEmitter.subscribe(
       (role: string) => {
         this.role = role;
-        console.log(role)
       }
     );
-
-    const role = localStorage.getItem('role')
-    if (role) {
-      Emitters.authEmitter.emit(true)
-      if (role === 'ADMIN') {
-        Emitters.roleEmitter.emit('ADMIN')
-      } else if (role === 'DOCTOR') {
-        Emitters.roleEmitter.emit('DOCTOR')
-      } else if (role === 'USER') {
-        Emitters.roleEmitter.emit('USER')
-      }
-    }
-
-
+    this.getRole.getRoleOrAuth()
   }
 
   logout(): void {

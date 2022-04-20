@@ -43,6 +43,9 @@ import { contactComponent } from "./views/contact/contact.component";
 import { profileComponent } from "./views/profile/profile.component";
 import { serviceViewsComponent } from "./views/service/serviceViews.component";
 import { AddAndUpdateSpeciality } from "./components/speciality/addAndUpdateSpeciality/addAndUpdateSpeciality.component";
+import { page404Component } from "./views/page404/page404.component";
+import { listOfEntriesComponent } from "./views/listOfEntries/listOfEntries.component";
+
 
 
 import { MatButtonModule } from '@angular/material/button';
@@ -96,8 +99,9 @@ import { MatMenuModule } from '@angular/material/menu';
     AddAndUpdateDepartment,
     IndexDepartmentComponent,
     IndexSpecialityComponent,
-    AddAndUpdateSpeciality
-
+    AddAndUpdateSpeciality,
+    page404Component,
+    listOfEntriesComponent,
   ],
   imports: [
     BrowserModule,

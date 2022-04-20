@@ -13,6 +13,7 @@ export class AppComponent implements OnInit{
   blackList: string [] = [
     '/authorization',
     '/registration',
+    '/sasas'
   ];
 
 

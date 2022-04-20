@@ -16,6 +16,7 @@ import { IndexDepartmentComponent } from "./components/departments/indexDepartme
 import { AddAndUpdateDepartment } from "./components/departments/addAndUpdateDepartment/addAndUpdateDepartment.component";
 import { AddAndUpdateSpeciality } from "./components/speciality/addAndUpdateSpeciality/addAndUpdateSpeciality.component";
 import { IndexSpecialityComponent } from "./components/speciality/indexSpeciality/indexSpeciality.component";
+import { page404Component } from "./views/page404/page404.component";
 
 
 const routes: Routes = [
@@ -40,6 +41,7 @@ const routes: Routes = [
   { path: 'addAndUpdateSpeciality', component: AddAndUpdateSpeciality},
   { path: 'addAndUpdateSpeciality/:id', component: AddAndUpdateSpeciality},
 
+  { path: '**', component: page404Component},
 ]
 
 @NgModule({

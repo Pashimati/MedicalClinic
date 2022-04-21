@@ -1,8 +1,8 @@
 import {Component, OnInit, Output} from '@angular/core';
-import { DataService } from '../../db/data.service'
 import { Doctor } from "../team/team.component";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {HttpService} from "../../service/http.service";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { HttpService } from "../../service/http.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 
 interface nameDepartment {
@@ -15,7 +15,7 @@ interface nameDepartment {
   templateUrl: './form-appointment.component.html',
   styleUrls: ['./form-appointment.component.scss'],
   providers: [
-    HttpService
+    HttpService,
   ]
 })
 export class FormAppointmentComponent implements OnInit {
@@ -30,7 +30,8 @@ export class FormAppointmentComponent implements OnInit {
 
   constructor
   (
-    private http : HttpService
+    private http : HttpService,
+    private _snackBar: MatSnackBar
   ) {
     this.appointment = new FormGroup({
 
@@ -77,6 +78,7 @@ export class FormAppointmentComponent implements OnInit {
           this.allDoctors = doctors.map((doctor: any) => {
             const data = doctor.data
             return {
+              doctorUid: data.doctorUid,
               name: data.name,
               surname: data.surname,
               department: data.department,
@@ -106,7 +108,22 @@ export class FormAppointmentComponent implements OnInit {
 
   submit() {
     const data = this.appointment.getRawValue()
-    console.log(data)
+    data.uidUser = localStorage.getItem('currentUserUid')
+
+    this.http.addAndUpdateFile('http://localhost:8080/subscription/add', data)
+      .subscribe({
+        next: ({response}:any) => {
+          if (response.success) {
+            this._snackBar.open('You have an appointment with a doctor', 'Undo', {
+              duration: 3000
+            });
+          } else {
+            this._snackBar.open('Unsuccessful!', 'Undo', {
+              duration: 3000
+            });
+          }
+        }
+      });
   }
 
 }

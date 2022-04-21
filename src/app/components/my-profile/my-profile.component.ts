@@ -24,6 +24,8 @@ export class MyProfileComponent implements OnInit {
     age: '',
     address: '',
     phone: '',
+    email: '',
+    password: ''
   }
 
   flag: boolean = false;
@@ -53,11 +55,11 @@ export class MyProfileComponent implements OnInit {
       switchMap(params => params.getAll('id'))
     )
       .subscribe((fileName) => {
+        this.user.fileName = fileName
         this.http.getFileById('https://api-medical-clinic.herokuapp.com/user/get/', fileName)
           .subscribe({
             next: ({response}: any) => {
               const user = response.user
-              this.user.fileName = fileName
               if (user) {
                 this.user.name = user.name
                 this.user.surname = user.surname
@@ -77,7 +79,9 @@ export class MyProfileComponent implements OnInit {
   }
 
   updateUser() {
-    this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/user/update", this.profile.getRawValue())
+    const data = this.profile.getRawValue()
+    console.log(data)
+    this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/user/update", data )
       .subscribe({
         next: ({response}:any) => {
           if (response.success) {
@@ -96,7 +100,7 @@ export class MyProfileComponent implements OnInit {
   addUser() {
     const data = this.profile.getRawValue()
     console.log(data)
-    this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/user/add", data)
+    this.http.addAndUpdateFile("http://localhost:8080/user/add", data)
       .subscribe({
         next: ({response}:any) => {
           if (response.success) {

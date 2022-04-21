@@ -43,6 +43,7 @@ export class AuthorizationComponent implements OnInit {
       .auth(data)
         .then(response => {
           const user = response.user
+          const id = user.uid
             user.getIdToken()
             .then( token => {
               this.authAndRegisterService.getRole(token)
@@ -61,12 +62,11 @@ export class AuthorizationComponent implements OnInit {
 
                     } else {
                       Emitters.roleEmitter.emit('USER')
-                      this.router.navigate(['/profile', uid]);
+                      this.router.navigate(['/profile', id]);
                     }
                   }
                 });
-              const uid = user.uid
-              localStorage.setItem('currentUserUid', uid)
+              localStorage.setItem('currentUserUid', id)
               Emitters.authEmitter.emit(true)
               this._snackBar.open('You are logged in!', 'Undo', {
                 duration: 5000

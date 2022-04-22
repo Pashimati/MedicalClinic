@@ -58,7 +58,7 @@ export class AuthorizationComponent implements OnInit {
 
                     } else if (this.role == 'DOCTOR') {
                       Emitters.roleEmitter.emit('DOCTOR')
-                      this.router.navigate(['/listOfEntries']);
+                      this.router.navigate(['/listOfEntries', id]);
 
                     } else {
                       Emitters.roleEmitter.emit('USER')

@@ -47,29 +47,29 @@ export class HttpService implements OnInit {
      return data;
   }
 
-  // getAllById(url:string, uid: string) {
-  //   let data: any = null;
-  //   const obs$ = ajax({
-  //     method: 'GET',
-  //     url: url,
-  //     body: {
-  //       uid: uid,
-  //     },
-  //     responseType: 'json',
-  //     headers: this.getHeaders(),
-  //   })
-  //   catchError(error => {
-  //     console.log('error: ', error);
-  //     return of(error);
-  //   })
-  //
-  //   obs$.pipe((value: any) => {
-  //     data = value;
-  //     return value
-  //   })
-  //
-  //   return data;
-  // }
+  getAllById(url: string, uid: string) {
+    let data: any = null;
+    const obs$ = ajax({
+      method: 'POST',
+      url: url,
+      body: {
+        uid: uid,
+      },
+      responseType: 'json',
+      headers: this.getHeaders(),
+    })
+    catchError(error => {
+      console.log('error: ', error);
+      return of(error);
+    })
+
+    obs$.pipe((value: any) => {
+      data = value;
+      return value
+    })
+
+    return data;
+  }
 
   deleteFileById(url: string, id: string) {
     let data: any = null;

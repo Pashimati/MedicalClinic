@@ -100,7 +100,7 @@ export class MyProfileComponent implements OnInit {
   addUser() {
     const data = this.profile.getRawValue()
     console.log(data)
-    this.http.addAndUpdateFile("http://localhost:8080/user/add", data)
+    this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/user/add", data)
       .subscribe({
         next: ({response}:any) => {
           if (response.success) {

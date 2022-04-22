@@ -41,8 +41,7 @@ const routes: Routes = [
   { path: 'addAndUpdateDepartment/:id', component: AddAndUpdateDepartment},
   { path: 'addAndUpdateSpeciality', component: AddAndUpdateSpeciality},
   { path: 'addAndUpdateSpeciality/:id', component: AddAndUpdateSpeciality},
-  { path: 'listOfEntries', component: listOfEntriesComponent},
-
+  { path: 'listOfEntries/:id', component: listOfEntriesComponent},
 
   { path: '**', component: page404Component},
 ]

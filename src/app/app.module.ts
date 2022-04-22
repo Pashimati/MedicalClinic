@@ -62,6 +62,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { entryCardComponent } from "./components/entryCard/entryCard.component";
+import {NavigationService} from "./service/navigation.service";
 
 @NgModule({
   declarations: [
@@ -127,6 +128,7 @@ import { entryCardComponent } from "./components/entryCard/entryCard.component";
     DataService,
     MatDatepickerModule,
     LoaderService,
+    NavigationService
   ],
   bootstrap: [AppComponent]
 })

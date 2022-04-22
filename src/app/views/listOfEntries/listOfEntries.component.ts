@@ -32,16 +32,13 @@ export class listOfEntriesComponent implements OnInit {
   }
 
   getSubscribeUsers(uid: string) {
-
-    this.users = this.http.getAllById('http://localhost:8080/subscription/get-all-byId', uid )
+    this.http.getAllById('http://localhost:8080/subscription/get-all-byId', uid )
       .subscribe({
         next: ({response}: any) => {
           const users = response.subscriptionsById
-
-          this.users = users.map((user: any) => {
+          console.log(users)
+           this.users = users.map((user: any) => {
             const data = user.data
-            const userById =  this.getUserById( data.uidUser)
-            console.log(userById)
             return {
               uidUser: data.uidUser,
               date: data.date,
@@ -52,7 +49,7 @@ export class listOfEntriesComponent implements OnInit {
       })
   }
 
- async getUserById(uidUser: string) {
+  getUserById(uidUser: string) {
     this.http.getFileById('http://localhost:8080/user/get/', uidUser)
       .subscribe({
         next: ({response}: any) => {

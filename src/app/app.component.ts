@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from "@angular/router";
-import { Emitters } from "./emitters/emitters";
+
+import {NavigationService} from "./service/navigation.service";
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,7 @@ export class AppComponent implements OnInit{
 
   constructor
   (
-    private router: Router
+    private router: Router,
   ) {
     this.isHideHeaderAndFooter()
   }
@@ -35,9 +36,17 @@ export class AppComponent implements OnInit{
   private isHideHeaderAndFooter(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        const currentUrl: string = this.router.url;
-
-        if (this.blackList.includes(currentUrl)) {
+        ///
+        const currentUrl = this.router.url;
+        const urlContainsAdmin = currentUrl.includes('admin');
+        const role = localStorage.getItem('role');
+        if (urlContainsAdmin && role !== 'ADMIN') {
+            this.router.navigateByUrl('404');
+        }
+        ///
+        if (this.blackList.includes(currentUrl)
+          || !this.isWhiteListContainsCurrentUrl(currentUrl)
+        ) {
           this.isHideFooter = true;
           this.isHideHeader = true;
         } else {
@@ -46,6 +55,23 @@ export class AppComponent implements OnInit{
         }
       }
     })
+  }
+
+  private isWhiteListContainsCurrentUrl( currentUrl:string ):boolean {
+    let urlCurrentPage = currentUrl.replace('/', '');
+    const whiteList = NavigationService.getRoutes();
+
+    try {
+      whiteList.forEach(({path}) => {
+        if (path === urlCurrentPage) {
+          throw true;
+        }
+      })
+    } catch (e) {
+      return true;
+    }
+
+    return false;
   }
 }
 

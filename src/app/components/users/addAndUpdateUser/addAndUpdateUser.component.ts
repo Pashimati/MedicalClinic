@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { HttpService } from "../../../service/http.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-addAndUpdateUser',
@@ -12,60 +13,48 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 })
 export class AddAndUpdateUser implements OnInit {
 
-  url: string = ''
+  user: FormGroup
+  id: string =''
 
-
-  doctor = {
-    id: '',
-    name: '',
-    surname: '',
-    speciality: '',
-    department: ''
-  }
-
-  flag: boolean = false
+  flag: boolean = false;
 
   constructor
   (
-    private route: ActivatedRoute,
     private http: HttpService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
+    this.user = new FormGroup({
+      email: new FormControl("", Validators.min(3)),
+      password: new FormControl("", Validators.min(3)),
+      name: new FormControl("", Validators.min(3)),
+      surname: new FormControl("", Validators.min(3)),
+      sex: new FormControl(),
+      age: new FormControl("", Validators.pattern("[0-9]{2}")),
+      address: new FormControl("", Validators.min(20)),
+      phone: new FormControl("", Validators.pattern("[- +()0-9]+")),
+      fileName: new FormControl(),
 
+    });
   }
 
   ngOnInit() {
-    this.route.paramMap.pipe(
-      switchMap(params => params.getAll('id'))
-    )
-      .subscribe((id) => {
-        this.http.getFileById(' https://api-medical-clinic.herokuapp.com/user/get/', id)
-          .subscribe({
-            next: ({response}: any) => {
-              const doctor = response.doctor
-              this.doctor.name = doctor.name
-              this.doctor.surname = doctor.surname
-              this.doctor.speciality = doctor.speciality
-              this.doctor.department = doctor.department
-              this.doctor.id = id
-              if (id) {
-                this.flag = true
-              }
-            }
-          })
-      });
   }
 
-  addDoctor() {
-    this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/doctor/add", this.doctor)
+  addUser() {
+    const data = this.user.getRawValue()
+    console.log(data)
+    this.http.addAndUpdateFile("http://localhost:8080/user/admin/add", data)
       .subscribe({
         next: ({response}:any) => {
           if (response.success) {
-            this._snackBar.open('Doctor has been created', 'Undo', {
+            this.router.navigate(['/home']);
+            this._snackBar.open('User has been created', 'Undo', {
               duration: 3000
             });
           } else {
-            this._snackBar.open('Doctor not been created', 'Undo', {
+            this._snackBar.open('User not been created', 'Undo', {
               duration: 3000
             });
           }

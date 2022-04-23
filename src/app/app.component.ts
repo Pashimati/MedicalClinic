@@ -58,12 +58,22 @@ export class AppComponent implements OnInit{
   }
 
   private isWhiteListContainsCurrentUrl( currentUrl:string ):boolean {
-    let urlCurrentPage = currentUrl.replace('/', '');
+    let urlCurrentPage = currentUrl.replace('/', '',);
+    const urlCurrentPageArray = urlCurrentPage.split('/');
+    const urlCurrentPageArrayLen = urlCurrentPageArray.length;
+    let urlsArray: string [];
+    if (urlCurrentPageArrayLen > 1) {
+      const lastIndex = urlCurrentPageArrayLen - 1;
+      urlCurrentPageArray[lastIndex] = ':id'
+      urlsArray = [urlCurrentPageArray.join('/'), urlCurrentPage]
+    } else {
+      urlsArray = [urlCurrentPage];
+    }
     const whiteList = NavigationService.getRoutes();
 
     try {
       whiteList.forEach(({path}) => {
-        if (path === urlCurrentPage) {
+        if (urlsArray.includes(path)) {
           throw true;
         }
       })

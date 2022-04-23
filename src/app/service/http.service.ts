@@ -2,25 +2,21 @@ import {Injectable, OnInit} from '@angular/core';
 import { ajax } from 'rxjs/ajax';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { Emitters } from "../emitters/emitters";
 
 @Injectable()
 export class HttpService implements OnInit {
 
-  token: string = ''
   headers: object = {}
   data: any = null;
 
   ngOnInit() {
-    Emitters.token.subscribe((token) => {
-      this.token = token
-    })
   }
 
   getHeaders() {
-    if (this.token) {
+    const token = localStorage.getItem('token')
+    if (token) {
       return {
-        authorization: `Bearer ${this.token}`
+        authorization: `Bearer ${token}`
       }
     }
     return {}

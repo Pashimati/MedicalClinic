@@ -46,6 +46,7 @@ export class AuthorizationComponent implements OnInit {
           const id = user.uid
             user.getIdToken()
             .then( token => {
+              localStorage.setItem('token', token)
               this.authAndRegisterService.getRole(token)
                 .subscribe({
                   next: ({response}:any) => {

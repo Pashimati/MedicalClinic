@@ -36,6 +36,7 @@ import { IndexSpecialityComponent } from "./components/speciality/indexSpecialit
 
 import { DataService } from "./db/data.service";
 import { LoaderService } from "./service/loader.service";
+import { NavigationService } from "./service/navigation.service";
 
 import { IndexComponent } from "./views/index/index.component";
 import { aboutUsComponent } from "./views/aboutUs/aboutUs.component";
@@ -62,7 +63,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { entryCardComponent } from "./components/entryCard/entryCard.component";
-import {NavigationService} from "./service/navigation.service";
 
 @NgModule({
   declarations: [

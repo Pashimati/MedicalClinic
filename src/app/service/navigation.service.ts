@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { IndexComponent } from "../views/index/index.component";
 import { aboutUsComponent } from "../views/aboutUs/aboutUs.component";
@@ -16,6 +16,7 @@ import { AddAndUpdateSpeciality } from "../components/speciality/addAndUpdateSpe
 import { IndexSpecialityComponent } from "../components/speciality/indexSpeciality/indexSpeciality.component";
 import { page404Component } from "../views/page404/page404.component";
 import { listOfEntriesComponent } from "../views/listOfEntries/listOfEntries.component";
+import { AddAndUpdateUser } from "../components/users/addAndUpdateUser/addAndUpdateUser.component";
 
 @Injectable()
 export class NavigationService {
@@ -30,19 +31,19 @@ export class NavigationService {
       { path: 'registration', component: RegistrationComponent},
       { path: 'authorization', component: AuthorizationComponent},
       { path: 'admin/doctors', component: IndexDoctorsComponent},
-      { path: 'users', component: IndexUsersComponent},
-      { path: 'departments', component: IndexDepartmentComponent},
-      { path: 'speciality', component: IndexSpecialityComponent},
+      { path: 'admin/users', component: IndexUsersComponent},
+      { path: 'admin/departments', component: IndexDepartmentComponent},
+      { path: 'admin/speciality', component: IndexSpecialityComponent},
       { path: 'addAndUpdateDoctor/:id', component: DoctorComponent},
       { path: 'addAndUpdateDoctor', component: DoctorComponent},
-      { path: 'profile/addAndUpdateDoctor/:id', component: profileComponent},
+      { path: 'profile/addAndUpdateUser/:id', component: profileComponent},
+      { path: 'profile/addAndUpdateUser', component: AddAndUpdateUser},
       { path: 'profile/:id', component: profileComponent},
       { path: 'admin/addAndUpdateDepartment', component: AddAndUpdateDepartment},
       { path: 'addAndUpdateDepartment/:id', component: AddAndUpdateDepartment},
       { path: 'addAndUpdateSpeciality', component: AddAndUpdateSpeciality},
       { path: 'addAndUpdateSpeciality/:id', component: AddAndUpdateSpeciality},
       { path: 'listOfEntries/:id', component: listOfEntriesComponent},
-
       { path: '**', component: page404Component},
     ]
   }

@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {ajax} from 'rxjs/ajax';
-import {signInWithEmailAndPassword} from 'firebase/auth';
-import {auth} from "./firebase.service";
+import { Injectable } from '@angular/core';
+import { ajax } from 'rxjs/ajax';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from "./firebase.service";
 
 @Injectable()
 export class AuthAndRegisterService {
@@ -19,7 +19,7 @@ export class AuthAndRegisterService {
     let data: any;
     const  obs$ = ajax({
       method: "GET",
-      url: "http://localhost:8080/auth/get-role",
+      url: "https://api-medical-clinic.herokuapp.com/auth/get-role",
       body: {},
       headers: {authorization: `Bearer ${token}`},
     });

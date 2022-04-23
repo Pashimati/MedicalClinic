@@ -58,7 +58,7 @@ export class DoctorComponent implements OnInit {
   }
 
   updateDoctor() {
-   this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/doctor/update", this.doctor)
+   this.http.addAndUpdateFile("http://localhost:8080/doctor/admin/update", this.doctor)
      .subscribe({
        next: ({response}:any) => {
          if (response.success) {
@@ -75,7 +75,7 @@ export class DoctorComponent implements OnInit {
   }
 
   addDoctor() {
-    this.http.addAndUpdateFile("http://localhost:8080/doctor/add", this.doctor)
+    this.http.addAndUpdateFile("http://localhost:8080/doctor/admin/add", this.doctor)
       .subscribe({
         next: ({response}:any) => {
           if (response.success) {

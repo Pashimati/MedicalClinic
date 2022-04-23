@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { switchMap } from "rxjs/operators";
-import { ActivatedRoute } from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import { HttpService } from "../../service/http.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
@@ -35,6 +35,7 @@ export class MyProfileComponent implements OnInit {
     private http: HttpService,
     private _snackBar: MatSnackBar,
     private route: ActivatedRoute,
+    private router: Router
   ) {
     this.profile = new FormGroup({
       email: new FormControl("", Validators.min(3)),
@@ -50,13 +51,18 @@ export class MyProfileComponent implements OnInit {
     });
   }
 
+
+
+
   ngOnInit() {
     this.route.paramMap.pipe(
       switchMap(params => params.getAll('id'))
     )
       .subscribe((fileName) => {
         this.user.fileName = fileName
-        this.http.getFileById('https://api-medical-clinic.herokuapp.com/user/get/', fileName)
+        const uid = localStorage.getItem('currentUserUid')
+        console.log("fileName", fileName , "uid", uid)
+        this.http.getFileById('http://localhost:8080/user/get/', fileName ?? uid)
           .subscribe({
             next: ({response}: any) => {
               const user = response.user
@@ -67,12 +73,10 @@ export class MyProfileComponent implements OnInit {
                 this.user.age = user.age
                 this.user.phone = user.phone
                 this.user.address = user.address
-              }
-              this.profile.setValue(this.user)
 
-              if (fileName && fileName != 'RIusPC2CQFc5hMR493vOHjvcHMN2') {
                 this.flag = true
               }
+              this.profile.setValue(this.user)
             }
           })
       });
@@ -80,11 +84,11 @@ export class MyProfileComponent implements OnInit {
 
   updateUser() {
     const data = this.profile.getRawValue()
-    console.log(data)
     this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/user/update", data )
       .subscribe({
         next: ({response}:any) => {
           if (response.success) {
+            this.router.navigate(['/home']);
             this._snackBar.open('User has been updated', 'Undo', {
               duration: 3000
             });
@@ -104,6 +108,7 @@ export class MyProfileComponent implements OnInit {
       .subscribe({
         next: ({response}:any) => {
           if (response.success) {
+            this.router.navigate(['/home']);
             this._snackBar.open('User has been created', 'Undo', {
               duration: 3000
             });

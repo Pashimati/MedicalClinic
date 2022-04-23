@@ -20,6 +20,7 @@ import { getRoleOrAuthService } from "../../service/getRoleOrAuth.service";
 
 export class NavigationComponent implements OnInit {
 
+  id = localStorage.getItem('currentUserUid')
   authenticated = false;
   role = '';
 
@@ -51,7 +52,7 @@ export class NavigationComponent implements OnInit {
   }
 
   logout(): void {
-    this.authAndRegisterService.logout('https://api-medical-clinic.herokuapp.com/auth/signOut')
+    this.authAndRegisterService.logout('http://localhost:8080/auth/signOut')
       .subscribe({
         next: () => {
           localStorage.removeItem('currentUserUid')

@@ -1,7 +1,9 @@
 import {Component, OnInit, Output} from '@angular/core';
-import { DataService } from '../../db/data.service'
 import { Doctor } from "../team/team.component";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { HttpService } from "../../service/http.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { LoaderService } from "../../service/loader.service";
 
 
 interface nameDepartment {
@@ -13,7 +15,9 @@ interface nameDepartment {
   selector: 'app-form-appointment',
   templateUrl: './form-appointment.component.html',
   styleUrls: ['./form-appointment.component.scss'],
-  providers: [DataService]
+  providers: [
+    HttpService,
+  ]
 })
 export class FormAppointmentComponent implements OnInit {
 
@@ -21,7 +25,16 @@ export class FormAppointmentComponent implements OnInit {
 
   doctors: Doctor [] = [];
 
-  constructor(private dataService : DataService) {
+  allDoctors: Doctor [] = [];
+
+  nameDepartments: nameDepartment[] = [];
+
+  constructor
+  (
+    private http : HttpService,
+    private loader : LoaderService,
+    private _snackBar: MatSnackBar
+  ) {
     this.appointment = new FormGroup({
 
       date: new FormControl(),
@@ -37,12 +50,45 @@ export class FormAppointmentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.setNameDepartments()
+    this.setDoctors()
   }
 
-  nameDepartments: nameDepartment[] = [
-    {value: 'cardiology', viewValue: 'Кардиология'},
-    {value: 'ortopedia', viewValue: 'Хирургия'},
-  ];
+  setNameDepartments () {
+    this.http.getAll('https://api-medical-clinic.herokuapp.com/department/get-all')
+      .subscribe({
+        next: ({response}: any) => {
+          const departments = response.departments
+
+          this.nameDepartments = departments.map((department: any) => {
+            const data = department.data
+            return {
+              viewValue: data.title,
+              value: data.title,
+            }
+          })
+        }
+      })
+  }
+
+  setDoctors (): any {
+    this.http.getAll('https://api-medical-clinic.herokuapp.com/doctor/get-all')
+      .subscribe({
+        next: ({response}: any) => {
+          const doctors = response.doctors
+
+          this.allDoctors = doctors.map((doctor: any) => {
+            const data = doctor.data
+            return {
+              doctorUid: data.doctorUid,
+              name: data.name,
+              surname: data.surname,
+              department: data.department,
+            }
+          })
+        }
+      })
+  }
 
 
   onChange(event: any) {
@@ -50,13 +96,11 @@ export class FormAppointmentComponent implements OnInit {
     this.doctors = this.getDoctors(department);
   }
 
-
   getDoctors(department: string) {
 
     let response: Doctor [] = []
 
-    const allDoctors: Doctor[] = this.dataService.getDoctors()
-    allDoctors.forEach((doctor) => {
+    this.allDoctors.forEach((doctor) => {
       if (doctor.department === department) {
         response.push(doctor)
       }
@@ -64,27 +108,26 @@ export class FormAppointmentComponent implements OnInit {
    return response
   }
 
-
-
   submit() {
+    this.loader.show()
     const data = this.appointment.getRawValue()
-    console.log(data)
+    data.uidUser = localStorage.getItem('currentUserUid')
+
+    this.http.addAndUpdateFile('http://localhost:8080/subscription/add', data)
+      .subscribe({
+        next: ({response}:any) => {
+          if (response.success) {
+            this._snackBar.open('You have an appointment with a doctor', 'Undo', {
+              duration: 3000
+            });
+          } else {
+            this._snackBar.open('Unsuccessful!', 'Undo', {
+              duration: 3000
+            });
+          }
+          this.loader.hide()
+        }
+      });
   }
 
-
 }
-
-// в первом селекте спрашивать категорию врача и отталкиваясь от категории врача показывать данных врачей
-
-
-//  создаю свойство называю Докторс
-//  создаю свойство называю Департментс это объект у которого ключ это валую а значение этоого объекта это описание для опшиона
-//  формирую список отделов ключ и значение Неврология и тд (самое важное ключи отделов совпадали с новым свойством внутри объекта врача)
-//  добавлю  свойство в объект с врачами чтобы оно совпадала с валую опшиона департмент
-//  вешаю событие на селект с отделами ончандже создаю функцию
-
-
-//  у измененого селекта находим текущий опшион и у него получаем валуе с именем отдела  валуе==ключ
-//  пишу функцию которая принимает параметр намеДепартмент  для ее работы подключить дата сервис вызову функцию и сохраню в переменную все врачи
-//  пробегаюсь по врачам в цикле нахожу всех врачей с нужным мне отделом отдел==тому отделу
-//  нужных врачей сохраняю во времнный массив и отфильтрованый масив записываю в переменную докторс и показываю ее

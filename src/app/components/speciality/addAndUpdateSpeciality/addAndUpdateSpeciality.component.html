@@ -1,0 +1,43 @@
+<section class="my-profile">
+  <div class="container">
+    <h1 class="my-profile__title">Data</h1>
+    <form class="example-form">
+      <mat-form-field class="input-box" appearance="fill">
+        <mat-label>Speciality</mat-label>
+        <input
+            matInput
+            name="title"
+            [(ngModel)]="speciality.title"
+            required
+        >
+      </mat-form-field>
+        <input
+          type="hidden"
+          name="id"
+          [(ngModel)]="speciality.id"
+          required
+        >
+
+      <button
+        *ngIf="flag"
+        mat-button
+        color="primary"
+        class="btn-form"
+        (click)="updateSpeciality()"
+      >
+        Update speciality
+      </button>
+      <button
+        *ngIf="!flag"
+        mat-button
+        color="primary"
+        class="btn-form"
+        (click)="addSpeciality()"
+      >
+        Add speciality
+      </button>
+    </form>
+  </div>
+</section>
+
+

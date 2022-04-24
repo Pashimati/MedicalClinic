@@ -1,19 +1,34 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import { ajax } from 'rxjs/ajax';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Injectable()
-export class HttpService {
+export class HttpService implements OnInit {
 
+  headers: object = {}
   data: any = null;
+
+  ngOnInit() {
+  }
+
+  getHeaders() {
+    const token = localStorage.getItem('token')
+    if (token) {
+      return {
+        authorization: `Bearer ${token}`
+      }
+    }
+    return {}
+  }
 
   getAll(url:string) {
      let data: any = null;
       const obs$ = ajax({
       method: 'GET',
       url: url,
-      responseType: 'json'
+      responseType: 'json',
+      headers: this.getHeaders(),
     })
       catchError(error => {
         console.log('error: ', error);
@@ -28,6 +43,30 @@ export class HttpService {
      return data;
   }
 
+  getAllById(url: string, uid: string) {
+    let data: any = null;
+    const obs$ = ajax({
+      method: 'POST',
+      url: url,
+      body: {
+        uid: uid,
+      },
+      responseType: 'json',
+      headers: this.getHeaders(),
+    })
+    catchError(error => {
+      console.log('error: ', error);
+      return of(error);
+    })
+
+    obs$.pipe((value: any) => {
+      data = value;
+      return value
+    })
+
+    return data;
+  }
+
   deleteFileById(url: string, id: string) {
     let data: any = null;
     const  obs$ = ajax({
@@ -36,7 +75,8 @@ export class HttpService {
       body: {
         id: id,
       },
-      headers: {},
+      headers: this.getHeaders(),
+
     });
     obs$.pipe((value: any) => {
       data = value;
@@ -50,7 +90,8 @@ export class HttpService {
     const  obs$ = ajax({
       method: "GET",
       url: url + id,
-      headers: {},
+      headers: this.getHeaders(),
+
     });
     obs$.pipe((value: any) => {
       data = value;
@@ -67,7 +108,8 @@ export class HttpService {
       body: {
         data: data
       },
-      headers: {},
+      headers: this.getHeaders(),
+
     });
     obs$.pipe((value: any) => {
       data = value;

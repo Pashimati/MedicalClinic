@@ -5,9 +5,9 @@ import { DataService } from "../../db/data.service";
 @Component({
   providers: [DataService],
   selector: 'app-service',
-  templateUrl: './service.component.html'
+  templateUrl: './serviceViews.component.html'
 })
-export class serviceComponent implements OnInit {
+export class serviceViewsComponent implements OnInit {
 
   dbKey: string = 'service'
 

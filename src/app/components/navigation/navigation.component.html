@@ -15,7 +15,31 @@
   </ul>
 
 
-  <ul class="nav" *ngIf="authenticated">
+  <ul class="nav" *ngIf="authenticated && role == 'ADMIN'">
+    <button class="nav__link" mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/admin/doctors">Doctors</button>
+      <button mat-menu-item routerLink="/admin/users">Users</button>
+      <button mat-menu-item routerLink="/admin/departments">Departments</button>
+      <button mat-menu-item routerLink="/admin/speciality">Speciality</button>
+    </mat-menu>
+    <li class="nav__item">
+      <button class="nav__link" mat-button (click)="logout()">Logout</button>
+    </li>
+  </ul>
+
+  <ul class="nav" *ngIf="authenticated && role == 'DOCTOR'">
+    <button class="nav__link" mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/listOfEntries">Entries</button>
+    </mat-menu>
+    <li class="nav__item">
+      <button class="nav__link" mat-button (click)="logout()">Logout</button>
+    </li>
+  </ul>
+
+
+  <ul class="nav" *ngIf="authenticated && role == 'USER'">
     <li class="nav__item">
       <a class="nav__link" routerLink="/aboutUs">About us</a>
     </li>
@@ -26,14 +50,10 @@
       <a class="nav__link" routerLink="/contact">Contact</a>
     </li>
     <li class="nav__item">
-      <a class="nav__link" routerLink="/profile">My Profile</a>
-    </li>
-    <li class="nav__item">
-      <a class="nav__link" routerLink="/admin">Admin</a>
+      <a class="nav__link" [routerLink]="['/profile', id]">My Profile</a>
     </li>
     <li class="nav__item">
       <button class="nav__link" mat-button (click)="logout()">Logout</button>
     </li>
   </ul>
 </nav>
-

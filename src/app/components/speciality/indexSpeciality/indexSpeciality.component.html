@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="wrap">
+    <app-loader></app-loader>
+    <h1 class="table-title">List of Speciality</h1>
+
+    <a
+      class="form-link"
+      mat-button
+      color="primary"
+      routerLink="/addAndUpdateSpeciality"
+    >
+      Add speciality
+    </a>
+
+    <table mat-table [dataSource]="specialitys" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell  *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="table-cell" *matCellDef="let element" >
+          <a mat-button color="primary"
+             [routerLink]="['/addAndUpdateSpeciality', element.id]"
+          >
+            Update
+          </a>
+          <button mat-button color="warn"
+                  data-id="{{ element.id }}"
+                  (click)="remove(element.id)"
+                  aria-label="Show an example snack-bar"
+          >
+            Remove
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
+
+
+

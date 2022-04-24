@@ -14,7 +14,8 @@ import {LoaderService} from "../../service/loader.service";
 })
 export class AuthorizationComponent implements OnInit {
   login: FormGroup;
-  id: string = ''
+
+  role: string = ''
 
   constructor(
     private loader: LoaderService,
@@ -39,18 +40,41 @@ export class AuthorizationComponent implements OnInit {
     this.loader.show()
     const data = this.login.getRawValue()
     this.authAndRegisterService
-      .authAndRegister('https://api-medical-clinic.herokuapp.com/auth/signin', data)
-      .subscribe({
-        next: ({response}: any) => {
-          this.id = response.uid
-          console.log(this.id)
-          Emitters.authEmitter.emit(true);
-          this.router.navigate(['/profile', this.id]);
-          this._snackBar.open('You are logged in!', 'Undo', {
-            duration: 5000
-          });
-          this.loader.hide()
-        },
-      });
+      .auth(data)
+        .then(response => {
+          const user = response.user
+          const id = user.uid
+            user.getIdToken()
+            .then( token => {
+              localStorage.setItem('token', token)
+              this.authAndRegisterService.getRole(token)
+                .subscribe({
+                  next: ({response}:any) => {
+                    this.role = response.role
+                    localStorage.setItem('role', this.role)
+
+                    if (this.role == 'ADMIN') {
+                      Emitters.roleEmitter.emit('ADMIN')
+                      this.router.navigate(['/home']);
+
+                    } else if (this.role == 'DOCTOR') {
+                      Emitters.roleEmitter.emit('DOCTOR')
+                      this.router.navigate(['/listOfEntries', id]);
+
+                    } else {
+                      Emitters.roleEmitter.emit('USER')
+                      this.router.navigate(['/profile', id]);
+                    }
+                  }
+                });
+              localStorage.setItem('currentUserUid', id)
+              Emitters.authEmitter.emit(true)
+              this._snackBar.open('You are logged in!', 'Undo', {
+                duration: 5000
+              });
+              this.loader.hide()
+          })
+    })
   }
 }
+

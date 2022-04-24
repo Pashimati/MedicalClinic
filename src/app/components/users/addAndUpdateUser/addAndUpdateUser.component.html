@@ -2,9 +2,7 @@
   <div class="container">
     <h1 class="my-profile__title">Enter data</h1>
     <form
-      *ngIf="!flag"
-
-      [formGroup]="profile"
+      [formGroup]="user"
       (submit)="addUser()"
       novalidate
       class="example-form"
@@ -27,86 +25,23 @@
       </mat-form-field>
 
       <mat-form-field class="input-box" appearance="fill">
-        <mat-label>Sex</mat-label>
-          <mat-select
-            formControlName="sex"
-            required
-          >
-            <mat-option value="men">Men</mat-option>
-            <mat-option value="women">Women</mat-option>
-          </mat-select>
-      </mat-form-field>
-
-      <mat-form-field class="input-box" appearance="fill">
-        <mat-label>Age</mat-label>
+        <mat-label>Email</mat-label>
         <input
           matInput
-          formControlName="age"
+          formControlName="email"
           required
         >
       </mat-form-field>
 
       <mat-form-field class="input-box" appearance="fill">
-        <mat-label>Address</mat-label>
-        <textarea
-          matInput
-          formControlName="address"
-          required
-        ></textarea>
-      </mat-form-field>
-
-        <mat-form-field class="input-box" appearance="fill">
-          <mat-label>Phone</mat-label>
-          <input
-            matInput
-            formControlName="phone"
-            required
-          >
-        </mat-form-field>
-        <input
-          type="hidden"
-          name="fileName"
-          formControlName="fileName"
-          required
-        >
-
-      <button
-        *ngIf="!flag"
-        mat-button
-        color="primary"
-        type="submit"
-        class="btn-form"
-
-      >
-        Submit
-      </button>
-    </form>
-
-
-    <form *ngIf="flag"
-
-      [formGroup]="profile"
-      (submit)="updateUser()"
-      novalidate
-      class="example-form"
-    >
-
-      <mat-form-field class="input-box" appearance="fill">
-        <mat-label>Name</mat-label>
+        <mat-label>Password</mat-label>
         <input
           matInput
-          formControlName="name"
+          formControlName="password"
           required
         >
       </mat-form-field>
-      <mat-form-field class="input-box" appearance="fill">
-        <mat-label>Surname</mat-label>
-        <input
-          matInput
-          formControlName="surname"
-          required
-        >
-      </mat-form-field>
+
       <mat-form-field class="input-box" appearance="fill">
         <mat-label>Sex</mat-label>
         <mat-select
@@ -152,16 +87,15 @@
       >
 
       <button
-        *ngIf="flag"
+        *ngIf="!flag"
         mat-button
         color="primary"
         type="submit"
         class="btn-form"
 
       >
-        Update
+        Submit
       </button>
     </form>
   </div>
 </section>
-

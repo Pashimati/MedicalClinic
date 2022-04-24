@@ -1,0 +1,14 @@
+<mat-card class="card">
+  <mat-card-title>{{User.name + '' + User.surname}}</mat-card-title>
+  <mat-card-subtitle>Пол: {{User.sex}}</mat-card-subtitle>
+  <mat-card-content>
+    <p>{{User.date}}</p>
+    <p>{{User.address}}</p>
+    <p>phone: {{User.phone}}</p>
+    <p>Email: {{User.email}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Написать</button>
+    <button mat-button>Позвонить</button>
+  </mat-card-actions>
+</mat-card>

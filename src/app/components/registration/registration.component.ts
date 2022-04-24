@@ -2,15 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { AuthAndRegisterService } from "../../service/authAndRegister.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import {Router} from '@angular/router';
-import {LoaderService} from "../../service/loader.service";
+import { Router } from '@angular/router';
+import { LoaderService } from "../../service/loader.service";
 
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['../authorization/authorization.component.scss'],
-  providers: [AuthAndRegisterService,LoaderService]
+  providers: [
+    AuthAndRegisterService,
+    LoaderService
+  ]
 })
 export class RegistrationComponent implements OnInit {
   register : FormGroup;
@@ -36,18 +39,17 @@ export class RegistrationComponent implements OnInit {
   }
 
   submit(): void {
-   // this.loader.show()
+   this.loader.show()
    const data = this.register.getRawValue()
    this.authAndRegisterService
-      .authAndRegister('https://api-medical-clinic.herokuapp.com/auth/signup', data)
+      .register('https://api-medical-clinic.herokuapp.com/auth/signup', data)
       .subscribe({
         next: () => {
           this.router.navigate(['/authorization']);
           this._snackBar.open('User created!', 'Undo', {
             duration: 5000
           });
-          // this.loader.hide()
-
+          this.loader.hide()
         }
       });
   }

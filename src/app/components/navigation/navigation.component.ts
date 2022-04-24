@@ -55,9 +55,7 @@ export class NavigationComponent implements OnInit {
     this.authAndRegisterService.logout('http://localhost:8080/auth/signOut')
       .subscribe({
         next: () => {
-          localStorage.removeItem('currentUserUid')
-          localStorage.removeItem('role')
-
+          localStorage.clear()
           this.authenticated = false
           this.router.navigate(['/home']);
           this._snackBar.open('You are Logout!', 'Undo', {

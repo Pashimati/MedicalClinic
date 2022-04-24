@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class entryCardComponent implements OnInit {
 
-  @Input() User: any;
+  @Input() user: any;
 
   constructor() { }
 

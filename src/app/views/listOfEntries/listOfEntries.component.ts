@@ -11,7 +11,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class listOfEntriesComponent implements OnInit {
 
-  users: [] = [];
+  users: object[] = [];
 
   constructor
   (
@@ -26,44 +26,26 @@ export class listOfEntriesComponent implements OnInit {
       .subscribe((uid) => {
         this.getSubscribeUsers(uid)
       })
-
-
-
   }
 
   getSubscribeUsers(uid: string) {
     this.http.getAllById('http://localhost:8080/subscription/get-all-byId', uid )
       .subscribe({
         next: ({response}: any) => {
-          const users = response.subscriptionsById
-          console.log(users)
-           this.users = users.map((user: any) => {
-            const data = user.data
-            return {
-              uidUser: data.uidUser,
-              date: data.date,
-              email: data.email
-            }
+          const subscriptions = response.subscriptionsById
+            subscriptions.map((subscription: any) => {
+            const uidUser = subscription.uidUser
+              const email = subscription.email
+              this.http.getFileById('http://localhost:8080/user/get/', uidUser)
+               .subscribe({
+                 next: ({response}: any) => {
+                   const user = response.user
+                   this.users.push({...user, email})
+                 }
+               })
           })
+          console.log(this.users)
         }
       })
   }
-
-  getUserById(uidUser: string) {
-    this.http.getFileById('http://localhost:8080/user/get/', uidUser)
-      .subscribe({
-        next: ({response}: any) => {
-          const user = response.user
-          return {
-            name: user.name,
-            surname: user.surname,
-            sex: user.sex,
-            age: user.age,
-            phone: user.phone,
-            address: user.address,
-          }
-        }
-      })
-  }
-
 }

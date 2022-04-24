@@ -30,7 +30,7 @@ export class OurDepartmentsComponent implements OnInit {
 
 
   getDepartment() {
-    this.departments = this.http.getAll('https://api-medical-clinic.herokuapp.com/department/get-all')
+    this.http.getAll('https://api-medical-clinic.herokuapp.com/department/get-all')
       .subscribe({
         next: ({response}: any) => {
           console.log(response)

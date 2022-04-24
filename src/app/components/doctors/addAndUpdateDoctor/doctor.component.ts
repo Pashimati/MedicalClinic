@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { HttpService } from "../../../service/http.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { LoaderService } from "../../../service/loader.service";
 
 @Component({
   selector: 'app-doctor',
@@ -29,6 +30,8 @@ export class DoctorComponent implements OnInit {
   constructor
   (
     private route: ActivatedRoute,
+    private loader: LoaderService,
+    private router: Router,
     private http: HttpService,
     private _snackBar: MatSnackBar
   ) {
@@ -58,10 +61,13 @@ export class DoctorComponent implements OnInit {
   }
 
   updateDoctor() {
-   this.http.addAndUpdateFile("http://localhost:8080/doctor/admin/update", this.doctor)
+    this.loader.show()
+    this.http.addAndUpdateFile("http://localhost:8080/doctor/admin/update", this.doctor)
      .subscribe({
        next: ({response}:any) => {
          if (response.success) {
+           this.router.navigate(['/admin/doctors']);
+
            this._snackBar.open('Doctor has been updated', 'Undo', {
              duration: 3000
            });
@@ -70,15 +76,19 @@ export class DoctorComponent implements OnInit {
              duration: 3000
            });
          }
+         this.loader.hide()
        }
      });
   }
 
   addDoctor() {
+    this.loader.show()
     this.http.addAndUpdateFile("http://localhost:8080/doctor/admin/add", this.doctor)
       .subscribe({
         next: ({response}:any) => {
           if (response.success) {
+            this.router.navigate(['/admin/doctors']);
+
             this._snackBar.open('Doctor has been created', 'Undo', {
               duration: 3000
             });
@@ -87,6 +97,7 @@ export class DoctorComponent implements OnInit {
               duration: 3000
             });
           }
+          this.loader.hide()
         }
       });
   }

@@ -3,6 +3,7 @@ import { Doctor } from "../team/team.component";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { HttpService } from "../../service/http.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { LoaderService } from "../../service/loader.service";
 
 
 interface nameDepartment {
@@ -31,6 +32,7 @@ export class FormAppointmentComponent implements OnInit {
   constructor
   (
     private http : HttpService,
+    private loader : LoaderService,
     private _snackBar: MatSnackBar
   ) {
     this.appointment = new FormGroup({
@@ -107,6 +109,7 @@ export class FormAppointmentComponent implements OnInit {
   }
 
   submit() {
+    this.loader.show()
     const data = this.appointment.getRawValue()
     data.uidUser = localStorage.getItem('currentUserUid')
 
@@ -122,6 +125,7 @@ export class FormAppointmentComponent implements OnInit {
               duration: 3000
             });
           }
+          this.loader.hide()
         }
       });
   }

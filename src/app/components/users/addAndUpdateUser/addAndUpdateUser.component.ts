@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from "../../../service/http.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { LoaderService } from "../../../service/loader.service";
 
 @Component({
   selector: 'app-addAndUpdateUser',
@@ -21,6 +21,7 @@ export class AddAndUpdateUser implements OnInit {
   constructor
   (
     private http: HttpService,
+    private loader: LoaderService,
     private _snackBar: MatSnackBar,
     private route: ActivatedRoute,
     private router: Router
@@ -43,13 +44,15 @@ export class AddAndUpdateUser implements OnInit {
   }
 
   addUser() {
+    this.loader.show()
+
     const data = this.user.getRawValue()
     console.log(data)
     this.http.addAndUpdateFile("http://localhost:8080/user/admin/add", data)
       .subscribe({
         next: ({response}:any) => {
           if (response.success) {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/admin/users']);
             this._snackBar.open('User has been created', 'Undo', {
               duration: 3000
             });
@@ -58,6 +61,7 @@ export class AddAndUpdateUser implements OnInit {
               duration: 3000
             });
           }
+          this.loader.hide()
         }
       });
   }

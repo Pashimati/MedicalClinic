@@ -44,6 +44,7 @@ export class NavigationService {
       { path: 'addAndUpdateSpeciality', component: AddAndUpdateSpeciality},
       { path: 'addAndUpdateSpeciality/:id', component: AddAndUpdateSpeciality},
       { path: 'listOfEntries/:id', component: listOfEntriesComponent},
+      { path: 'listOfEntries', component: listOfEntriesComponent},
       { path: '**', component: page404Component},
     ]
   }

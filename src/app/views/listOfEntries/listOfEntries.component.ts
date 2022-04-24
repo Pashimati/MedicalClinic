@@ -26,6 +26,7 @@ export class listOfEntriesComponent implements OnInit {
       .subscribe((uid) => {
         this.getSubscribeUsers(uid)
       })
+    console.log(this.users)
   }
 
   getSubscribeUsers(uid: string) {
@@ -36,15 +37,20 @@ export class listOfEntriesComponent implements OnInit {
             subscriptions.map((subscription: any) => {
             const uidUser = subscription.uidUser
               const email = subscription.email
+              let date = subscription.date
+              if (date) {
+                date = new Date(date)
+                console.log(date)
+              }
+
               this.http.getFileById('http://localhost:8080/user/get/', uidUser)
                .subscribe({
                  next: ({response}: any) => {
                    const user = response.user
-                   this.users.push({...user, email})
+                   this.users.push({...user, email, date})
                  }
                })
           })
-          console.log(this.users)
         }
       })
   }

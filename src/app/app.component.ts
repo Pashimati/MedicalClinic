@@ -38,9 +38,16 @@ export class AppComponent implements OnInit{
       if (event instanceof NavigationEnd) {
         ///
         const currentUrl = this.router.url;
+        console.log(currentUrl)
         const urlContainsAdmin = currentUrl.includes('admin');
+        const urlContaisDoctor = currentUrl.includes('doctor');
+
         const role = localStorage.getItem('role');
-        if (urlContainsAdmin && role !== 'ADMIN') {
+        if (
+          (urlContainsAdmin && role !== 'ADMIN')
+          ||
+          (urlContaisDoctor && role !== 'DOCTOR' && role !== 'ADMIN')
+        ) {
             this.router.navigateByUrl('404');
         }
         ///

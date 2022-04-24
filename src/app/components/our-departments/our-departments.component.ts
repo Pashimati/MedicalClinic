@@ -25,7 +25,7 @@ export class OurDepartmentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.getDepartment()
+    this.getDepartment()
   }
 
 
@@ -33,7 +33,6 @@ export class OurDepartmentsComponent implements OnInit {
     this.http.getAll('https://api-medical-clinic.herokuapp.com/department/get-all')
       .subscribe({
         next: ({response}: any) => {
-          console.log(response)
           const departments = response.departments
 
           this.departments = departments.map((department: any) => {

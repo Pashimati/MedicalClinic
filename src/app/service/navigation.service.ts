@@ -34,17 +34,18 @@ export class NavigationService {
       { path: 'admin/users', component: IndexUsersComponent},
       { path: 'admin/departments', component: IndexDepartmentComponent},
       { path: 'admin/speciality', component: IndexSpecialityComponent},
-      { path: '/admin/addAndUpdateDoctor/:id', component: DoctorComponent},
-      { path: '/admin/addAndUpdateDoctor', component: DoctorComponent},
+      { path: 'admin/addAndUpdateDoctor/:id', component: DoctorComponent},
+      { path: 'admin/addAndUpdateDoctor', component: DoctorComponent},
       { path: 'profile/addAndUpdateUser/:id', component: profileComponent},
       { path: 'profile/addAndUpdateUser', component: AddAndUpdateUser},
       { path: 'profile/:id', component: profileComponent},
       { path: 'admin/addAndUpdateDepartment', component: AddAndUpdateDepartment},
       { path: 'admin/addAndUpdateDepartment/:id', component: AddAndUpdateDepartment},
       { path: 'admin/addAndUpdateSpeciality', component: AddAndUpdateSpeciality},
-      { path: 'adminaddAndUpdateSpeciality/:id', component: AddAndUpdateSpeciality},
+      { path: 'admin/addAndUpdateSpeciality/:id', component: AddAndUpdateSpeciality},
       { path: 'doctor/listOfEntries/:id', component: listOfEntriesComponent},
       { path: 'doctor/listOfEntries', component: listOfEntriesComponent},
+
       { path: '**', component: page404Component},
     ]
   }

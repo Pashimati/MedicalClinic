@@ -26,11 +26,11 @@ export class listOfEntriesComponent implements OnInit {
       .subscribe((uid) => {
         this.getSubscribeUsers(uid)
       })
-    console.log(this.users)
   }
 
   getSubscribeUsers(uid: string) {
-    this.http.getAllById('http://localhost:8080/subscription/get-all-byId', uid )
+    const storageUid = localStorage.getItem('currentUserUid')
+    this.http.getAllById('http://localhost:8080/subscription/get-all-byId', uid ?? storageUid)
       .subscribe({
         next: ({response}: any) => {
           const subscriptions = response.subscriptionsById
@@ -40,7 +40,6 @@ export class listOfEntriesComponent implements OnInit {
               let date = subscription.date
               if (date) {
                 date = new Date(date)
-                console.log(date)
               }
 
               this.http.getFileById('http://localhost:8080/user/get/', uidUser)

@@ -37,16 +37,13 @@ export class listOfEntriesComponent implements OnInit {
       .subscribe({
         next: ({response}: any) => {
           const subscriptions = response.subscriptionsById
-          console.log(subscriptions)
             subscriptions.map((subscription: any) => {
               const uidUser = subscription.data.uidUser
               const id = subscription.id
-              console.log(id)
               const email = subscription.data.email
               let date = subscription.data.date
               if (date) {
                 date = new Date(date)
-                console.log(date)
               }
               this.http.getFileById('http://localhost:8080/user/get/', uidUser)
                .subscribe({

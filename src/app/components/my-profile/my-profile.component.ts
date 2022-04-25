@@ -61,7 +61,6 @@ export class MyProfileComponent implements OnInit {
       .subscribe((fileName) => {
         this.user.fileName = fileName
         const uid = localStorage.getItem('currentUserUid')
-        console.log("fileName", fileName , "uid", uid)
         this.http.getFileById('http://localhost:8080/user/get/', fileName ?? uid)
           .subscribe({
             next: ({response}: any) => {
@@ -103,7 +102,6 @@ export class MyProfileComponent implements OnInit {
 
   addUser() {
     const data = this.profile.getRawValue()
-    console.log(data)
     this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/user/add", data)
       .subscribe({
         next: ({response}:any) => {

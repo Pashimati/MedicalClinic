@@ -38,7 +38,6 @@ export class AppComponent implements OnInit{
       if (event instanceof NavigationEnd) {
         ///
         const currentUrl = this.router.url;
-        console.log(currentUrl)
         const urlContainsAdmin = currentUrl.includes('admin');
         const urlContaisDoctor = currentUrl.includes('doctor');
 

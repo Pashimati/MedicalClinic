@@ -26,7 +26,7 @@ export class TeamComponent implements OnInit {
   }
 
   getDoctors() {
-    this.doctors = this.http.getAll('https://api-medical-clinic.herokuapp.com/doctor/get-all')
+    this.http.getAll('https://api-medical-clinic.herokuapp.com/doctor/get-all')
       .subscribe({
         next: ({response}: any) => {
           const doctors = response.doctors

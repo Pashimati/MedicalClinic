@@ -1,4 +1,6 @@
 <mat-card class="card">
+  <button mat-button color="warn" class="btn-close" (click)="remove(user.id)">remove</button>
+  <input type="hidden" [(ngModel)]="user.id">
   <mat-card-title>{{user.name + ' ' + user.surname}}</mat-card-title>
   <mat-card-subtitle>Пол: {{user.sex}}</mat-card-subtitle>
   <mat-card-content>

@@ -42,7 +42,6 @@ export class IndexDoctorsComponent implements OnInit {
       .subscribe({
         next: ({response}: any) => {
           const doctors = response.doctors
-
           this.doctors = doctors.map((doctor: any, key: number) => {
             const data = doctor.data
             const id = doctor.id

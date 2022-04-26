@@ -12,7 +12,7 @@ export class SectionPreviewComponent implements OnInit  {
 
   @Input() key: string = "";
 
-  imageLink: string = "../../assets/img/service-bg.png"
+  imageLink: string = "assets/img/service-bg.png"
 
   constructor(private dataService: DataService) {
   }

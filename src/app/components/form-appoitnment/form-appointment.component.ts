@@ -113,7 +113,7 @@ export class FormAppointmentComponent implements OnInit {
     const data = this.appointment.getRawValue()
     data.uidUser = localStorage.getItem('currentUserUid')
 
-    this.http.addAndUpdateFile('http://localhost:8080/subscription/add', data)
+    this.http.addAndUpdateFile('https://api-medical-clinic.herokuapp.com/subscription/add', data)
       .subscribe({
         next: ({response}:any) => {
           if (response.success) {

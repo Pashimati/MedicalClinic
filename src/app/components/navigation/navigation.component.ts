@@ -52,7 +52,7 @@ export class NavigationComponent implements OnInit {
   }
 
   logout(): void {
-    this.authAndRegisterService.logout('http://localhost:8080/auth/signOut')
+    this.authAndRegisterService.logout('https://api-medical-clinic.herokuapp.com/auth/signOut')
       .subscribe({
         next: () => {
           localStorage.clear()

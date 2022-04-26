@@ -32,8 +32,7 @@ export class listOfEntriesComponent implements OnInit {
 
   getSubscribeUsers(uid: string) {
     this.loader.show()
-    const storageUid = localStorage.getItem('currentUserUid')
-    this.http.getAllById('https://api-medical-clinic.herokuapp.com/subscription/get-all-byId', uid ?? storageUid)
+    this.http.getAllById('https://api-medical-clinic.herokuapp.com/subscription/get-all-byId', uid)
       .subscribe({
         next: ({response}: any) => {
           const subscriptions = response.subscriptionsById

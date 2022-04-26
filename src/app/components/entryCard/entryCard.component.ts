@@ -27,7 +27,7 @@ export class entryCardComponent implements OnInit {
       .subscribe({
         next: ({response}:any) => {
           if (response.success) {
-
+            //
             this._snackBar.open('Subscription has been deleted', 'Undo', {
               duration: 3000
             });

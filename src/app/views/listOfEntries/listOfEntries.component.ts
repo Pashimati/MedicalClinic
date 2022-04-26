@@ -33,7 +33,7 @@ export class listOfEntriesComponent implements OnInit {
   getSubscribeUsers(uid: string) {
     this.loader.show()
     const storageUid = localStorage.getItem('currentUserUid')
-    this.http.getAllById('http://localhost:8080/subscription/get-all-byId', uid ?? storageUid)
+    this.http.getAllById('https://api-medical-clinic.herokuapp.com/subscription/get-all-byId', uid ?? storageUid)
       .subscribe({
         next: ({response}: any) => {
           const subscriptions = response.subscriptionsById
@@ -45,7 +45,7 @@ export class listOfEntriesComponent implements OnInit {
               if (date) {
                 date = new Date(date)
               }
-              this.http.getFileById('http://localhost:8080/user/get/', uidUser)
+              this.http.getFileById('https://api-medical-clinic.herokuapp.com/user/get/', uidUser)
                .subscribe({
                  next: ({response}: any) => {
                    const user = response.user

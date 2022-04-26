@@ -23,7 +23,7 @@ export class entryCardComponent implements OnInit {
 
 
   remove(id: string) {
-    this.http.deleteFileById('http://localhost:8080/subscription/delete', id)
+    this.http.deleteFileById('https://api-medical-clinic.herokuapp.com/subscription/delete', id)
       .subscribe({
         next: ({response}:any) => {
           if (response.success) {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from "../../../service/http.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { LoaderService } from "../../../service/loader.service";
 
 @Component({
@@ -48,7 +48,7 @@ export class AddAndUpdateUser implements OnInit {
 
     const data = this.user.getRawValue()
     console.log(data)
-    this.http.addAndUpdateFile("http://localhost:8080/user/admin/add", data)
+    this.http.addAndUpdateFile("https://api-medical-clinic.herokuapp.com/user/admin/add", data)
       .subscribe({
         next: ({response}:any) => {
           if (response.success) {

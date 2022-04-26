@@ -4,7 +4,7 @@ import { AuthAndRegisterService } from "../../service/authAndRegister.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from '@angular/router';
 import { Emitters } from '../../emitters/emitters';
-import {LoaderService} from "../../service/loader.service";
+import { LoaderService } from "../../service/loader.service";
 
 @Component({
   selector: 'app-authorization',

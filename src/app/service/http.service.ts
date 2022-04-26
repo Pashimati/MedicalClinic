@@ -1,4 +1,4 @@
-import {Injectable, OnInit} from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { ajax } from 'rxjs/ajax';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';

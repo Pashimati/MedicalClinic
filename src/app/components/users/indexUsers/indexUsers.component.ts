@@ -39,7 +39,7 @@ export class IndexUsersComponent implements OnInit {
 
   updateTableList () {
     this.loaderService.show()
-    this.http.getAll('https://api-medical-clinic.herokuapp.com/user/get-all')
+    this.http.getAll('https://api-medical-clinic.herokuapp.com/user/admin/get-all')
       .subscribe({
         next: ({response}: any) => {
           const users = response.users
@@ -65,7 +65,7 @@ export class IndexUsersComponent implements OnInit {
   }
 
   remove(id: string) {
-    this.http.deleteFileById('https://api-medical-clinic.herokuapp.com/user/delete', id)
+    this.http.deleteFileById('https://api-medical-clinic.herokuapp.com/user/admin/delete', id)
       .subscribe({
       next: ({response}:any) => {
         if (response.success) {

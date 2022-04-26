@@ -61,7 +61,7 @@ export class MyProfileComponent implements OnInit {
       .subscribe((fileName) => {
         this.user.fileName = fileName
         const uid = localStorage.getItem('currentUserUid')
-        this.http.getFileById('http://localhost:8080/user/get/', fileName ?? uid)
+        this.http.getFileById('https://api-medical-clinic.herokuapp.com/user/get/', fileName ?? uid)
           .subscribe({
             next: ({response}: any) => {
               const user = response.user

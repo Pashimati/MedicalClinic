@@ -41,14 +41,20 @@ export class listOfEntriesComponent implements OnInit {
               const id = subscription.id
               const email = subscription.data.email
               let date = subscription.data.date
-              if (date) {
-                date = new Date(date)
-              }
+
+              let dateString = new Date(date);
+
+             let dateFormat = dateString.getDate()+
+                "/"+(dateString.getMonth()+1)+
+                "/"+dateString.getFullYear()+
+                " "+dateString.getHours()+
+                ":"+dateString.getMinutes();
+
               this.http.getFileById('https://api-medical-clinic.herokuapp.com/user/get/', uidUser)
                .subscribe({
                  next: ({response}: any) => {
                    const user = response.user
-                   this.users.push({...user, email, date, id})
+                   this.users.push({...user, email, dateFormat, id})
                  }
                })
           })
